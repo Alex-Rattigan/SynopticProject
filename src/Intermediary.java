@@ -21,9 +21,6 @@ public class Intermediary {
     public int getID(){
         return intermediaryId;
     }
-    public void setID(int id){
-        intermediaryId = id;
-    }
     public String getUsername(){
         return username;
     }
@@ -59,7 +56,6 @@ public class Intermediary {
         Intermediary David = new Intermediary();
         David.setFname("James");
         David.setSname("January");
-        David.setID(1);
         David.setUsername("JJanuary123");
         David.setPassword("Epic2012");
         David.setMobileNo("999");

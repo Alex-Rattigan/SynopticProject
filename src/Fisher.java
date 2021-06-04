@@ -22,9 +22,6 @@ public class Fisher {
     public int getID(){
         return fisherId;
     }
-    public void setID(int id){
-        fisherId = id;
-    }
     public String getUsername(){
         return username;
     }
@@ -60,7 +57,6 @@ public class Fisher {
         Fisher james = new Fisher();
         james.setFname("James");
         james.setSname("January");
-        james.setID(1);
         james.setUsername("JJanuary123");
         james.setPassword("Epic2012");
         james.setMobileNo("999");
