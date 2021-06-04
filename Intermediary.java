@@ -8,11 +8,11 @@ public class Intermediary {
     private String fName;
     private String sName;
     private String password;
-    private int mobileNo;
+    private String mobileNo;
 
     public Intermediary(){}
 
-    public Intermediary(String username, String fname, String sname, String password, int mobileNo){
+    public Intermediary(String username, String fname, String sname, String password, String mobileNo){
         this.username = username;
         this.fName = fname;
         this.sName = sname;
@@ -50,10 +50,10 @@ public class Intermediary {
     public void setPassword(String pass){
         password = pass;
     }
-    public int getMobileNo(){
+    public String getMobileNo(){
         return mobileNo;
     }
-    public void setMobileNo(int number){
+    public void setMobileNo(String number){
         mobileNo = number;
     }
 
@@ -64,7 +64,7 @@ public class Intermediary {
         David.setID(1);
         David.setUsername("JJanuary123");
         David.setPassword("Epic2012");
-        David.setMobileNo(999);
+        David.setMobileNo("999");
         System.out.println(David);
     }
 

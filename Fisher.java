@@ -7,11 +7,11 @@ public class Fisher {
     private String fName;
     private String sName;
     private String password;
-    private int mobileNo;
+    private String mobileNo;
 
     public Fisher(){}
 
-    public Fisher(String username, String fname, String sname, String password, int mobileNo){
+    public Fisher(String username, String fname, String sname, String password, String mobileNo){
         this.username = username;
         this.fName = fname;
         this.sName = sname;
@@ -49,10 +49,10 @@ public class Fisher {
     public void setPassword(String pass){
         password = pass;
     }
-    public int getMobileNo(){
+    public String getMobileNo(){
         return mobileNo;
     }
-    public void setMobileNo(int number){
+    public void setMobileNo(String number){
         mobileNo = number;
     }
 
@@ -63,7 +63,7 @@ public class Fisher {
         james.setID(1);
         james.setUsername("JJanuary123");
         james.setPassword("Epic2012");
-        james.setMobileNo(999);
+        james.setMobileNo("999");
         System.out.println(james);
     }
 
