@@ -29,27 +29,27 @@
       </HBox>
       <VBox layoutX="231.0" layoutY="81.0" prefHeight="319.0" prefWidth="139.0">
          <children>
-            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Forename">
+            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Forename" fx:id="forenameTxt">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Surname">
+            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Surname" fx:id="surnameTxt">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Username">
+            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Username" fx:id="usernameTxt">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </TextField>
-            <PasswordField promptText="Password">
+            <PasswordField promptText="Password" fx:id="passwordTxt">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </PasswordField>
-            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Mobile No.">
+            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Mobile No." fx:id="mobileNoTxt">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
@@ -59,13 +59,13 @@
                   <Insets left="12.0" />
                </VBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Intermediary" />
-            <RadioButton mnemonicParsing="false" text="Fisher">
+            <RadioButton mnemonicParsing="false" text="Intermediary" fx:id="intermediaryButton"/>
+            <RadioButton mnemonicParsing="false" text="Fisher" fx:id="fisherButton">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </RadioButton>
-            <Button mnemonicParsing="false" text="Complete Sign Up">
+            <Button mnemonicParsing="false" text="Complete Sign Up" fx:id="completeSignUpButton">
                <VBox.margin>
                   <Insets left="12.0" />
                </VBox.margin>
