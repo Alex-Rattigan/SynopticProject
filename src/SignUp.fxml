@@ -6,7 +6,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -14,18 +14,15 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpController">
    <children>
-      <HBox prefHeight="46.0" prefWidth="600.0">
-         <children>
+      <ToolBar prefHeight="40.0" prefWidth="600.0">
+        <items>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MyFishingPal">
                <font>
                   <Font size="24.0" />
                </font>
-               <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </HBox.margin>
             </Text>
-         </children>
-      </HBox>
+        </items>
+      </ToolBar>
       <VBox layoutX="231.0" layoutY="81.0" prefHeight="319.0" prefWidth="139.0">
          <children>
             <TextField fx:id="forenameTxt" prefHeight="26.0" prefWidth="504.0" promptText="Forename">
