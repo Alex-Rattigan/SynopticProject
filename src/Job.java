@@ -8,15 +8,17 @@ public class Job
     private double payPerKg;
     private Date dateCreated;
     private Date dateDue;
+    private String description;
     private boolean isCompleted;
 
-    Job(String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, boolean isCompleted)
+    Job(String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted)
     {
         this.fishType = fishType;
         this.amountKg = amountKg;
         this.payPerKg = payPerKg;
         this.dateCreated = dateCreated;
         this.dateDue = dateDue;
+        this.description = description;
         this.isCompleted = isCompleted;
     }
 
@@ -83,7 +85,7 @@ public class Job
 
     public static void main(String[] args)
     {
-        Job job = new Job("fish", 5, 4.0, Date.valueOf("2021-06-04"), Date.valueOf("2021-06-07"), false);
+        Job job = new Job("fish", 5, 4.0, Date.valueOf("2021-06-04"), Date.valueOf("2021-06-07"), "fuel and bait",false);
 
         System.out.println(job.toString());
     }

@@ -2,8 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.Pane?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateJobController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChangeMobNoController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="600.0">
         <items>
@@ -27,47 +26,45 @@
             <Button mnemonicParsing="false" text="Help" />
         </items>
       </ToolBar>
-      <VBox layoutX="163.0" layoutY="42.0" prefHeight="359.0" prefWidth="226.0">
+      <VBox layoutX="148.0" layoutY="42.0" prefHeight="178.0" prefWidth="303.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create New Job">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Change Mobile Number">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="50.0" top="5.0" />
+                  <Insets left="35.0" />
                </VBox.margin>
             </Text>
-            <TextField maxWidth="-Infinity" promptText="Fish Type">
+            <Label text="Current Mobile Number:">
                <VBox.margin>
-                  <Insets left="40.0" top="5.0" />
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <TextField editable="false" maxWidth="-Infinity">
+               <VBox.margin>
+                  <Insets left="60.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" promptText="Amount (Kg)">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter a new mobile number:">
                <VBox.margin>
-                  <Insets left="40.0" top="5.0" />
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Text>
+            <TextField maxWidth="-Infinity" promptText="New Mobile No.">
+               <VBox.margin>
+                  <Insets left="60.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" promptText="Pay (Sol/Kg)">
+            <Button mnemonicParsing="false" text="Confirm">
                <VBox.margin>
-                  <Insets left="40.0" top="5.0" />
-               </VBox.margin>
-            </TextField>
-            <DatePicker promptText="Complete By">
-               <VBox.margin>
-                  <Insets left="40.0" top="5.0" />
-               </VBox.margin>
-            </DatePicker>
-            <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="200.0" promptText="Job Details">
-               <VBox.margin>
-                  <Insets left="20.0" top="5.0" />
-               </VBox.margin>
-            </TextArea>
-            <Button mnemonicParsing="false" text="Create New Job">
-               <VBox.margin>
-                  <Insets left="65.0" top="5.0" />
+                  <Insets left="105.0" top="5.0" />
                </VBox.margin>
             </Button>
          </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
       </VBox>
    </children>
 </Pane>
