@@ -5,8 +5,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import java.awt.*;
-import java.awt.TextField;
+import javafx.scene.control.TextField;
+
 
 
 public class SignUpController {
@@ -18,7 +18,7 @@ public class SignUpController {
     private Button completeSignUpButton;
 
     @FXML
-    private RadioButton intermediary, fisher;
+    private RadioButton intermediaryButton, fisherButton;
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
@@ -30,7 +30,7 @@ public class SignUpController {
             String password = passwordTxt.getText();
             String mobileNo = mobileNoTxt.getText();
 
-            if (intermediary.isSelected()) {
+            if (intermediaryButton.isSelected()) {
                 if(checkDetails()) {
 //                DatabaseController.insertIntermediaryRecord(forename, surname, username, password, mobileNo);
 
@@ -53,7 +53,7 @@ public class SignUpController {
                     alert.showAndWait();
                 }
 
-            } else if (fisher.isSelected())
+            } else if (fisherButton.isSelected())
             {
                 if(checkDetails()) {
 //                DatabaseController.insertFisherRecord(forename, surname, username, password, mobileNo);
