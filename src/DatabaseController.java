@@ -498,7 +498,7 @@ public class DatabaseController
 
     // --------------------------------------------- CRUD FOR JOBS --------------------------------------------- //
 
-    public static void insertJob(int intermediary_id, String fish_type, int amount_kg, double pay_per_kg, Date date_created, Date date_due, boolean is_completed)
+    public static void insertJob(int intermediary_id, String fish_type, int amount_kg, double pay_per_kg, Date date_created, Date date_due, String description, boolean is_completed)
     {
         Statement insert = null;
 
@@ -507,8 +507,9 @@ public class DatabaseController
 
             insert = c.createStatement();
 
-            String statement = "INSERT INTO Jobs (fish_type, amount_kg, pay_per_kg, date_created, date_due, is_completed)VALUES('"
-                     + fish_type + "', " + amount_kg + ", " + pay_per_kg + ", '" + date_created + "', '"+ date_due + "', " + is_completed + ") RETURNING job_id;";
+            String statement = "INSERT INTO Jobs (fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed)VALUES('"
+                     + fish_type + "', " + amount_kg + ", " + pay_per_kg + ", '" + date_created + "', '"+ date_due + "', '" + description
+                    + "', " + is_completed + ") RETURNING job_id;";
 
             insert.execute(statement);
 
@@ -557,13 +558,14 @@ public class DatabaseController
                 double pay_per_kg = result.getDouble("pay_per_kg");
                 Date date_created = result.getDate("date_created");
                 Date date_due = result.getDate("date_due");
+                String description = result.getString("description");
                 boolean is_completed = result.getBoolean("is_completed");
 
                 System.out.println("ID = " + job_id + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
                         + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                        + date_due + ", COMPLETED? = " + is_completed );
+                        + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
 
-                jobs.add(new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, is_completed));
+                jobs.add(new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed));
             }
 
             result.close();
@@ -600,13 +602,14 @@ public class DatabaseController
                 double pay_per_kg = result.getDouble("pay_per_kg");
                 Date date_created = result.getDate("date_created");
                 Date date_due = result.getDate("date_due");
+                String description = result.getString("description");
                 boolean is_completed = result.getBoolean("is_completed");
 
                 System.out.println("ID = " + id + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
                         + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                        + date_due + ", COMPLETED? = " + is_completed );
+                        + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
 
-                job = new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, is_completed);
+                job = new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed);
             }
 
             result.close();
@@ -622,7 +625,7 @@ public class DatabaseController
         return null;
     }
 
-    public void updateFishType(int job_id, String new_type)
+    public static void updateFishType(int job_id, String new_type)
     {
         Statement update = null;
 
@@ -646,11 +649,12 @@ public class DatabaseController
                 double pay_per_kg = result.getDouble("pay_per_kg");
                 Date date_created = result.getDate("date_created");
                 Date date_due = result.getDate("date_due");
+                String description = result.getString("description");
                 boolean is_completed = result.getBoolean("is_completed");
 
                 System.out.println("ID = " + id + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
                         + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                        + date_due + ", COMPLETED? = " + is_completed );
+                        + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
             }
 
             result.close();
@@ -666,7 +670,7 @@ public class DatabaseController
         }
     }
 
-    public void updateAmountKg(int job_id, int new_amount)
+    public static void updateAmountKg(int job_id, int new_amount)
     {
         Statement update = null;
 
@@ -690,11 +694,12 @@ public class DatabaseController
                 double pay_per_kg = result.getDouble("pay_per_kg");
                 Date date_created = result.getDate("date_created");
                 Date date_due = result.getDate("date_due");
+                String description = result.getString("description");
                 boolean is_completed = result.getBoolean("is_completed");
 
                 System.out.println("ID = " + id + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
                         + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                        + date_due + ", COMPLETED? = " + is_completed );
+                        + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
             }
 
             result.close();
@@ -710,7 +715,7 @@ public class DatabaseController
         }
     }
 
-    public void updatePay(int job_id, double new_pay)
+    public static void updatePay(int job_id, double new_pay)
     {
         Statement update = null;
 
@@ -734,11 +739,12 @@ public class DatabaseController
                 double pay_per_kg = result.getDouble("pay_per_kg");
                 Date date_created = result.getDate("date_created");
                 Date date_due = result.getDate("date_due");
+                String description = result.getString("description");
                 boolean is_completed = result.getBoolean("is_completed");
 
                 System.out.println("ID = " + id + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
                         + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                        + date_due + ", COMPLETED? = " + is_completed );
+                        + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
             }
 
             result.close();
@@ -754,7 +760,7 @@ public class DatabaseController
         }
     }
 
-    public void updateFishType(int job_id, Date new_date)
+    public static void updateDateDue(int job_id, Date new_date)
     {
         Statement update = null;
 
@@ -778,11 +784,12 @@ public class DatabaseController
                 double pay_per_kg = result.getDouble("pay_per_kg");
                 Date date_created = result.getDate("date_created");
                 Date date_due = result.getDate("date_due");
+                String description = result.getString("description");
                 boolean is_completed = result.getBoolean("is_completed");
 
                 System.out.println("ID = " + id + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
                         + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                        + date_due + ", COMPLETED? = " + is_completed );
+                        + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
             }
 
             result.close();
@@ -795,6 +802,51 @@ public class DatabaseController
         {
             e.printStackTrace();
             System.out.println("ERROR: Update for DATE_DUE could not be completed.");
+        }
+    }
+
+    public static void updateDescription(int job_id, String new_description)
+    {
+        Statement update = null;
+
+        try {
+            connect();
+
+            update = c.createStatement();
+
+            String statement = "UPDATE Jobs SET date_due = '" + new_description + "' WHERE job_id = " + job_id + ";";
+
+            update.executeUpdate(statement);
+            c.commit();
+
+            ResultSet result = update.executeQuery("SELECT * FROM Jobs WHERE job_id = " + job_id + ";");
+
+            while(result.next())
+            {
+                int id = result.getInt("job_id");
+                String fish_type = result.getString("fish_type");
+                int amount_kg = result.getInt("amount_kg");
+                double pay_per_kg = result.getDouble("pay_per_kg");
+                Date date_created = result.getDate("date_created");
+                Date date_due = result.getDate("date_due");
+                String description = result.getString("description");
+                boolean is_completed = result.getBoolean("is_completed");
+
+                System.out.println("ID = " + id + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
+                        + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
+                        + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
+            }
+
+            result.close();
+            update.close();
+            c.close();
+
+            System.out.println("Update DESCRIPTION for JOB successful.");
+
+        } catch(Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("ERROR: Update for DESCRIPTION could not be completed.");
         }
     }
 
@@ -822,11 +874,12 @@ public class DatabaseController
                 double pay_per_kg = result.getDouble("pay_per_kg");
                 Date date_created = result.getDate("date_created");
                 Date date_due = result.getDate("date_due");
+                String description = result.getString("description");
                 boolean completed = result.getBoolean("is_completed");
 
                 System.out.println("ID = " + id + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
                         + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                        + date_due + ", COMPLETED? = " + completed );
+                        + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + completed );
             }
 
             result.close();
@@ -866,11 +919,12 @@ public class DatabaseController
                 double pay_per_kg = result.getDouble("pay_per_kg");
                 Date date_created = result.getDate("date_created");
                 Date date_due = result.getDate("date_due");
-                boolean completed = result.getBoolean("is_completed");
+                String description = result.getString("description");
+                boolean is_completed = result.getBoolean("is_completed");
 
                 System.out.println("ID = " + id + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
                         + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                        + date_due + ", COMPLETED? = " + completed );
+                        + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
             }
 
             result.close();
@@ -947,13 +1001,14 @@ public class DatabaseController
                     double pay_per_kg = result2.getDouble("pay_per_kg");
                     Date date_created = result2.getDate("date_created");
                     Date date_due = result2.getDate("date_due");
+                    String description = result2.getString("description");
                     boolean is_completed = result2.getBoolean("is_completed");
 
                     System.out.println("ID = " + job_ids.get(i) + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
                             + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                            + date_due + ", COMPLETED? = " + is_completed );
+                            + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
 
-                    jobs.add(new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, is_completed));
+                    jobs.add(new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed));
                 }
 
                 result2.close();
@@ -1007,13 +1062,14 @@ public class DatabaseController
                     double pay_per_kg = result2.getDouble("pay_per_kg");
                     Date date_created = result2.getDate("date_created");
                     Date date_due = result2.getDate("date_due");
+                    String description = result2.getString("description");
                     boolean is_completed = result2.getBoolean("is_completed");
 
                     System.out.println("ID = " + job_ids.get(i) + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
                             + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                            + date_due + ", COMPLETED? = " + is_completed );
+                            + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
 
-                    jobs.add(new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, is_completed));
+                    jobs.add(new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed));
                 }
 
                 result2.close();
