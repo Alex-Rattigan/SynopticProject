@@ -18,6 +18,15 @@ public class Intermediary {
         this.mobileNo = mobileNo;
     }
 
+    public Intermediary(int intermediaryId, String username, String fname, String sname, String password, String mobileNo){
+        this.intermediaryId = intermediaryId;
+        this.username = username;
+        this.fName = fname;
+        this.sName = sname;
+        this.password = password;
+        this.mobileNo = mobileNo;
+    }
+
     public int getID(){
         return intermediaryId;
     }

@@ -19,6 +19,15 @@ public class Fisher {
         this.mobileNo = mobileNo;
     }
 
+    public Fisher(int fisherId, String username, String fname, String sname, String password, String mobileNo){
+        this.fisherId = fisherId;
+        this.username = username;
+        this.fName = fname;
+        this.sName = sname;
+        this.password = password;
+        this.mobileNo = mobileNo;
+    }
+
     public int getID(){
         return fisherId;
     }
