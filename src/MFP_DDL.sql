@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS Jobs
 	pay_per_kg decimal NOT NULL,
 	date_created date NOT NULL DEFAULT CURRENT_DATE,
 	date_due date NOT NULL,
+	description varchar(256),
 	is_completed boolean NOT NULL DEFAULT FALSE
 );
 
@@ -52,16 +53,16 @@ ALTER TABLE Jobs ADD CONSTRAINT chk_payPerKg CHECK (pay_per_kg > 0);
 
 CREATE TABLE IF NOT EXISTS Fishers_Inters_Jobs
 (
-	job_id SERIAL NOT NULL,
-	intermediary_id SERIAL NOT NULL,
-	fisher_id SERIAL
+	job_id int NOT NULL,
+	intermediary_id int NOT NULL,
+	fisher_id int
 );
 
 -- Primary key
-ALTER TABLE Fisher_Inters_Jobs ADD CONSTRAINT pk_FishersIntersJobsID PRIMARY KEY (job_id, intermediary_id, fisher_id);
+ALTER TABLE Fishers_Inters_Jobs ADD CONSTRAINT pk_FishersIntersJobsID PRIMARY KEY (job_id, intermediary_id);
 
 -- Foreign keys
-ALTER TABLE Fisher_Inters_Jobs ADD CONSTRAINT fk_JobID FOREIGN KEY (job_id) REFERENCES Jobs(job_id);
-ALTER TABLE Fisher_Inters_Jobs ADD CONSTRAINT fk_InterID FOREIGN KEY (intermediary_id) REFERENCES Intermediaries(intermediary_id);
-ALTER TABLE Fisher_Inters_Jobs ADD CONSTRAINT fk_FisherID FOREIGN KEY (fisher_id) REFERENCES Fishers(fisher_id);
+ALTER TABLE Fishers_Inters_Jobs ADD CONSTRAINT fk_JobID FOREIGN KEY (job_id) REFERENCES Jobs(job_id);
+ALTER TABLE Fishers_Inters_Jobs ADD CONSTRAINT fk_InterID FOREIGN KEY (intermediary_id) REFERENCES Intermediaries(intermediary_id);
+ALTER TABLE Fishers_Inters_Jobs ADD CONSTRAINT fk_FisherID FOREIGN KEY (fisher_id) REFERENCES Fishers(fisher_id);
 
