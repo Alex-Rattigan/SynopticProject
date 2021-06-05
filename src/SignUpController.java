@@ -23,6 +23,7 @@ public class SignUpController {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     public void completeSignUp() throws Exception {
+
         try {
             String forename = forenameTxt.getText();
             String username = usernameTxt.getText();

@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpController">
    <children>
       <HBox prefHeight="46.0" prefWidth="600.0">
          <children>
@@ -29,27 +29,27 @@
       </HBox>
       <VBox layoutX="231.0" layoutY="81.0" prefHeight="319.0" prefWidth="139.0">
          <children>
-            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Forename" fx:id="forenameTxt">
+            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Forename">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Surname" fx:id="surnameTxt">
+            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Surname">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Username" fx:id="usernameTxt">
+            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Username">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </TextField>
-            <PasswordField promptText="Password" fx:id="passwordTxt">
+            <PasswordField promptText="Password" fx:id="">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </PasswordField>
-            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Mobile No." fx:id="mobileNoTxt">
+            <TextField prefHeight="26.0" prefWidth="504.0" promptText="Mobile No.">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
