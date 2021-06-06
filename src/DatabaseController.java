@@ -61,6 +61,44 @@ public class DatabaseController
 
     }
 
+    public static Fisher checkFisherExists(String username)
+    {
+        Statement select = null;
+
+        try {
+            connect();
+
+            select = c.createStatement();
+
+            ResultSet result = select.executeQuery("SELECT * FROM Fishers WHERE EXISTS(SELECT * FROM Fishers WHERE username = '" + username + "');");
+
+            while(result.next())
+            {
+                int fisher_id = result.getInt("fisher_id");
+                String user = result.getString("username");
+                String password = result.getString("password");
+                String fname = result.getString("fname");
+                String lname = result.getString("lname");
+                String mob_no = result.getString("mobile_no");
+
+                System.out.println("ID = " + fisher_id + ", USERNAME = " + user + ", NAME = " + fname + " " + lname + ", MOBILE NO = " + mob_no);
+
+                return new Fisher(fisher_id, username, password, fname, lname, mob_no);
+            }
+
+            result.close();
+            select.close();
+            c.close();
+
+            System.out.println("Fisher with username " + username + " exists.");
+        } catch(Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("ERROR: FISHER with username" + username + " does not exist.");
+        }
+        return null;
+    }
+
     public static LinkedList<Fisher> selectAllFisherRecords()
     {
         Statement select = null;
@@ -295,6 +333,44 @@ public class DatabaseController
             e.printStackTrace();
             System.out.println("ERROR: Insert statement for INTERMEDIARY could not be completed.");
         }
+    }
+
+    public static Intermediary checkIntermediaryExists(String username)
+    {
+        Statement select = null;
+
+        try {
+            connect();
+
+            select = c.createStatement();
+
+            ResultSet result = select.executeQuery("SELECT * FROM Intermediary WHERE EXISTS(SELECT * FROM Intermediary WHERE username = '" + username + "');");
+
+            while(result.next())
+            {
+                int i_id = result.getInt("intermediary_id");
+                String user = result.getString("username");
+                String password = result.getString("password");
+                String fname = result.getString("fname");
+                String lname = result.getString("lname");
+                String mob_no = result.getString("mobile_no");
+
+                System.out.println("ID = " + i_id + ", USERNAME = " + user + ", NAME = " + fname + " " + lname + ", MOBILE NO = " + mob_no);
+
+                return new Intermediary(i_id, username, password, fname, lname, mob_no);
+            }
+
+            result.close();
+            select.close();
+            c.close();
+
+            System.out.println("INTERMEDIARY with username " + username + " exists.");
+        } catch(Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("ERROR: INTERMEDIARY with username" + username + " does not exist.");
+        }
+        return null;
     }
 
     public static LinkedList<Intermediary> selectAllIntermediaryRecords()
