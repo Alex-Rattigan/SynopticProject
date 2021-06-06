@@ -26,9 +26,10 @@ public class DatabaseController
 
     // -------------------------------------------- CRUD FOR FISHERS -------------------------------------------- //
 
-    public static void insertFisherRecord(String username, String password, String fname, String lname, String mobNo)
+    public static int insertFisherRecord(String username, String password, String fname, String lname, String mobNo)
     {
         Statement insert = null;
+        int id = 0;
 
         try
         {
@@ -37,9 +38,14 @@ public class DatabaseController
             insert = c.createStatement();
 
             String statement = "INSERT INTO Fishers (username, password, fname, lname, mobile_no)VALUES('"
-                    + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "');";
+                    + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "')" +
+                    " RETURNING fisher_id;";
 
             insert.executeUpdate(statement);
+            ResultSet fisher = insert.getResultSet();
+            if (fisher.next()) {
+                id = fisher.getInt("fisher_id");
+            }
 
             insert.close();
             c.commit();
@@ -50,6 +56,9 @@ public class DatabaseController
             e.printStackTrace();
             System.out.println("ERROR: Insert statement for FISHER could not be completed.");
         }
+
+        return id;
+
     }
 
     public static LinkedList<Fisher> selectAllFisherRecords()
