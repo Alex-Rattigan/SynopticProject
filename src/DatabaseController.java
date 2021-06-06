@@ -39,12 +39,12 @@ public class DatabaseController
 
             String statement = "INSERT INTO Fishers (username, password, fname, lname, mobile_no)VALUES('"
                     + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "')" +
-                    " RETURNING user_id;";
+                    " RETURNING fisher_id;";
 
             insert.executeUpdate(statement);
             ResultSet fisher = insert.getResultSet();
             if (fisher.next()) {
-                id = fisher.getInt("user_id");
+                id = fisher.getInt("fisher_id");
             }
 
             insert.close();
@@ -76,7 +76,7 @@ public class DatabaseController
 
             while(result.next())
             {
-                int fisher_id = result.getInt("user_id");
+                int fisher_id = result.getInt("fisher_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String fname = result.getString("fname");
@@ -113,13 +113,13 @@ public class DatabaseController
 
             select = c.createStatement();
 
-            ResultSet result = select.executeQuery("SELECT * FROM Fishers WHERE user_id = " + fisher_id + ";");
+            ResultSet result = select.executeQuery("SELECT * FROM Fishers WHERE fisher_id = " + fisher_id + ";");
 
             Fisher fisher = null;
 
             while(result.next())
             {
-                int id = result.getInt("user_id");
+                int id = result.getInt("fisher_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String fname = result.getString("fname");
@@ -154,16 +154,16 @@ public class DatabaseController
 
             update = c.createStatement();
 
-            String statement = "UPDATE Fishers SET password = '" + new_password + "' WHERE user_id = " + fisher_id + ";";
+            String statement = "UPDATE Fishers SET password = '" + new_password + "' WHERE fisher_id = " + fisher_id + ";";
 
             update.executeUpdate(statement);
             c.commit();
 
-            ResultSet result = update.executeQuery("SELECT * FROM Fishers WHERE user_id = " + fisher_id + ";");
+            ResultSet result = update.executeQuery("SELECT * FROM Fishers WHERE fisher_id = " + fisher_id + ";");
 
             while(result.next())
             {
-                int id = result.getInt("user_id");
+                int id = result.getInt("fisher_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String fname = result.getString("fname");
@@ -195,16 +195,16 @@ public class DatabaseController
 
             update = c.createStatement();
 
-            String statement = "UPDATE Fishers SET mobile_no = '" + new_mob_no + "' WHERE user_id = " + fisher_id + ";";
+            String statement = "UPDATE Fishers SET mobile_no = '" + new_mob_no + "' WHERE fisher_id = " + fisher_id + ";";
 
             update.executeUpdate(statement);
             c.commit();
 
-            ResultSet result = update.executeQuery("SELECT * FROM Fishers WHERE user_id = " + fisher_id + ";");
+            ResultSet result = update.executeQuery("SELECT * FROM Fishers WHERE fisher_id = " + fisher_id + ";");
 
             while(result.next())
             {
-                int id = result.getInt("user_id");
+                int id = result.getInt("fisher_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String fname = result.getString("fname");
@@ -237,7 +237,7 @@ public class DatabaseController
 
             delete = c.createStatement();
 
-            String statement = "DELETE FROM Fishers WHERE user_id = " + fisher_id + ";";
+            String statement = "DELETE FROM Fishers WHERE fisher_id = " + fisher_id + ";";
 
             delete.executeUpdate(statement);
             c.commit();
@@ -246,7 +246,7 @@ public class DatabaseController
 
             while(result.next())
             {
-                int id = result.getInt("user_id");
+                int id = result.getInt("fisher_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String fname = result.getString("fname");
@@ -312,16 +312,16 @@ public class DatabaseController
 
             while(result.next())
             {
-                int i_id = result.getInt("user_id");
+                int intermediary_id = result.getInt("intermediary_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String fname = result.getString("fname");
                 String lname = result.getString("lname");
                 String mob_no = result.getString("mobile_no");
 
-                System.out.println("ID = " + i_id + ", USERNAME = " + username + ", NAME = " + fname + " " + lname + ", MOBILE NO = " + mob_no);
+                System.out.println("ID = " + intermediary_id + ", USERNAME = " + username + ", NAME = " + fname + " " + lname + ", MOBILE NO = " + mob_no);
 
-                intermediaries.add(new Intermediary(i_id, username, password, fname, lname, mob_no));
+                intermediaries.add(new Intermediary(intermediary_id, username, password, fname, lname, mob_no));
             }
 
             result.close();
@@ -339,7 +339,7 @@ public class DatabaseController
     }
 
 
-    public static Intermediary selectIntermediaryRecord(int i_id)
+    public static Intermediary selectIntermediaryRecord(int intermediary_id)
     {
         Statement select = null;
 
@@ -349,13 +349,13 @@ public class DatabaseController
 
             select = c.createStatement();
 
-            ResultSet result = select.executeQuery("SELECT * FROM Intermediaries WHERE user_id = " + i_id + ";");
+            ResultSet result = select.executeQuery("SELECT * FROM Intermediaries WHERE intermediary_id = " + intermediary_id + ";");
 
             Intermediary intermediary = null;
 
             while(result.next())
             {
-                int id = result.getInt("user_id");
+                int id = result.getInt("intermediary_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String fname = result.getString("fname");
@@ -381,7 +381,7 @@ public class DatabaseController
         return null;
     }
 
-    public static void updatePasswordIntermediary(int i_id, String new_password)
+    public static void updatePasswordIntermediary(int intermediary_id, String new_password)
     {
         Statement update = null;
 
@@ -390,16 +390,16 @@ public class DatabaseController
 
             update = c.createStatement();
 
-            String statement = "UPDATE Intermediaries SET password = '" + new_password + "' WHERE user_id = " + i_id + ";";
+            String statement = "UPDATE Intermediaries SET password = '" + new_password + "' WHERE intermediary_id = " + intermediary_id + ";";
 
             update.executeUpdate(statement);
             c.commit();
 
-            ResultSet result = update.executeQuery("SELECT * FROM Intermediaries WHERE user_id = " + i_id + ";");
+            ResultSet result = update.executeQuery("SELECT * FROM Intermediaries WHERE intermediary_id = " + intermediary_id + ";");
 
             while(result.next())
             {
-                int id = result.getInt("user_id");
+                int id = result.getInt("intermediary_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String fname = result.getString("fname");
@@ -422,7 +422,7 @@ public class DatabaseController
         }
     }
 
-    public static void updateMobileNoIntermediary(int i_id, String new_mob_no)
+    public static void updateMobileNoIntermediary(int intermediary_id, String new_mob_no)
     {
         Statement update = null;
 
@@ -431,16 +431,16 @@ public class DatabaseController
 
             update = c.createStatement();
 
-            String statement = "UPDATE Intermediaries SET mobile_no = '" + new_mob_no + "' WHERE user_id = " + i_id + ";";
+            String statement = "UPDATE Intermediaries SET mobile_no = '" + new_mob_no + "' WHERE intermediary_id = " + intermediary_id + ";";
 
             update.executeUpdate(statement);
             c.commit();
 
-            ResultSet result = update.executeQuery("SELECT * FROM Intermediaries WHERE user_id = " + i_id + ";");
+            ResultSet result = update.executeQuery("SELECT * FROM Intermediaries WHERE intermediary_id = " + intermediary_id + ";");
 
             while(result.next())
             {
-                int id = result.getInt("user_id");
+                int id = result.getInt("intermediary_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String fname = result.getString("fname");
@@ -464,7 +464,7 @@ public class DatabaseController
         }
     }
 
-    public static void deleteIntermediaryRecord(int i_id)
+    public static void deleteIntermediaryRecord(int intermediary_id)
     {
         Statement delete = null;
 
@@ -473,7 +473,7 @@ public class DatabaseController
 
             delete = c.createStatement();
 
-            String statement = "DELETE FROM Intermediaries WHERE user_id = " + i_id + ";";
+            String statement = "DELETE FROM Intermediaries WHERE intermediary_id = " + intermediary_id + ";";
 
             delete.executeUpdate(statement);
             c.commit();
@@ -482,7 +482,7 @@ public class DatabaseController
 
             while(result.next())
             {
-                int id = result.getInt("user_id");
+                int id = result.getInt("intermediary_id");
                 String username = result.getString("username");
                 String password = result.getString("password");
                 String fname = result.getString("fname");
@@ -531,7 +531,7 @@ public class DatabaseController
                 j_id = job.getInt("job_id");
             }
 
-            String statement2 = "INSERT INTO Fishers_Inters_Jobs(job_id, user_id)VALUES(" + j_id + ", " + intermediary_id + ");";
+            String statement2 = "INSERT INTO Fishers_Inters_Jobs(job_id, intermediary_id)VALUES(" + j_id + ", " + intermediary_id + ");";
             insert.executeUpdate(statement2);
 
             insert.close();
@@ -950,7 +950,7 @@ public class DatabaseController
 
     // ------------------------------ CRUD FOR FISHERS + INTERMEDIARIES + JOBS -------------------------------- //
 
-    public static void insertFisherIntermediaryJob(int job_id, int i_id, Integer f_id)
+    public static void insertFisherIntermediaryJob(int job_id, int intermediary_id, Integer fisher_id)
     {
         Statement insert = null;
 
@@ -960,7 +960,7 @@ public class DatabaseController
             insert = c.createStatement();
 
             String statement = "INSERT INTO Fishers_Inters_Jobs(job_id, intermediary_id, fisher_id)VALUES("
-                    + job_id + ", " + i_id + ", " + f_id + ");";
+                    + job_id + ", " + intermediary_id + ", " + fisher_id + ");";
 
             insert.executeUpdate(statement);
 
