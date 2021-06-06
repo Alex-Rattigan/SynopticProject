@@ -32,7 +32,7 @@
       </ToolBar>
       <TabPane layoutY="42.0" prefHeight="358.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="Active Jobs">
+            <Tab fx:id="activeJobsTab" onSelectionChanged="#initialisePage" text="Active Jobs">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="600.0">
                      <children>
@@ -46,14 +46,14 @@
                                     <Insets left="5.0" top="5.0" />
                                  </VBox.margin>
                               </Text>
-                              <TableView prefHeight="246.0" prefWidth="600.0">
+                              <TableView fx:id="activeJobsTable" prefHeight="246.0" prefWidth="600.0">
                                  <columns>
-                                    <TableColumn prefWidth="65.59997636079788" text="Job ID" />
-                                    <TableColumn prefWidth="124.0" text="Fish Type" />
-                                    <TableColumn prefWidth="100.80000305175781" text="Amount (Kg)" />
-                                    <TableColumn prefWidth="113.60003662109375" text="Date Due" />
-                                    <TableColumn minWidth="3.99993896484375" prefWidth="88.800048828125" text="Pay (Sol/Kg)" />
-                                    <TableColumn minWidth="3.99993896484375" prefWidth="95.1999389648438" text="Managed By" />
+                                    <TableColumn fx:id="jobIdActiveTbl" prefWidth="65.59997636079788" text="Job ID" />
+                                    <TableColumn fx:id="fishTypeActiveTbl" prefWidth="124.0" text="Fish Type" />
+                                    <TableColumn fx:id="amountActiveTbl" prefWidth="100.80000305175781" text="Amount (Kg)" />
+                                    <TableColumn fx:id="dateActiveTbl" prefWidth="113.60003662109375" text="Date Due" />
+                                    <TableColumn fx:id="payActiveTbl" minWidth="3.99993896484375" prefWidth="88.800048828125" text="Pay (Sol/Kg)" />
+                                    <TableColumn fx:id="managedActiveTbl" minWidth="3.99993896484375" prefWidth="95.1999389648438" text="Managed By" />
                                  </columns>
                                  <VBox.margin>
                                     <Insets left="5.0" right="5.0" top="5.0" />
@@ -101,14 +101,14 @@
                                     <Insets left="5.0" top="5.0" />
                                  </VBox.margin>
                               </Text>
-                              <TableView prefHeight="247.0" prefWidth="591.0">
+                              <TableView fx:id="pastJobsTable" prefHeight="247.0" prefWidth="591.0">
                                  <columns>
-                                    <TableColumn prefWidth="65.59997636079788" text="Job ID" />
-                                    <TableColumn prefWidth="124.0" text="Fish Type" />
-                                    <TableColumn prefWidth="100.80000305175781" text="Amount (Kg)" />
-                                    <TableColumn prefWidth="113.60003662109375" text="Date Due" />
-                                    <TableColumn minWidth="3.99993896484375" prefWidth="88.800048828125" text="Pay (Sol/Kg)" />
-                                    <TableColumn minWidth="3.99993896484375" prefWidth="95.1999389648438" text="Managed By" />
+                                    <TableColumn fx:id="jobIdPastTbl" prefWidth="65.59997636079788" text="Job ID" />
+                                    <TableColumn fx:id="fishTypePastTbl" prefWidth="124.0" text="Fish Type" />
+                                    <TableColumn fx:id="amountPastTbl" prefWidth="100.80000305175781" text="Amount (Kg)" />
+                                    <TableColumn fx:id="datePastTbl" prefWidth="113.60003662109375" text="Date Due" />
+                                    <TableColumn fx:id="payPastTbl" minWidth="3.99993896484375" prefWidth="88.800048828125" text="Pay (Sol/Kg)" />
+                                    <TableColumn fx:id="managedPastTbl" minWidth="3.99993896484375" prefWidth="95.1999389648438" text="Managed By" />
                                  </columns>
                                  <VBox.margin>
                                     <Insets left="5.0" right="5.0" top="5.0" />
