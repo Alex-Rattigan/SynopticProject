@@ -1,3 +1,6 @@
+-- References: https://www.postgresql.org/docs/9.1/plpgsql-trigger.html
+--			   https://stackoverflow.com/questions/18114458/fastest-way-to-determine-if-record-exists
+
 ----------------------------------------------- FISHERS -----------------------------------------------
 
 CREATE TABLE IF NOT EXISTS Fishers
@@ -13,6 +16,20 @@ CREATE TABLE IF NOT EXISTS Fishers
 -- Unique params
 ALTER TABLE Fishers ADD CONSTRAINT unq_Fishers_Username UNIQUE (username);
 ALTER TABLE Fishers ADD CONSTRAINT unq_Fishers_MobNo UNIQUE (mobile_no);
+
+-- Check username does not exist in Intermediaries before inserting into Fishers
+CREATE OR REPLACE FUNCTION check_username_fisher_trg()
+RETURNS TRIGGER AS $$
+BEGIN
+		IF EXISTS (SELECT * FROM Intermediaries WHERE username = NEW.username) THEN
+			RAISE EXCEPTION 'Username % already exists in Intermediaries', NEW.username;
+		END IF;
+		
+		RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER check_username_fisher BEFORE INSERT ON Fishers FOR EACH ROW EXECUTE PROCEDURE check_username_fisher_trg();
 
 
 ----------------------------------------------- INTERMEDIARIES -----------------------------------------------
@@ -30,6 +47,20 @@ CREATE TABLE IF NOT EXISTS Intermediaries
 -- Unique params
 ALTER TABLE Intermediaries ADD CONSTRAINT unq_Intermediaries_Username UNIQUE (username);
 ALTER TABLE Intermediaries ADD CONSTRAINT unq_Intermediaries_MobNo UNIQUE (mobile_no);
+
+-- Check username does not exist in Fishers before inserting into Intermediaries
+CREATE OR REPLACE FUNCTION check_username_intermediary_trg()
+RETURNS TRIGGER AS $$
+BEGIN
+		IF EXISTS (SELECT * FROM Fishers WHERE username = NEW.username) THEN
+			RAISE EXCEPTION 'Username % already exists in Fishers', NEW.username;
+		END IF;
+		
+		RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER check_username_intermediary BEFORE INSERT ON Fishers FOR EACH ROW EXECUTE PROCEDURE check_username_intermediary_trg();
 
 ----------------------------------------------- JOB -----------------------------------------------
 
