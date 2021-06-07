@@ -55,7 +55,7 @@ public class SignUpController {
                     Stage stage = null;
                     Parent nextScene = null;
                     stage = (Stage) completeSignUpButton.getScene().getWindow();
-                    nextScene = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                    nextScene = FXMLLoader.load(getClass().getResource("FishingInfo.fxml"));
                     assert nextScene != null;
                     Scene scene = new Scene(nextScene);
                     stage.setScene(scene);
@@ -76,7 +76,7 @@ public class SignUpController {
                     Stage stage = null;
                     Parent nextScene = null;
                     stage = (Stage) completeSignUpButton.getScene().getWindow();
-                    nextScene = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+                    nextScene = FXMLLoader.load(getClass().getResource("FishingInfo.fxml"));
                     assert nextScene != null;
                     Scene scene = new Scene(nextScene);
                     stage.setScene(scene);

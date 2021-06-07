@@ -18,6 +18,7 @@ public class MyFishingPal extends Application {
         primaryStage.show();
     }
 
+    //Can we delete this method? I don't think we'll ever need it - Alex
     public static Object getUserDetails(int user_id)
     {
         Fisher f = DatabaseController.selectFisherRecord(user_id);
