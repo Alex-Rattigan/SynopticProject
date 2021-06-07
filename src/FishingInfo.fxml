@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FishingInfoController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="600.0">
         <items>
@@ -16,11 +16,11 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" text="General Information" />
-          <Button mnemonicParsing="false" text="Job Listings" />
-            <Button mnemonicParsing="false" text="View Jobs" />
-            <Button mnemonicParsing="false" text="Profile" />
-            <Button mnemonicParsing="false" text="Help" />
+            <Button fx:id="infoButton" mnemonicParsing="false" onAction="#changeScene" text="General Information" />
+            <Button fx:id="jobListingButton" mnemonicParsing="false" onAction="#changeScene" text="Job Listings" />
+            <Button fx:id="viewJobsButton" mnemonicParsing="false" onAction="#changeScene" text="View Jobs" />
+            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#changeScene" text="Profile" />
+            <Button fx:id="helpButton" mnemonicParsing="false" onAction="#changeScene" text="Help" />
         </items>
       </ToolBar>
    </children>
