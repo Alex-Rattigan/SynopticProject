@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -40,11 +41,21 @@ public class ProfileController {
             //Parent nextScene;
             //stage = (Stage) changePasswordButton.getScene().getWindow();
             //nextScene = FXMLLoader.load(getClass().getResource("ChangePassword.fxml");
+            //assert nextScene != null;
+            //Scene scene = new Scene(nextScene);
+            //stage.setScene(scene);
+            //stage.setTitle("MyFishingPal");
+            //stage.show();
         //else if current user is present in fisher
             //Stage stage;
             //Parent nextScene;
             //stage = (Stage) changePasswordButton.getScene().getWindow();
             //nextScene = FXMLLoader.load(getClass().getResource("ChangePassword.fxml");
+            //assert nextScene != null;
+            //Scene scene = new Scene(nextScene);
+            //stage.setScene(scene);
+            //stage.setTitle("MyFishingPal");
+            //stage.show();
     }
 
     public void changeNumber(){
@@ -53,16 +64,35 @@ public class ProfileController {
             //Parent nextScene;
             //stage = (Stage) changeNumberButton.getScene().getWindow();
             //nextScene = FXMLLoader.load(getClass().getResource("ChangeMobNo.fxml");
+            //assert nextScene != null;
+            //Scene scene = new Scene(nextScene);
+            //stage.setScene(scene);
+            //stage.setTitle("MyFishingPal");
+            //stage.show();
         //else if current user is present in fisher
             //Stage stage;
             //Parent nextScene;
             //stage = (Stage) changeNumberButton.getScene().getWindow();
             //nextScene = FXMLLoader.load(getClass().getResource("ChangeMobNo.fxml");
+            //assert nextScene != null;
+            //Scene scene = new Scene(nextScene);
+            //stage.setScene(scene);
+            //stage.setTitle("MyFishingPal");
+            //stage.show();
     }
 
-
-
-
+    public void logOut() throws IOException{
+        MyFishingPal.currentUser = null;
+        Stage stage;
+        Parent nextScene;
+        stage = (Stage) logoutButton.getScene().getWindow();
+        nextScene = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        assert nextScene != null;
+        Scene scene = new Scene(nextScene);
+        stage.setScene(scene);
+        stage.setTitle("MyFishingPal");
+        stage.show();
+    }
 
     public void changeScene(ActionEvent event) throws IOException{
         Stage stage = null;
@@ -84,6 +114,10 @@ public class ProfileController {
             stage = (Stage) profileButton.getScene().getWindow();
             nextScene = FXMLLoader.load(getClass().getResource("Profile.fxml"));
         }
+        assert nextScene != null;
+        Scene scene = new Scene(nextScene);
+        stage.setScene(scene);
+        stage.show();
     }
 
 

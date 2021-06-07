@@ -10,7 +10,7 @@ public class Intermediary {
 
     public Intermediary(){}
 
-    public Intermediary(String username, String fname, String sname, String password, String mobileNo){
+    public Intermediary(String username, String password, String fname, String sname, String mobileNo){
         this.username = username;
         this.fName = fname;
         this.sName = sname;
@@ -18,7 +18,7 @@ public class Intermediary {
         this.mobileNo = mobileNo;
     }
 
-    public Intermediary(int intermediaryId, String username, String fname, String sname, String password, String mobileNo){
+    public Intermediary(int intermediaryId, String username, String password, String fname, String sname,  String mobileNo){
         this.intermediaryId = intermediaryId;
         this.username = username;
         this.fName = fname;
