@@ -18,16 +18,29 @@ public class ProfileController {
     private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton;
 
     public void displayInfo(){
-        //if current user is present in intermediary
-            //do this
-        //else if current user is present in fisher
+        //if Object instanceOf Intermediary
+            //Intermediary i = DatabaseController.selectIntermediaryRecord(currentUserId);
+            //userForename.setText(i.getFname())
+            //userSurname.setText(i.getSname())
+            //userNumber.setText(i.getMobileNo)
+        //else if Object instanceOf Fisher
+            //Fisher f = DatabaseController.selectFisherRecord(currentUserId);
+            //userForename.setText(f.getFname)
+            //userSurname.setText(f.getSname)
+            //userNumber.setText(f.getMobileNo)
     }
 
     public void changePassword(){
         //if current user is present in intermediary
-            //do intermediarychangepass
+            //Stage stage;
+            //Parent nextScene;
+            //stage = (Stage) changePasswordButton.getScene().getWindow();
+            //nextScene = FXMLLoader.load(getClass().getResource("ChangePassword.fxml");
         //else if current user is present in fisher
-            //do fisherchangepass
+            //Stage stage;
+            //Parent nextScene;
+            //stage = (Stage) changeNumberButton.getScene().getWindow();
+            //nextScene = FXMLLoader.load(getClass().getResource("ChangeMobNo.fxml");
     }
 
     public void changeNumber(){
