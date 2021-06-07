@@ -26,10 +26,9 @@ public class DatabaseController
 
     // -------------------------------------------- CRUD FOR FISHERS -------------------------------------------- //
 
-    public static int insertFisherRecord(String username, String password, String fname, String lname, String mobNo)
+    public static void insertFisherRecord(String username, String password, String fname, String lname, String mobNo)
     {
         Statement insert = null;
-        int id = 0;
 
         try
         {
@@ -38,14 +37,9 @@ public class DatabaseController
             insert = c.createStatement();
 
             String statement = "INSERT INTO Fishers (username, password, fname, lname, mobile_no)VALUES('"
-                    + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "')" +
-                    " RETURNING fisher_id;";
+                    + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "');";
 
             insert.executeUpdate(statement);
-            ResultSet fisher = insert.getResultSet();
-            if (fisher.next()) {
-                id = fisher.getInt("fisher_id");
-            }
 
             insert.close();
             c.commit();
@@ -56,9 +50,6 @@ public class DatabaseController
             e.printStackTrace();
             System.out.println("ERROR: Insert statement for FISHER could not be completed.");
         }
-
-        return id;
-
     }
 
     public static Fisher checkFisherExists(String username)
@@ -583,9 +574,10 @@ public class DatabaseController
 
     // --------------------------------------------- CRUD FOR JOBS --------------------------------------------- //
 
-    public static void insertJob(int intermediary_id, String fish_type, int amount_kg, double pay_per_kg, Date date_created, Date date_due, String description, boolean is_completed)
+    public static int insertJob(int intermediary_id, String fish_type, int amount_kg, double pay_per_kg, Date date_created, Date date_due, String description, boolean is_completed)
     {
         Statement insert = null;
+        int j_id = 0;
 
         try {
             connect();
@@ -599,8 +591,6 @@ public class DatabaseController
             insert.execute(statement);
 
             ResultSet job = insert.getResultSet();
-
-            int j_id = 0;
 
             while(job.next())
             {
@@ -620,6 +610,8 @@ public class DatabaseController
             e.printStackTrace();
             System.out.println("ERROR: Insert for JOB could not be completed.");
         }
+
+        return j_id;
     }
 
     public static LinkedList<Job> selectAllJobs()
@@ -935,7 +927,7 @@ public class DatabaseController
         }
     }
 
-    public void updateCompleted(int job_id, boolean is_completed)
+    public static void updateCompleted(int job_id, boolean is_completed)
     {
         Statement update = null;
 
@@ -980,7 +972,7 @@ public class DatabaseController
         }
     }
 
-    public void deleteJob(int job_id)
+    public static void deleteJob(int job_id)
     {
         Statement delete = null;
 
