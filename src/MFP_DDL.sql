@@ -31,6 +31,20 @@ $$ LANGUAGE PLPGSQL;
 
 CREATE TRIGGER check_username_fisher BEFORE INSERT ON Fishers FOR EACH ROW EXECUTE PROCEDURE check_username_fisher_trg();
 
+-- Check mobile number does not exist in Intermediaries before inserting into Fishers
+CREATE OR REPLACE FUNCTION check_mobile_no_fisher_trg()
+RETURNS TRIGGER AS $$
+BEGIN
+		IF EXISTS (SELECT * FROM Intermediaries WHERE mobile_no = NEW.mobile_no) THEN
+			RAISE EXCEPTION 'Mobile number % already exists in Intermediaries', NEW.mobile_no;
+		END IF;
+		
+		RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER check_mobile_no_fisher BEFORE INSERT ON Fishers FOR EACH ROW EXECUTE PROCEDURE check_mobile_no_fisher_trg();
+
 
 ----------------------------------------------- INTERMEDIARIES -----------------------------------------------
 
@@ -61,6 +75,20 @@ END;
 $$ LANGUAGE PLPGSQL;
 
 CREATE TRIGGER check_username_intermediary BEFORE INSERT ON Fishers FOR EACH ROW EXECUTE PROCEDURE check_username_intermediary_trg();
+
+-- Check mobile number does not exist in Fishers before inserting into Intermediaries
+CREATE OR REPLACE FUNCTION check_mobile_no_intermediary_trg()
+RETURNS TRIGGER AS $$
+BEGIN
+		IF EXISTS (SELECT * FROM Fishers WHERE mobile_no = NEW.mobile_no) THEN
+			RAISE EXCEPTION 'Mobile number % already exists in Fishers', NEW.mobile_no;
+		END IF;
+		
+		RETURN NEW;
+END;
+$$ LANGUAGE PLPGSQL;
+
+CREATE TRIGGER check_mobile_no_intermediary BEFORE INSERT ON Fishers FOR EACH ROW EXECUTE PROCEDURE check_mobile_no_intermediary_trg();
 
 ----------------------------------------------- JOB -----------------------------------------------
 
