@@ -114,7 +114,15 @@ public class ProfileController {
             nextScene = FXMLLoader.load(getClass().getResource("JobListings.fxml"));
         } else if(event.getSource() == viewJobsButton){
             stage = (Stage) viewJobsButton.getScene().getWindow();
-            nextScene = FXMLLoader.load(getClass().getResource("JobDetails.fxml"));
+
+            if(MyFishingPal.currentUser instanceof Fisher)
+            {
+                nextScene = FXMLLoader.load(getClass().getResource("FisherView.fxml"));
+            }
+            else
+            {
+                nextScene = FXMLLoader.load(getClass().getResource("IntermediaryView.fxml"));
+            }
         } else if(event.getSource() == profileButton){
             stage = (Stage) profileButton.getScene().getWindow();
             nextScene = FXMLLoader.load(getClass().getResource("Profile.fxml"));
