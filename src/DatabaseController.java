@@ -1055,12 +1055,15 @@ public class DatabaseController
             ResultSet result = select.executeQuery("SELECT * FROM Fishers_Inters_Jobs WHERE fisher_id = " + fisher_id + ";");
 
             LinkedList<Integer> job_ids = new LinkedList<>();
+            LinkedList<Integer> i_ids = new LinkedList<>();
 
             while(result.next())
             {
                 int job_id = result.getInt("job_id");
+                int i_id = result.getInt("intermediary_id");
 
                 job_ids.add(job_id);
+                i_ids.add(i_id);
             }
 
             result.close();
@@ -1085,7 +1088,7 @@ public class DatabaseController
                             + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
                             + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
 
-                    jobs.add(new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed));
+                    jobs.add(new Job(job_ids.get(i), fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed, i_ids.get(i)));
                 }
 
                 result2.close();
@@ -1221,5 +1224,11 @@ public class DatabaseController
         selectJobByIntermediary(1);
 
         updateFisherId(1, 1);*/
+
+        updateFisherId(1, 16);
+
+        insertJob(1, "fish", 7, 4.2, Date.valueOf("2021-06-05"), Date.valueOf("2021-06-10"), "this is a job",true);
+
+        updateFisherId(2, 16);
     }
 }

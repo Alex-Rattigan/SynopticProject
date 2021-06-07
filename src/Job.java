@@ -10,6 +10,7 @@ public class Job
     private Date dateDue;
     private String description;
     private boolean isCompleted;
+    private String intermediaryName;
 
     Job(String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted)
     {
@@ -32,6 +33,19 @@ public class Job
         this.dateDue = dateDue;
         this.description = description;
         this.isCompleted = isCompleted;
+    }
+
+    Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId)
+    {
+        this.id = id;
+        this.fishType = fishType;
+        this.amountKg = amountKg;
+        this.payPerKg = payPerKg;
+        this.dateCreated = dateCreated;
+        this.dateDue = dateDue;
+        this.description = description;
+        this.isCompleted = isCompleted;
+        this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
     }
 
     public int getId()
@@ -107,6 +121,11 @@ public class Job
     public void setCompleted(boolean isCompleted)
     {
         this.isCompleted = isCompleted;
+    }
+
+    public String getIntermediaryName()
+    {
+        return intermediaryName;
     }
 
     public String toString()
