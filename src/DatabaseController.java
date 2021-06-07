@@ -26,10 +26,9 @@ public class DatabaseController
 
     // -------------------------------------------- CRUD FOR FISHERS -------------------------------------------- //
 
-    public static int insertFisherRecord(String username, String password, String fname, String lname, String mobNo)
+    public static void insertFisherRecord(String username, String password, String fname, String lname, String mobNo)
     {
         Statement insert = null;
-        int id = 0;
 
         try
         {
@@ -38,14 +37,9 @@ public class DatabaseController
             insert = c.createStatement();
 
             String statement = "INSERT INTO Fishers (username, password, fname, lname, mobile_no)VALUES('"
-                    + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "')" +
-                    " RETURNING fisher_id;";
+                    + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "');";
 
             insert.executeUpdate(statement);
-            ResultSet fisher = insert.getResultSet();
-            if (fisher.next()) {
-                id = fisher.getInt("fisher_id");
-            }
 
             insert.close();
             c.commit();
@@ -56,9 +50,6 @@ public class DatabaseController
             e.printStackTrace();
             System.out.println("ERROR: Insert statement for FISHER could not be completed.");
         }
-
-        return id;
-
     }
 
     public static Fisher checkFisherExists(String username)
@@ -309,10 +300,9 @@ public class DatabaseController
 
     // ---------------------------------------- CRUD FOR INTERMEDIARIES ---------------------------------------- //
 
-    public static int insertIntermediaryRecord(String username, String password, String fname, String lname, String mobNo)
+    public static void insertIntermediaryRecord(String username, String password, String fname, String lname, String mobNo)
     {
         Statement insert = null;
-        int id = 0;
 
         try
         {
@@ -321,14 +311,9 @@ public class DatabaseController
             insert = c.createStatement();
 
             String statement = "INSERT INTO Intermediaries (username, password, fname, lname, mobile_no)VALUES('"
-                    + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "')" +
-                    " RETURNING intermediary_id;";
+                    + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "');";
 
             insert.executeUpdate(statement);
-            ResultSet intermediary = insert.getResultSet();
-            if (intermediary.next()) {
-                id = intermediary.getInt("intermediary_id");
-            }
 
             insert.close();
             c.commit();
@@ -339,9 +324,6 @@ public class DatabaseController
             e.printStackTrace();
             System.out.println("ERROR: Insert statement for INTERMEDIARY could not be completed.");
         }
-
-        return id;
-
     }
 
     public static Intermediary checkIntermediaryExists(String username)

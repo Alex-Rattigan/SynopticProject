@@ -122,7 +122,12 @@ public class CSVController {
 
     public static int insertCachedFisherRecord(String username, String password, String fname, String lname, String mobNo) {
 
-        int id = DatabaseController.insertFisherRecord(username, password, fname, lname, mobNo);
+        DatabaseController.insertFisherRecord(username, password, fname, lname, mobNo);
+
+        Fisher fisher = DatabaseController.checkFisherExists(username);
+
+        assert fisher != null;
+        int id = fisher.getID();
 
         fishers.add(new Fisher(id, username, fname, lname, password, mobNo));
 
@@ -232,7 +237,12 @@ public class CSVController {
 
     public static int insertCachedIntermediaryRecord(String username, String password, String fname, String lname, String mobNo) {
 
-        int id = DatabaseController.insertIntermediaryRecord(username, password, fname, lname, mobNo);
+        DatabaseController.insertIntermediaryRecord(username, password, fname, lname, mobNo);
+
+        Intermediary intermediary = DatabaseController.checkIntermediaryExists(username);
+
+        assert intermediary != null;
+        int id = intermediary.getID();
 
         intermediaries.add(new Intermediary(id, username, fname, lname, password, mobNo));
 
