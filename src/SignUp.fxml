@@ -18,27 +18,27 @@
       </ToolBar>
       <VBox layoutX="231.0" layoutY="81.0" prefHeight="319.0" prefWidth="139.0">
          <children>
-            <TextField fx:id="forenameTxt" prefHeight="26.0" prefWidth="504.0" promptText="Forename">
+            <TextField fx:id="forenameText" prefHeight="26.0" prefWidth="504.0" promptText="Forename">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="surnameTxt" prefHeight="26.0" prefWidth="504.0" promptText="Surname">
+            <TextField fx:id="surnameText" prefHeight="26.0" prefWidth="504.0" promptText="Surname">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="usernameTxt" prefHeight="26.0" prefWidth="504.0" promptText="Username">
+            <TextField fx:id="usernameText" prefHeight="26.0" prefWidth="504.0" promptText="Username">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </TextField>
-            <PasswordField fx:id="passwordTxt" promptText="Password">
+            <PasswordField fx:id="passwordText" promptText="Password">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </PasswordField>
-            <TextField fx:id="mobileNoTxt" prefHeight="26.0" prefWidth="504.0" promptText="Mobile No.">
+            <TextField fx:id="mobileNoText" prefHeight="26.0" prefWidth="504.0" promptText="Mobile No.">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
