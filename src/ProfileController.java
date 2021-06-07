@@ -12,7 +12,7 @@ import java.io.IOException;
 public class ProfileController {
 
     @FXML
-    private TextField userForename, userSurname, userNumber;
+    private TextField userForename, userSurname, userNumber, userUsername;
     @FXML
     private Button changePasswordButton, changeNumberButton, logoutButton;
     @FXML
@@ -23,68 +23,73 @@ public class ProfileController {
     }
 
     public void displayInfo(){
-        //if Object instanceOf Intermediary
-            //Intermediary i = DatabaseController.selectIntermediaryRecord(currentUserId);
-            //userForename.setText(i.getFname())
-            //userSurname.setText(i.getSname())
-            //userNumber.setText(i.getMobileNo)
-        //else if Object instanceOf Fisher
-            //Fisher f = DatabaseController.selectFisherRecord(currentUserId);
-            //userForename.setText(f.getFname)
-            //userSurname.setText(f.getSname)
-            //userNumber.setText(f.getMobileNo)
+        if(MyFishingPal.currentUser instanceof Intermediary) {
+            Intermediary i = DatabaseController.selectIntermediaryRecord(((Intermediary) MyFishingPal.currentUser).getID());
+            userUsername.setText(i.getUsername());
+            userForename.setText(i.getFname());
+            userSurname.setText(i.getSname());
+            userNumber.setText(i.getMobileNo());
+        } else if(MyFishingPal.currentUser instanceof Fisher){
+            Fisher f = DatabaseController.selectFisherRecord(((Fisher) MyFishingPal.currentUser).getID());
+            userUsername.setText(f.getUsername());
+            userForename.setText(f.getFname());
+            userSurname.setText(f.getSname());
+            userNumber.setText(f.getMobileNo());
+        }
     }
 
-    public void changePassword(){
-        //if current user is present in intermediary
-            //Stage stage;
-            //Parent nextScene;
-            //stage = (Stage) changePasswordButton.getScene().getWindow();
-            //nextScene = FXMLLoader.load(getClass().getResource("ChangePassword.fxml");
-            //assert nextScene != null;
-            //Scene scene = new Scene(nextScene);
-            //stage.setScene(scene);
-            //stage.setTitle("MyFishingPal");
-            //stage.show();
-        //else if current user is present in fisher
-            //Stage stage;
-            //Parent nextScene;
-            //stage = (Stage) changePasswordButton.getScene().getWindow();
-            //nextScene = FXMLLoader.load(getClass().getResource("ChangePassword.fxml");
-            //assert nextScene != null;
-            //Scene scene = new Scene(nextScene);
-            //stage.setScene(scene);
-            //stage.setTitle("MyFishingPal");
-            //stage.show();
+    public void changePassword() throws IOException{
+        if(MyFishingPal.currentUser instanceof Intermediary) {
+            Stage stage = null;
+            Parent nextScene = null;
+            stage = (Stage) changePasswordButton.getScene().getWindow();
+            nextScene = FXMLLoader.load(getClass().getResource("ChangePassword.fxml"));
+            assert nextScene != null;
+            Scene scene = new Scene(nextScene);
+            stage.setScene(scene);
+            stage.setTitle("MyFishingPal");
+            stage.show();
+        } else if(MyFishingPal.currentUser instanceof Fisher){
+            Stage stage = null;
+            Parent nextScene = null;
+            stage = (Stage) changePasswordButton.getScene().getWindow();
+            nextScene = FXMLLoader.load(getClass().getResource("ChangePassword.fxml"));
+            assert nextScene != null;
+            Scene scene = new Scene(nextScene);
+            stage.setScene(scene);
+            stage.setTitle("MyFishingPal");
+            stage.show();
+        }
     }
 
-    public void changeNumber(){
-        //if current user is present in intermediary
-            //Stage stage;
-            //Parent nextScene;
-            //stage = (Stage) changeNumberButton.getScene().getWindow();
-            //nextScene = FXMLLoader.load(getClass().getResource("ChangeMobNo.fxml");
-            //assert nextScene != null;
-            //Scene scene = new Scene(nextScene);
-            //stage.setScene(scene);
-            //stage.setTitle("MyFishingPal");
-            //stage.show();
-        //else if current user is present in fisher
-            //Stage stage;
-            //Parent nextScene;
-            //stage = (Stage) changeNumberButton.getScene().getWindow();
-            //nextScene = FXMLLoader.load(getClass().getResource("ChangeMobNo.fxml");
-            //assert nextScene != null;
-            //Scene scene = new Scene(nextScene);
-            //stage.setScene(scene);
-            //stage.setTitle("MyFishingPal");
-            //stage.show();
+    public void changeNumber() throws IOException{
+        if(MyFishingPal.currentUser instanceof Intermediary) {
+            Stage stage = null;
+            Parent nextScene = null;
+            stage = (Stage) changeNumberButton.getScene().getWindow();
+            nextScene = FXMLLoader.load(getClass().getResource("ChangeMobNo.fxml"));
+            assert nextScene != null;
+            Scene scene = new Scene(nextScene);
+            stage.setScene(scene);
+            stage.setTitle("MyFishingPal");
+            stage.show();
+        } else if(MyFishingPal.currentUser instanceof Fisher){
+            Stage stage = null;
+            Parent nextScene = null;
+            stage = (Stage) changeNumberButton.getScene().getWindow();
+            nextScene = FXMLLoader.load(getClass().getResource("ChangeMobNo.fxml"));
+            assert nextScene != null;
+            Scene scene = new Scene(nextScene);
+            stage.setScene(scene);
+            stage.setTitle("MyFishingPal");
+            stage.show();
+        }
     }
 
     public void logOut() throws IOException{
         MyFishingPal.currentUser = null;
-        Stage stage;
-        Parent nextScene;
+        Stage stage = null;
+        Parent nextScene = null;
         stage = (Stage) logoutButton.getScene().getWindow();
         nextScene = FXMLLoader.load(getClass().getResource("Login.fxml"));
         assert nextScene != null;

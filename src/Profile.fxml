@@ -24,7 +24,7 @@
       <HBox layoutX="14.0" layoutY="48.0" prefHeight="32.0" prefWidth="200.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Logged In:" />
-            <TextField>
+            <TextField fx:id="userUsername" editable="false">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
@@ -45,7 +45,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="userForename">
+                  <TextField fx:id="userForename" editable="false">
                      <HBox.margin>
                         <Insets left="5.0" top="5.0" />
                      </HBox.margin>
@@ -55,7 +55,7 @@
             <HBox prefHeight="34.0" prefWidth="286.0">
                <children>
                   <Label text="Surname:" />
-                  <TextField fx:id="userSurname">
+                  <TextField fx:id="userSurname" editable="false">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>
@@ -65,7 +65,7 @@
             <HBox prefHeight="34.0" prefWidth="286.0">
                <children>
                   <Label text="Contact:" />
-                  <TextField fx:id="userNumber">
+                  <TextField fx:id="userNumber" editable="false">
                      <HBox.margin>
                         <Insets left="17.0" />
                      </HBox.margin>
@@ -93,6 +93,6 @@
             </Button>
          </children>
       </VBox>
-      <Button fx:id="logoutButton" layoutX="534.0" layoutY="48.0" mnemonicParsing="false" text="Logout" />
+      <Button fx:id="logoutButton" layoutX="534.0" layoutY="48.0" mnemonicParsing="false" onAction="#logOut" text="Logout" />
    </children>
 </Pane>
