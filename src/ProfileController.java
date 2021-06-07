@@ -17,6 +17,10 @@ public class ProfileController {
     @FXML
     private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton;
 
+    public void initialize(){
+        displayInfo();
+    }
+
     public void displayInfo(){
         //if Object instanceOf Intermediary
             //Intermediary i = DatabaseController.selectIntermediaryRecord(currentUserId);
@@ -39,15 +43,21 @@ public class ProfileController {
         //else if current user is present in fisher
             //Stage stage;
             //Parent nextScene;
-            //stage = (Stage) changeNumberButton.getScene().getWindow();
-            //nextScene = FXMLLoader.load(getClass().getResource("ChangeMobNo.fxml");
+            //stage = (Stage) changePasswordButton.getScene().getWindow();
+            //nextScene = FXMLLoader.load(getClass().getResource("ChangePassword.fxml");
     }
 
     public void changeNumber(){
         //if current user is present in intermediary
-            //do intermediarychangenumber
+            //Stage stage;
+            //Parent nextScene;
+            //stage = (Stage) changeNumberButton.getScene().getWindow();
+            //nextScene = FXMLLoader.load(getClass().getResource("ChangeMobNo.fxml");
         //else if current user is present in fisher
-            //do fisherchangenumber
+            //Stage stage;
+            //Parent nextScene;
+            //stage = (Stage) changeNumberButton.getScene().getWindow();
+            //nextScene = FXMLLoader.load(getClass().getResource("ChangeMobNo.fxml");
     }
 
 
