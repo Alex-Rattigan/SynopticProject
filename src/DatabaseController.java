@@ -61,7 +61,7 @@ public class DatabaseController
 
             select = c.createStatement();
 
-            ResultSet result = select.executeQuery("SELECT * FROM Fishers WHERE EXISTS(SELECT * FROM Fishers WHERE username = '" + username + "');");
+            ResultSet result = select.executeQuery("SELECT * FROM Fishers WHERE username = '" + username + "';");
 
             while(result.next())
             {
@@ -335,7 +335,7 @@ public class DatabaseController
 
             select = c.createStatement();
 
-            ResultSet result = select.executeQuery("SELECT * FROM Intermediary WHERE EXISTS(SELECT * FROM Intermediary WHERE username = '" + username + "');");
+            ResultSet result = select.executeQuery("SELECT * FROM Intermediaries WHERE username = '" + username + "';");
 
             while(result.next())
             {
@@ -359,7 +359,7 @@ public class DatabaseController
         } catch(Exception e)
         {
             e.printStackTrace();
-            System.out.println("ERROR: INTERMEDIARY with username" + username + " does not exist.");
+            System.out.println("ERROR: INTERMEDIARY with username " + username + " does not exist.");
         }
         return null;
     }
