@@ -48,13 +48,17 @@
                   <Insets left="12.0" />
                </VBox.margin>
             </Label>
-            <RadioButton fx:id="intermediaryButton" mnemonicParsing="false" text="Intermediary" />
-            <RadioButton fx:id="fisherButton" mnemonicParsing="false" text="Fisher">
+            <RadioButton fx:id="intermediaryButton" mnemonicParsing="false" text="Intermediary">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroup0" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="fisherButton" mnemonicParsing="false" text="Fisher" toggleGroup="$toggleGroup0">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </RadioButton>
-            <Button fx:id="completeSignUpButton" mnemonicParsing="false" onAction="#completeSignUp" text="Complete Sign Up">
+            <Button fx:id="completeSignUpButton" mnemonicParsing="false" onAction="#signUp" text="Complete Sign Up">
                <VBox.margin>
                   <Insets left="12.0" />
                </VBox.margin>
