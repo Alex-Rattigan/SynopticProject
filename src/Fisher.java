@@ -11,7 +11,7 @@ public class Fisher {
 
     public Fisher(){}
 
-    public Fisher(String username, String fname, String sname, String password, String mobileNo){
+    public Fisher(String username, String password, String fname, String sname,  String mobileNo){
         this.username = username;
         this.fName = fname;
         this.sName = sname;
@@ -19,7 +19,7 @@ public class Fisher {
         this.mobileNo = mobileNo;
     }
 
-    public Fisher(int fisherId, String username, String fname, String sname, String password, String mobileNo){
+    public Fisher(int fisherId, String username, String password, String fname, String sname,  String mobileNo){
         this.fisherId = fisherId;
         this.username = username;
         this.fName = fname;
