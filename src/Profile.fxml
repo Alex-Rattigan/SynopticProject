@@ -20,11 +20,11 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" text="General Information" />
-          <Button mnemonicParsing="false" text="Job Listings" />
-            <Button mnemonicParsing="false" text="View Jobs" />
-            <Button mnemonicParsing="false" text="Profile" />
-            <Button mnemonicParsing="false" text="Help" />
+            <Button fx:id="infoButton" mnemonicParsing="false" text="General Information"/>
+          <Button fx:id="jobListingButton" mnemonicParsing="false" text="Job Listings" />
+            <Button fx:id="viewJobsButton" mnemonicParsing="false" text="View Jobs" />
+            <Button fx:id="profileButton" mnemonicParsing="false" text="Profile" />
+            <Button fx:id="helpButton" mnemonicParsing="false" text="Help" />
         </items>
       </ToolBar>
       <HBox layoutX="14.0" layoutY="48.0" prefHeight="32.0" prefWidth="200.0">
@@ -51,7 +51,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="userForename">
                      <HBox.margin>
                         <Insets left="5.0" top="5.0" />
                      </HBox.margin>
@@ -61,7 +61,7 @@
             <HBox prefHeight="34.0" prefWidth="286.0">
                <children>
                   <Label text="Surname:" />
-                  <TextField>
+                  <TextField fx:id="userSurname">
                      <HBox.margin>
                         <Insets left="11.0" />
                      </HBox.margin>
@@ -71,7 +71,7 @@
             <HBox prefHeight="34.0" prefWidth="286.0">
                <children>
                   <Label text="Contact:" />
-                  <TextField>
+                  <TextField fx:id="userNumber">
                      <HBox.margin>
                         <Insets left="17.0" />
                      </HBox.margin>
@@ -87,18 +87,18 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" text="Change Password">
+            <Button mnemonicParsing="false" text="Change Password" fx:id="changePasswordButton">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Change Mobile No.">
+            <Button mnemonicParsing="false" text="Change Mobile No." fx:id="changeNumberButton">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </Button>
          </children>
       </VBox>
-      <Button layoutX="534.0" layoutY="48.0" mnemonicParsing="false" text="Logout" />
+      <Button layoutX="534.0" layoutY="48.0" mnemonicParsing="false" text="Logout" fx:id="logoutButton" />
    </children>
 </Pane>

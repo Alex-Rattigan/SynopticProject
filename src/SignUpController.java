@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 
 
-
 public class SignUpController {
 
     @FXML
@@ -32,7 +31,7 @@ public class SignUpController {
 
             if (intermediaryButton.isSelected()) {
                 if(checkDetails()) {
-//                DatabaseController.insertIntermediaryRecord(forename, surname, username, password, mobileNo);
+                DatabaseController.insertIntermediaryRecord(forename, surname, username, password, mobileNo);
 
                     Stage stage;
                     Parent myNewScene;
@@ -56,7 +55,7 @@ public class SignUpController {
             } else if (fisherButton.isSelected())
             {
                 if(checkDetails()) {
-//                DatabaseController.insertFisherRecord(forename, surname, username, password, mobileNo);
+                DatabaseController.insertFisherRecord(forename, surname, username, password, mobileNo);
 
                     Stage stage;
                     Parent myNewScene;
