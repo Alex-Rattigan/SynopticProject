@@ -309,9 +309,10 @@ public class DatabaseController
 
     // ---------------------------------------- CRUD FOR INTERMEDIARIES ---------------------------------------- //
 
-    public static void insertIntermediaryRecord(String username, String password, String fname, String lname, String mobNo)
+    public static int insertIntermediaryRecord(String username, String password, String fname, String lname, String mobNo)
     {
         Statement insert = null;
+        int id = 0;
 
         try
         {
@@ -320,9 +321,14 @@ public class DatabaseController
             insert = c.createStatement();
 
             String statement = "INSERT INTO Intermediaries (username, password, fname, lname, mobile_no)VALUES('"
-                    + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "');";
+                    + username + "', '" + password + "', '" + fname + "', '" + lname + "', '" + mobNo + "')" +
+                    " RETURNING intermediary_id;";
 
             insert.executeUpdate(statement);
+            ResultSet intermediary = insert.getResultSet();
+            if (intermediary.next()) {
+                id = intermediary.getInt("intermediary_id");
+            }
 
             insert.close();
             c.commit();
@@ -333,6 +339,9 @@ public class DatabaseController
             e.printStackTrace();
             System.out.println("ERROR: Insert statement for INTERMEDIARY could not be completed.");
         }
+
+        return id;
+
     }
 
     public static Intermediary checkIntermediaryExists(String username)
@@ -583,9 +592,10 @@ public class DatabaseController
 
     // --------------------------------------------- CRUD FOR JOBS --------------------------------------------- //
 
-    public static void insertJob(int intermediary_id, String fish_type, int amount_kg, double pay_per_kg, Date date_created, Date date_due, String description, boolean is_completed)
+    public static int insertJob(int intermediary_id, String fish_type, int amount_kg, double pay_per_kg, Date date_created, Date date_due, String description, boolean is_completed)
     {
         Statement insert = null;
+        int j_id = 0;
 
         try {
             connect();
@@ -599,8 +609,6 @@ public class DatabaseController
             insert.execute(statement);
 
             ResultSet job = insert.getResultSet();
-
-            int j_id = 0;
 
             while(job.next())
             {
@@ -620,6 +628,8 @@ public class DatabaseController
             e.printStackTrace();
             System.out.println("ERROR: Insert for JOB could not be completed.");
         }
+
+        return j_id;
     }
 
     public static LinkedList<Job> selectAllJobs()
@@ -935,7 +945,7 @@ public class DatabaseController
         }
     }
 
-    public void updateCompleted(int job_id, boolean is_completed)
+    public static void updateCompleted(int job_id, boolean is_completed)
     {
         Statement update = null;
 
@@ -980,7 +990,7 @@ public class DatabaseController
         }
     }
 
-    public void deleteJob(int job_id)
+    public static void deleteJob(int job_id)
     {
         Statement delete = null;
 

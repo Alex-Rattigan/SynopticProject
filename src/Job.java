@@ -22,6 +22,18 @@ public class Job
         this.isCompleted = isCompleted;
     }
 
+    Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted)
+    {
+        this.id = id;
+        this.fishType = fishType;
+        this.amountKg = amountKg;
+        this.payPerKg = payPerKg;
+        this.dateCreated = dateCreated;
+        this.dateDue = dateDue;
+        this.description = description;
+        this.isCompleted = isCompleted;
+    }
+
     public int getId()
     {
         return id;
@@ -65,6 +77,26 @@ public class Job
     public void setDateCreated(Date dateCreated)
     {
         this.dateCreated = dateCreated;
+    }
+
+    public Date getDateDue()
+    {
+        return dateDue;
+    }
+
+    public void setDateDue(Date dateDue)
+    {
+        this.dateDue = dateDue;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 
     public boolean isCompleted()
