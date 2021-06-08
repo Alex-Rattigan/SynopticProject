@@ -1322,5 +1322,9 @@ public class DatabaseController
         //updateFisherId(10, 16);
         //insertJob(1, "fishiessssss", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
         //updateFisherId(11, 16);
+        /*insertJob(1, "fish?", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
+        insertJob(1, "fish!", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
+        updateFisherId(12, 16);
+        updateFisherId(13, 16);*/
     }
 }
