@@ -21,7 +21,7 @@ import java.util.Optional;
 public class FisherViewController
 {
     @FXML
-    private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton, viewDetailsButton, viewDetailsButton1, completeButton;
+    private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton, viewDetailsButton, viewDetailsButton1, completeButton, abandonButton;
 
     @FXML
     private TableView<Job> activeJobsTable;
@@ -86,6 +86,7 @@ public class FisherViewController
             public void onChanged(Change<? extends Job> change) {
                 viewDetailsButton.setDisable(false);
                 completeButton.setDisable(false);
+                abandonButton.setDisable(false);
             }
         });
 
@@ -193,6 +194,39 @@ public class FisherViewController
             viewDetailsButton.setDisable(true);
             viewDetailsButton1.setDisable(true);
             completeButton.setDisable(true);
+        }
+        else
+        {
+            // do nothing
+        }
+    }
+
+    public void abandonJob()
+    {
+        Job job = activeSelectedRows.get(0);
+
+        alert.setTitle("Abandon Job");
+        alert.setHeaderText("Are you sure you want to abandon this job?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(!result.isPresent())
+        {
+            // do nothing
+        }
+        else if(result.get() == ButtonType.OK)
+        {
+            DatabaseController.updateFisherId(job.getId(), null);
+            activeJobsTable.getItems().clear();
+            pastJobsTable.getItems().clear();
+            createJobLists();
+            activeJobsTable.getItems().addAll(activeJobs);
+            pastJobsTable.getItems().addAll(pastJobs);
+            activeJobsTable.refresh();
+            pastJobsTable.refresh();
+
+            viewDetailsButton.setDisable(true);
+            viewDetailsButton1.setDisable(true);
+            abandonButton.setDisable(true);
         }
         else
         {
