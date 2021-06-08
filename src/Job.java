@@ -103,11 +103,6 @@ public class Job
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated)
-    {
-        this.dateCreated = dateCreated;
-    }
-
     public Date getDateDue()
     {
         return dateDue;
@@ -142,6 +137,8 @@ public class Job
     {
         return intermediaryName;
     }
+
+    public void setFisherName(String fisherName){this.fisherName = fisherName;}
 
     public String toString()
     {

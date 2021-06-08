@@ -31,14 +31,14 @@
                   <Insets left="5.0" top="5.0" />
                </VBox.margin>
             </Text>
-            <TableView prefHeight="319.0" prefWidth="585.0">
+            <TableView fx:id="jobListingTable" prefHeight="319.0" prefWidth="585.0">
               <columns>
-                <TableColumn prefWidth="48.799986362457275" text="Job ID" />
-                <TableColumn prefWidth="102.39997100830078" text="Fish Type" />
-                  <TableColumn prefWidth="92.79998779296875" text="Amount (Kg)" />
-                  <TableColumn prefWidth="94.40003967285156" text="Pay (Sol/Kg)" />
-                  <TableColumn prefWidth="128.800048828125" text="Date Due" />
-                  <TableColumn prefWidth="133.59994506835938" text="Managed By" />
+                <TableColumn fx:id="jobId" prefWidth="48.799986362457275" text="Job ID" />
+                <TableColumn fx:id="fishType" prefWidth="85.0" text="Fish Type" />
+                  <TableColumn fx:id="amount" prefWidth="92.79998779296875" text="Amount (Kg)" />
+                  <TableColumn fx:id="pay" prefWidth="94.40003967285156" text="Pay (Sol/Kg)" />
+                  <TableColumn fx:id="date" prefWidth="100.0" text="Date Due" />
+                  <TableColumn fx:id="managed" prefWidth="133.59994506835938" text="Managed By" />
               </columns>
                <VBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
@@ -54,12 +54,12 @@
             </Text>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="View Details">
+                  <Button fx:id="viewDetailsButton" disable="true" mnemonicParsing="false" onAction="#viewJobDetails" text="View Details">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Accept Job">
+                  <Button fx:id="acceptJobButton" disable="true" mnemonicParsing="false" onAction="#acceptJob" text="Accept Job">
                      <HBox.margin>
                         <Insets left="5.0" top="5.0" />
                      </HBox.margin>
