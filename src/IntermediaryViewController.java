@@ -11,7 +11,7 @@ import java.io.IOException;
 public class IntermediaryViewController
 {
     @FXML
-    private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton;
+    private Button helpButton, infoButton, jobListingsButton, viewJobsButton, profileButton;
 
     public void changeScene(ActionEvent event) throws IOException {
         Stage stage = null;
@@ -23,8 +23,8 @@ public class IntermediaryViewController
         } else if(event.getSource() == infoButton){
             stage = (Stage) infoButton.getScene().getWindow();
             nextScene = FXMLLoader.load(getClass().getResource("FishingInfo.fxml"));
-        } else if(event.getSource() == jobListingButton){
-            stage = (Stage) jobListingButton.getScene().getWindow();
+        } else if(event.getSource() == jobListingsButton){
+            stage = (Stage) jobListingsButton.getScene().getWindow();
             nextScene = FXMLLoader.load(getClass().getResource("JobListings.fxml"));
         } else if(event.getSource() == viewJobsButton){
             stage = (Stage) viewJobsButton.getScene().getWindow();
