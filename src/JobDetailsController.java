@@ -51,6 +51,7 @@ public class JobDetailsController
         {
             DatabaseController.updateCompleted(currentJob.getId(), true);
             jobCompleteButton.setDisable(true);
+            abandonJobButton.setDisable(true);
         }
         else
         {
@@ -72,6 +73,7 @@ public class JobDetailsController
         {
             DatabaseController.updateFisherId(currentJob.getId(), null);
             abandonJobButton.setDisable(true);
+            jobCompleteButton.setDisable(true);
         }
         else
         {
