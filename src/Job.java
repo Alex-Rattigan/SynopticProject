@@ -11,6 +11,7 @@ public class Job
     private String description;
     private boolean isCompleted;
     private String intermediaryName;
+    private String fisherName;
 
     Job(String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted)
     {
@@ -33,6 +34,20 @@ public class Job
         this.dateDue = dateDue;
         this.description = description;
         this.isCompleted = isCompleted;
+    }
+
+    Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId, int fisherId)
+    {
+        this.id = id;
+        this.fishType = fishType;
+        this.amountKg = amountKg;
+        this.payPerKg = payPerKg;
+        this.dateCreated = dateCreated;
+        this.dateDue = dateDue;
+        this.description = description;
+        this.isCompleted = isCompleted;
+        this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
+        this.fisherName = DatabaseController.selectFisherRecord(fisherId).getFname() + " " + DatabaseController.selectIntermediaryRecord(fisherId).getSname();
     }
 
     Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId)
