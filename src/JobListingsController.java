@@ -32,19 +32,9 @@ public class JobListingsController
     }
 
     public void displayJobs(){
-//        LinkedList<Job> jobsList = DatabaseController.selectAllJobs();
-//        for(Job j : jobsList){
-//            jobId.setText(String.valueOf(j.getId()));
-//            fishType.setText(j.getFishType());
-//            amountKg.setText(String.valueOf(j.getAmountKg()));
-//            payPerKg.setText(String.valueOf(j.getPayPerKg()));
-//            dateDue.setText(j.getDateDue().toString());
-//            managedBy.setText(j.getIntermediaryName());
-//        }
     }
 
     public void viewDetails() throws IOException{
-        MyFishingPal.currentJob = DatabaseController.selectJob(1);
         Stage stage = null;
         Parent nextScene = null;
         stage = (Stage) viewDetailsButton.getScene().getWindow();
