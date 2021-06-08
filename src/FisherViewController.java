@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.LinkedList;
 
+// References: http://tutorials.jenkov.com/javafx/tableview.html
+
 public class FisherViewController
 {
     @FXML

@@ -11,8 +11,8 @@ public class MyFishingPal extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        primaryStage.setWidth(600);
-        primaryStage.setHeight(400);
+        primaryStage.setWidth(610);
+        primaryStage.setHeight(450);
         primaryStage.setTitle("MyFishingPal");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
