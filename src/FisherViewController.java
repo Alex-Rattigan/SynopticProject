@@ -1,11 +1,11 @@
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -18,7 +18,7 @@ import java.util.LinkedList;
 public class FisherViewController
 {
     @FXML
-    private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton;
+    private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton, viewDetailsButton;
 
     @FXML
     private TableView<Job> activeJobsTable;
@@ -56,6 +56,9 @@ public class FisherViewController
     LinkedList<Job> activeJobs = new LinkedList<>();
     LinkedList<Job> pastJobs = new LinkedList<>();
 
+    ObservableList<Job> activeSelectedRows;
+    ObservableList<Job> pastSelectedRows;
+
     public void initialize()
     {
         for (Job job : jobs)
@@ -79,6 +82,10 @@ public class FisherViewController
 
         activeJobsTable.getItems().addAll(activeJobs);
 
+        TableView.TableViewSelectionModel<Job> activeJobsSelectionModel = activeJobsTable.getSelectionModel();
+        activeJobsSelectionModel.setSelectionMode(SelectionMode.SINGLE);
+        activeSelectedRows = activeJobsSelectionModel.getSelectedItems();
+
         jobIdPastTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypePastTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
         amountPastTbl.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
@@ -87,6 +94,27 @@ public class FisherViewController
         managedPastTbl.setCellValueFactory(new PropertyValueFactory<>("intermediaryName"));
 
         pastJobsTable.getItems().addAll(pastJobs);
+
+        TableView.TableViewSelectionModel<Job> pastJobsSelectionModel = pastJobsTable.getSelectionModel();
+        pastJobsSelectionModel.setSelectionMode(SelectionMode.SINGLE);
+        pastSelectedRows = pastJobsSelectionModel.getSelectedItems();
+
+    }
+
+    public void viewJobDetails() throws IOException
+    {
+        JobDetailsController.setJobDetails(activeSelectedRows.get(0));
+
+        // Open Job Details page
+        Stage stage = null;
+        Parent nextScene = null;
+        stage = (Stage) viewDetailsButton.getScene().getWindow();
+        nextScene = FXMLLoader.load(getClass().getResource("JobDetails.fxml"));
+        assert nextScene != null;
+        Scene scene = new Scene(nextScene);
+        stage.setScene(scene);
+        stage.setTitle("MyFishingPal");
+        stage.show();
     }
 
     public void changeScene(ActionEvent event) throws IOException {

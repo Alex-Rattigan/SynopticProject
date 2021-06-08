@@ -60,7 +60,7 @@
                               </Text>
                               <HBox prefHeight="29.0" prefWidth="600.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="View Details">
+                                    <Button fx:id="viewDetailsButton" mnemonicParsing="false" onAction="#viewJobDetails" text="View Details">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>

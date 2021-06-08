@@ -21,11 +21,6 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" text="General Information" />
-          <Button mnemonicParsing="false" text="Job Listings" />
-            <Button mnemonicParsing="false" text="View Jobs" />
-            <Button mnemonicParsing="false" text="Profile" />
-            <Button mnemonicParsing="false" text="Help" />
         </items>
       </ToolBar>
       <VBox layoutX="126.0" layoutY="42.0" prefHeight="350.0" prefWidth="348.0">
@@ -41,7 +36,7 @@
             <HBox prefHeight="36.0" prefWidth="348.0">
                <children>
                   <Label text="Fish Type" />
-                  <TextField editable="false">
+                  <TextField fx:id="fishTypeText" editable="false">
                      <HBox.margin>
                         <Insets left="30.0" />
                      </HBox.margin>
@@ -54,7 +49,7 @@
             <HBox prefHeight="37.0" prefWidth="348.0">
                <children>
                   <Label text="Amount (Kg)" />
-                  <TextField editable="false">
+                  <TextField fx:id="amountText" editable="false">
                      <HBox.margin>
                         <Insets left="12.0" />
                      </HBox.margin>
@@ -67,7 +62,7 @@
             <HBox prefHeight="34.0" prefWidth="348.0">
                <children>
                   <Label text="Pay (Sol/Kg)" />
-                  <TextField editable="false">
+                  <TextField fx:id="payText" editable="false">
                      <HBox.margin>
                         <Insets left="16.0" />
                      </HBox.margin>
@@ -80,7 +75,7 @@
             <HBox prefHeight="34.0" prefWidth="348.0">
                <children>
                   <Label text="Date Due" />
-                  <TextField editable="false">
+                  <TextField fx:id="dateText" editable="false">
                      <HBox.margin>
                         <Insets left="30.0" />
                      </HBox.margin>
@@ -93,7 +88,7 @@
             <HBox prefHeight="30.0" prefWidth="348.0">
                <children>
                   <Label text="Managed By" />
-                  <TextField editable="false">
+                  <TextField fx:id="managedByText" editable="false">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
@@ -106,7 +101,7 @@
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Details" />
-                  <TextArea editable="false" maxHeight="-Infinity" prefHeight="87.0" prefWidth="200.0">
+                  <TextArea fx:id="detailsText" editable="false" maxHeight="-Infinity" prefHeight="87.0" prefWidth="200.0">
                      <HBox.margin>
                         <Insets left="45.0" />
                      </HBox.margin>
@@ -116,7 +111,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </HBox>
-            <Button mnemonicParsing="false" text="Close">
+            <Button fx:id="closeButton" mnemonicParsing="false" onAction="#changeScene" text="Close">
                <VBox.margin>
                   <Insets left="135.0" />
                </VBox.margin>
