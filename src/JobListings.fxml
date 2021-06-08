@@ -43,6 +43,13 @@
                <VBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
+                <TableRow fx:id="jobId" prefWidth="48.799986362457275" text="Job ID"/>
+                <TableRow fx:id="fishType" prefWidth="48.799986362457275" text="Job ID"/>
+                <TableRow fx:id="amountKg" prefWidth="48.799986362457275" text="Job ID"/>
+                <TableRow fx:id="payPerKg" prefWidth="48.799986362457275" text="Job ID"/>
+                <TableRow fx:id="dateDue" prefWidth="48.799986362457275" text="Job ID"/>
+                <TableRow fx:id="managedBy" prefWidth="48.799986362457275" text="Job ID"/>
+
             </TableView>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Job Actions">
                <font>
@@ -54,12 +61,12 @@
             </Text>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="View Details">
+                  <Button fx:id="viewDetailsButton" mnemonicParsing="false" onAction="#viewDetails" text="View Details">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Accept Job">
+                  <Button fx:id="acceptJobButton" mnemonicParsing="false" onAction="#acceptJob" text="Accept Job">
                      <HBox.margin>
                         <Insets left="5.0" top="5.0" />
                      </HBox.margin>
