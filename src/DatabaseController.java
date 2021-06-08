@@ -1056,17 +1056,14 @@ public class DatabaseController
 
             LinkedList<Integer> job_ids = new LinkedList<>();
             LinkedList<Integer> i_ids = new LinkedList<>();
-            LinkedList<Integer> f_ids = new LinkedList<>();
 
             while(result.next())
             {
                 int job_id = result.getInt("job_id");
                 int i_id = result.getInt("intermediary_id");
-                int f_id = result.getInt("fisher_id");
 
                 job_ids.add(job_id);
                 i_ids.add(i_id);
-                f_ids.add(f_id);
             }
 
             result.close();
@@ -1091,7 +1088,7 @@ public class DatabaseController
                             + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
                             + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
 
-                    jobs.add(new Job(job_ids.get(i), fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed, i_ids.get(i), f_ids.get(i)));
+                    jobs.add(new Job(job_ids.get(i), fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed, i_ids.get(i)));
                 }
 
                 result2.close();
