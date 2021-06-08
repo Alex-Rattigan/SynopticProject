@@ -12,13 +12,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.LinkedList;
+import java.util.Optional;
 
 // References: http://tutorials.jenkov.com/javafx/tableview.html
+//             https://stackoverflow.com/questions/43031602/how-to-set-a-method-to-a-javafx-alert-button
+//             https://stackoverflow.com/questions/32176782/how-can-i-clear-the-all-contents-of-the-cell-data-in-every-row-in-my-tableview-i/52770465
 
 public class FisherViewController
 {
     @FXML
-    private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton, viewDetailsButton;
+    private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton, viewDetailsButton, viewDetailsButton1, completeButton;
 
     @FXML
     private TableView<Job> activeJobsTable;
@@ -52,26 +55,18 @@ public class FisherViewController
 
     Fisher currentUser = (Fisher) MyFishingPal.currentUser;
 
-    LinkedList<Job> jobs = new LinkedList<>(DatabaseController.selectJobsByFisher(currentUser.getID()));
+    LinkedList<Job> jobs = new LinkedList<>();
     LinkedList<Job> activeJobs = new LinkedList<>();
     LinkedList<Job> pastJobs = new LinkedList<>();
 
     ObservableList<Job> activeSelectedRows;
     ObservableList<Job> pastSelectedRows;
 
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
     public void initialize()
     {
-        for (Job job : jobs)
-        {
-            if (!job.isCompleted())
-            {
-                activeJobs.add(job);
-            }
-            else
-            {
-                pastJobs.add(job);
-            }
-        }
+        createJobLists();
 
         jobIdActiveTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypeActiveTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
@@ -86,6 +81,15 @@ public class FisherViewController
         activeJobsSelectionModel.setSelectionMode(SelectionMode.SINGLE);
         activeSelectedRows = activeJobsSelectionModel.getSelectedItems();
 
+        activeSelectedRows.addListener(new ListChangeListener<Job>() {
+            @Override
+            public void onChanged(Change<? extends Job> change) {
+                viewDetailsButton.setDisable(false);
+                completeButton.setDisable(false);
+            }
+        });
+
+
         jobIdPastTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypePastTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
         amountPastTbl.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
@@ -99,9 +103,39 @@ public class FisherViewController
         pastJobsSelectionModel.setSelectionMode(SelectionMode.SINGLE);
         pastSelectedRows = pastJobsSelectionModel.getSelectedItems();
 
+        pastSelectedRows.addListener(new ListChangeListener<Job>() {
+            @Override
+            public void onChanged(Change<? extends Job> change) {
+                viewDetailsButton1.setDisable(false);
+            }
+        });
+
     }
 
-    public void viewJobDetails() throws IOException
+    public void createJobLists()
+    {
+        jobs = DatabaseController.selectJobsByFisher(currentUser.getID());
+
+        if(activeJobs.size() != 0 || pastJobs.size() != 0)
+        {
+            activeJobs = new LinkedList<>();
+            pastJobs = new LinkedList<>();
+        }
+
+        for (Job job : jobs)
+        {
+            if (!job.isCompleted())
+            {
+                activeJobs.add(job);
+            }
+            else
+            {
+                pastJobs.add(job);
+            }
+        }
+    }
+
+    public void viewActiveJobDetails() throws IOException
     {
         JobDetailsController.setJobDetails(activeSelectedRows.get(0));
 
@@ -115,6 +149,55 @@ public class FisherViewController
         stage.setScene(scene);
         stage.setTitle("MyFishingPal");
         stage.show();
+    }
+
+    public void viewPastJobDetails() throws IOException
+    {
+        JobDetailsController.setJobDetails(pastSelectedRows.get(0));
+
+        // Open Job Details page
+        Stage stage = null;
+        Parent nextScene = null;
+        stage = (Stage) viewDetailsButton1.getScene().getWindow();
+        nextScene = FXMLLoader.load(getClass().getResource("JobDetails.fxml"));
+        assert nextScene != null;
+        Scene scene = new Scene(nextScene);
+        stage.setScene(scene);
+        stage.setTitle("MyFishingPal");
+        stage.show();
+    }
+
+    public void markJobComplete()
+    {
+        Job job = activeSelectedRows.get(0);
+
+        alert.setTitle("Mark Job as Completed");
+        alert.setHeaderText("Are you sure you want to mark this job completed?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(!result.isPresent())
+        {
+            // do nothing
+        }
+        else if(result.get() == ButtonType.OK)
+        {
+            DatabaseController.updateCompleted(job.getId(), true);
+            activeJobsTable.getItems().clear();
+            pastJobsTable.getItems().clear();
+            createJobLists();
+            activeJobsTable.getItems().addAll(activeJobs);
+            pastJobsTable.getItems().addAll(pastJobs);
+            activeJobsTable.refresh();
+            pastJobsTable.refresh();
+
+            viewDetailsButton.setDisable(true);
+            viewDetailsButton1.setDisable(true);
+            completeButton.setDisable(true);
+        }
+        else
+        {
+            // do nothing
+        }
     }
 
     public void changeScene(ActionEvent event) throws IOException {
