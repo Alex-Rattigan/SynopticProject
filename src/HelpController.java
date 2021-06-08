@@ -11,26 +11,30 @@ import java.io.IOException;
 public class HelpController {
 
     @FXML
-    private Button jobViewButton0, jobViewButton1, jobViewButton2, jobViewButton3, jobViewButton4,
-            jobViewButton5, jobViewButton6, jobViewButton7, jobViewButton8;
-
-    @FXML
-    private Button jobListingButton0, jobListingButton1, fishingInfoButton, profileButton0, profileButton1,
-            profileButton2;
-
-    @FXML
     private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton;
 
     public void goToJobView() throws IOException{
-        Stage stage = null;
-        Parent nextScene = null;
-        stage = (Stage) viewJobsButton.getScene().getWindow();
-        nextScene = FXMLLoader.load(getClass().getResource("JobListings.fxml"));
-        assert nextScene != null;
-        Scene scene = new Scene(nextScene);
-        stage.setScene(scene);
-        stage.setTitle("MyFishingPal");
-        stage.show();
+        if(MyFishingPal.currentUser instanceof Intermediary){
+            Stage stage = null;
+            Parent nextScene = null;
+            stage = (Stage) viewJobsButton.getScene().getWindow();
+            nextScene = FXMLLoader.load(getClass().getResource("IntermediaryView.fxml"));
+            assert nextScene != null;
+            Scene scene = new Scene(nextScene);
+            stage.setScene(scene);
+            stage.setTitle("MyFishingPal");
+            stage.show();
+        } else if(MyFishingPal.currentUser instanceof Fisher){
+            Stage stage = null;
+            Parent nextScene = null;
+            stage = (Stage) viewJobsButton.getScene().getWindow();
+            nextScene = FXMLLoader.load(getClass().getResource("FisherView.fxml"));
+            assert nextScene != null;
+            Scene scene = new Scene(nextScene);
+            stage.setScene(scene);
+            stage.setTitle("MyFishingPal");
+            stage.show();
+        }
     }
 
     public void goToJobListing() throws IOException{
@@ -60,7 +64,7 @@ public class HelpController {
     public void goToFishingInfo() throws IOException{
         Stage stage = null;
         Parent nextScene = null;
-        stage = (Stage) fishingInfoButton.getScene().getWindow();
+        stage = (Stage) infoButton.getScene().getWindow();
         nextScene = FXMLLoader.load(getClass().getResource("FishingInfo.fxml"));
         assert nextScene != null;
         Scene scene = new Scene(nextScene);
