@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HelpController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HelpController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="600.0">
         <items>
@@ -46,7 +39,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To view the jobs that are currently being advertised visit the Job Listings page." />
-                                          <Button mnemonicParsing="false" text="Job Listings ">
+                                          <Button mnemonicParsing="false" onAction="#goToJobListing" text="Job Listings ">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -57,7 +50,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To mark a job as complete go to your job view, (intermediary view or fisher view), and select “Mark Job As Complete”. This will take you to a page which will allow you to enter the ID of the job you wish to mark as complete." wrappingWidth="579.21484375" />
-                                          <Button layoutX="10.0" layoutY="47.0" mnemonicParsing="false" text="Job View">
+                                          <Button layoutX="10.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToJobView" text="Job View">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -68,7 +61,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="If you are not sure as to whether the advert you are viewing is appropriate or not you may refer to the Fishing Info page which will let you know the legality and rules of using MyFishingPal." wrappingWidth="572.23046875" />
-                                          <Button layoutX="10.0" layoutY="92.0" mnemonicParsing="false" text="Fishing Info">
+                                          <Button layoutX="10.0" layoutY="92.0" mnemonicParsing="false" onAction="#goToFishingInfo" text="Fishing Info">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -85,7 +78,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To view your profile click the Profile tab or this link to view your profile’s details." />
-                                          <Button layoutX="10.0" layoutY="221.0" mnemonicParsing="false" text="Profile">
+                                          <Button layoutX="10.0" layoutY="221.0" mnemonicParsing="false" onAction="#goToProfile" text="Profile">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -96,7 +89,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To change your profile details click the Profile tab or this link to view your profile’s details and you will see a button on the right of the screen labelled “change mobile no” or “change password”. You may change your password or your mobile number with these two buttons. The buttons will open up pages which allow you to enter the changes you wish to make to these fields." wrappingWidth="575.14453125" />
-                                          <Button layoutX="10.0" layoutY="335.0" mnemonicParsing="false" text="Profile">
+                                          <Button layoutX="10.0" layoutY="335.0" mnemonicParsing="false" onAction="#goToProfile" text="Profile">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -107,7 +100,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In order to log out you must go to your Profile page by clicking the Profile page button or this link, and on the right of this page you will see a button labelled “log out” which will allow you to log out of the current profile." wrappingWidth="579.833984375" />
-                                          <Button layoutX="10.0" layoutY="441.0" mnemonicParsing="false" text="Profile">
+                                          <Button layoutX="10.0" layoutY="441.0" mnemonicParsing="false" onAction="#goToProfile" text="Profile">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -138,7 +131,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In order to accept a job you must be on the Job Listings page, and you must press the “Accept Job” button which will lead you to a pop up window in which you will enter the ID of the job you wish to accept." wrappingWidth="574.92578125" />
-                                          <Button mnemonicParsing="false" text="Job Listings">
+                                          <Button mnemonicParsing="false" onAction="#goToJobListing" text="Job Listings">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -149,7 +142,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In order to view your current jobs you must be on your view of the jobs list, this will show two tabs, one that is labelled “Active Jobs” and one that is called “Job History”. When clicking the “Active Jobs” tab you will then be able to see all of the jobs you have accepted but not completed. You can order these using the headers of the different details each of the jobs has. " wrappingWidth="571.21484375" />
-                                          <Button layoutX="10.0" layoutY="64.0" mnemonicParsing="false" text="Job View">
+                                          <Button layoutX="10.0" layoutY="64.0" mnemonicParsing="false" onAction="#goToJobView" text="Job View">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -160,7 +153,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In order to view your past jobs you must be on your view of the jobs list, this will show two tabs, one that is labelled “Active Jobs” and one that is called “Job History”. When clicking the “Job History” tab you will then be able to see all of the jobs you have completed. You can order these using the headers of the different details each of the jobs has. " wrappingWidth="572.23046875" />
-                                          <Button layoutX="10.0" layoutY="171.0" mnemonicParsing="false" text="Job View">
+                                          <Button layoutX="10.0" layoutY="171.0" mnemonicParsing="false" onAction="#goToJobView" text="Job View">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -191,7 +184,7 @@
                                              </font>
                                           </Text>
                                           <Text layoutX="10.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To put up an advert you must be on your view of the jobs list and then click the button which says “Add A Job”. This will take you to a screen that allows you to put in details for a new job you wish to advertise." wrappingWidth="574.92578125" />
-                                          <Button mnemonicParsing="false" text="Job View">
+                                          <Button mnemonicParsing="false" onAction="#goToJobView" text="Job View">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -202,7 +195,7 @@
                                              </font>
                                           </Text>
                                           <Text layoutX="10.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To modify an advert you must be on your view of the jobs list and then click the button which says “Modify A Jobs Details”, this will take you to a screen which will allow you to modify a jobs details." wrappingWidth="574.92578125" />
-                                          <Button mnemonicParsing="false" text="Job View">
+                                          <Button mnemonicParsing="false" onAction="#goToJobView" text="Job View">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -213,7 +206,7 @@
                                              </font>
                                           </Text>
                                           <Text layoutX="10.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To remove an advert you must be on your view of the jobs list and then click the button which says “Remove Job”, this will take you to a screen which will allow you to enter the ID of the job you wish to remove." wrappingWidth="574.92578125" />
-                                          <Button mnemonicParsing="false" text="Job View">
+                                          <Button mnemonicParsing="false" onAction="#goToJobView" text="Job View">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -224,7 +217,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In order to view the jobs you are advertising you must be on your view of the jobs list, this will show three tabs, one that is labelled “Advertised Jobs”, one that is called “Accepted Jobs” and one that is called “Completed Jobs”. When clicking the “Advertised Jobs” tab you will then be able to see all of the jobs you have advertised that are not currently being carried out by a fisher/are not already finished. You can order these using the headers of the different details each of the jobs has. " wrappingWidth="574.92578125" />
-                                          <Button mnemonicParsing="false" text="Job View">
+                                          <Button mnemonicParsing="false" onAction="#goToJobView" text="Job View">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -235,7 +228,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In order to view the jobs you are advertising you must be on your view of the jobs list, this will show three tabs, one that is labelled “Advertised Jobs”, one that is called “Accepted Jobs” and one that is called “Completed Jobs”. When clicking the “Accepted Jobs” tab you will then be able to see all of the jobs that have been accepted by a fisher but have yet to be complete. You can order these using the headers of the different details each of the jobs has." wrappingWidth="571.21484375" />
-                                          <Button mnemonicParsing="false" text="Job View">
+                                          <Button mnemonicParsing="false" onAction="#goToJobView" text="Job View">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -246,7 +239,7 @@
                                              </font>
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In order to view the jobs you are advertising you must be on your view of the jobs list, this will show three tabs, one that is labelled “Advertised Jobs”, one that is called “Accepted Jobs” and one that is called “Completed Jobs”. When clicking the “Completed Jobs” tab you will then be able to see all of the jobs that have been completed. You can order these using the headers of the different details each of the jobs has." wrappingWidth="572.23046875" />
-                                          <Button mnemonicParsing="false" text="Job View">
+                                          <Button mnemonicParsing="false" onAction="#goToJobView" text="Job View">
                                              <opaqueInsets>
                                                 <Insets left="5.0" />
                                              </opaqueInsets>
@@ -265,3 +258,4 @@
       </TabPane>
    </children>
 </Pane>
+
