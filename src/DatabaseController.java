@@ -1238,8 +1238,20 @@ public class DatabaseController
 
         //insertJob(1, "fish", 7, 4.2, Date.valueOf("2021-06-05"), Date.valueOf("2021-06-10"), "this is a job",true);
 
-        insertJob(1, "fish", 7, 4.2, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-15"), "this is a job",false);
+        //insertJob(1, "fish", 7, 4.2, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-15"), "this is a job",false);
 
-        updateFisherId(3, 16);
+       // updateFisherId(3, 16);
+
+       /* insertJob(1, "fish2", 7, 4.2, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-15"), "this is a job",false);
+        updateFisherId(4, 16);*/
+
+        /*insertJob(1, "fish3", 7, 4.2, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-15"), "this is a job",false);
+        updateFisherId(5, 16);*/
+        /*insertJob(1, "fish4", 7, 4.2, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-15"), "this is a job",false);
+        updateFisherId(6, 16);*/
+        insertJob(1, "fish5", 7, 4.2, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-15"), "this is a job",false);
+        updateFisherId(7, 16);
+        insertJob(1, "fish6", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
+        updateFisherId(8, 16);
     }
 }
