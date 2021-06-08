@@ -16,6 +16,7 @@ import java.util.Optional;
 
 // References: http://tutorials.jenkov.com/javafx/tableview.html
 //             https://stackoverflow.com/questions/43031602/how-to-set-a-method-to-a-javafx-alert-button
+//             https://stackoverflow.com/questions/32176782/how-can-i-clear-the-all-contents-of-the-cell-data-in-every-row-in-my-tableview-i/52770465
 
 public class FisherViewController
 {
