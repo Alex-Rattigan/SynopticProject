@@ -111,11 +111,28 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="closeButton" mnemonicParsing="false" onAction="#changeScene" text="Close">
+            <HBox>
+               <children>
+                  <Button fx:id="jobCompleteButton" mnemonicParsing="false" onAction="#markJobComplete" text="Mark Job Complete">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="abandonJobButton" mnemonicParsing="false" onAction="#abandonJob" text="Abandon">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="closeButton" mnemonicParsing="false" onAction="#changeScene" text="Close">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
                <VBox.margin>
-                  <Insets left="135.0" />
+                  <Insets top="5.0" />
                </VBox.margin>
-            </Button>
+            </HBox>
          </children>
       </VBox>
    </children>

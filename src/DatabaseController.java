@@ -1250,7 +1250,7 @@ public class DatabaseController
 
             update = c.createStatement();
 
-            String statement = "UPDATE Fishers_Inters_Jobs SET fisher_id = '" + fisher_id + "' WHERE job_id = " + job_id + ";";
+            String statement = "UPDATE Fishers_Inters_Jobs SET fisher_id = " + fisher_id + " WHERE job_id = " + job_id + ";";
 
             update.executeUpdate(statement);
             c.commit();
@@ -1313,9 +1313,18 @@ public class DatabaseController
         updateFisherId(5, 16);*/
         /*insertJob(1, "fish4", 7, 4.2, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-15"), "this is a job",false);
         updateFisherId(6, 16);*/
-        insertJob(1, "fish5", 7, 4.2, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-15"), "this is a job",false);
-        updateFisherId(7, 16);
-        insertJob(1, "fish6", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
-        updateFisherId(8, 16);
+        //insertJob(1, "fish5", 7, 4.2, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-15"), "this is a job",false);
+        //updateFisherId(7, 16);
+        //insertJob(1, "fish6", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
+        //updateFisherId(8, 16);
+        //updateCompleted(8, false);
+        //insertJob(1, "fishies", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
+        //updateFisherId(10, 16);
+        //insertJob(1, "fishiessssss", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
+        //updateFisherId(11, 16);
+        /*insertJob(1, "fish?", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
+        insertJob(1, "fish!", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
+        updateFisherId(12, 16);
+        updateFisherId(13, 16);*/
     }
 }
