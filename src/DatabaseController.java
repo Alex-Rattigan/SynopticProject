@@ -1234,10 +1234,12 @@ public class DatabaseController
 
         updateFisherId(1, 1);*/
 
-        updateFisherId(1, 16);
+        //updateFisherId(1, 16);
 
-        insertJob(1, "fish", 7, 4.2, Date.valueOf("2021-06-05"), Date.valueOf("2021-06-10"), "this is a job",true);
+        //insertJob(1, "fish", 7, 4.2, Date.valueOf("2021-06-05"), Date.valueOf("2021-06-10"), "this is a job",true);
 
-        updateFisherId(2, 16);
+        insertJob(1, "fish", 7, 4.2, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-15"), "this is a job",false);
+
+        updateFisherId(3, 16);
     }
 }
