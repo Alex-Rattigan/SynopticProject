@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FishingInfoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="600.0">
         <items>
@@ -16,12 +19,252 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Button fx:id="infoButton" mnemonicParsing="false" onAction="#changeScene" text="General Information" />
-            <Button fx:id="jobListingButton" mnemonicParsing="false" onAction="#changeScene" text="Job Listings" />
-            <Button fx:id="viewJobsButton" mnemonicParsing="false" onAction="#changeScene" text="View Jobs" />
-            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#changeScene" text="Profile" />
-            <Button fx:id="helpButton" mnemonicParsing="false" onAction="#changeScene" text="Help" />
+            <Button mnemonicParsing="false" text="General Information" />
+          <Button mnemonicParsing="false" text="Job Listings" />
+            <Button mnemonicParsing="false" text="View Jobs" />
+            <Button mnemonicParsing="false" text="Profile" />
+            <Button mnemonicParsing="false" text="Help" />
         </items>
       </ToolBar>
+  <AnchorPane layoutY="42.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" prefWidth="600.0" vbarPolicy="ALWAYS">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="356.0" prefWidth="599.0">
+                     <children>
+                        <VBox maxHeight="-Infinity" prefHeight="1.0E13" prefWidth="100.0">
+                           <children>
+                              <Text layoutX="20.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduction">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MyFishingPal aims to uphold the local laws whilst trading occurs on this app. Please familiarise yourself with the following legislation if you have not already. Failure to comply with these regulations will lead to an investigation and potentially a permanent ban from the MyFishingPal." wrappingWidth="577.400390625" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Some basic examples of things you needs to know are as follows: " />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- You must not fish outside of the legal boundaries set for Peru" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- You must not fish for/advertise jobs for catching endangered fish, as the species must be protected by our fishers, not harmed " wrappingWidth="572.427734375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- You must know the limits of how many fish you are allowed to catch/advertise for, as we do not want to endanger animals  " wrappingWidth="575.26953125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- In order to fish you must have an up to date licence    " />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please read before proceeding." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The following is from the website: http://www.fao.org/fishery/legalframework/nalo_peru/en#tcNB016C  " />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="For information visit this site " />
+                              <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic Legislation">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The legal Framework for the regulation and promotion of aquaculture in Peru, including marine, brackish, and fresh-waters is essentially comprised by Law N°27460 (2001) (Ley N. 27460) and its Regulations D.S.N. 030-2001-PE." wrappingWidth="574.6796875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Ministry of Production (Ministerio de la Producción)  is the regulating body at the national level that promotes, regulates and controls the development of aquaculture in coordination with other State entities." wrappingWidth="577.318359375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Within the Ministry of Production, the National Aquaculture Commission (Comisión Nacional de Acuicultura) acts as the inter-sector coordinating agency for aquaculture that regulates the participation of the public and private sectors for the promotion of its sustained development. This Commission is structured as follows :" wrappingWidth="569.060546875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- The Deputy-Minister for Fisheries, acting as President." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- The General Director for Aquaculture, acting as Technical Secretary." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- A representative for the National Fund for the Development of Aquaculture –FONDEPES." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- A representative for the Peruvian Marine Institute – IMARPE." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- A representative for the Research Institute of the Peruvian Amazon – IAAP." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Three representatives from the private aquaculture sector." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- One representative from a public University and one from a private University, both conducting research on aquaculture and designated by the National Assembly of University Principals." wrappingWidth="573.568359375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Two representatives for the Social Organisations of Artisanal Fishermen, duly accredited by the General Directorate of Artisanal Fisheries; one for fresh-water and other for marine fisheries." wrappingWidth="576.478515625" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Three representatives for institutions that promote private investment and exports: one for the Association of Exporters (ADEX), one for the Commission for the Promotion of Peruvian Exports and Tourism (PROMPERU), and one for the Agency for the Promotion of Private Investment (PROINVERSION)." wrappingWidth="576.98046875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The General Aquaculture Directorate of the Ministry of Production acts as the technical secretariat of the National Aquaculture Commission. In its technical, regulatory and promotional character has the responsibility to propose, execute and supervise the objectives, policies and strategies related to aquaculture activities at the national level." wrappingWidth="574.564453125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Other important entities related to the promotion of aquaculture are the National Fund for the Development of Fisheries (FONDEPES).. Its objective is to promote, execute and provide technical and financial support to programs." wrappingWidth="576.3125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Commission of the Peruvian Promotion for Exports and Tourism (PROMPERU) . It promotes exports of aquaculture products and provides market information on international demand of cultured species, comparative advantages and business opportunities." wrappingWidth="577.80859375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peruvian Marine Institute (IMARPE) . Conducts scientific and technological marine and fresh water research in support of aquaculture development." wrappingWidth="578.1328125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peruvian Amazonian Research Institute (IIAP)  . Conducts similar research activities but focused on the Amazonian region." wrappingWidth="576.48046875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ministry of Defence. General Directorate of the Coastguard (DICAPI). The Peruvian maritime authority is the administrative entity responsible for the granting of marine leases for aquaculture." wrappingWidth="573.8671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peruvian Technological Fisheries Institute (ITP) http://www.itp.org.pe. Acts as the national fisheries health Service." wrappingWidth="574.751953125" />
+                              <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Legal Definition">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Regulations of the Law for the Promotion and Development of Aquaculture (Ley de Promoción y Desarrollo de la Acuicultura) defines aquaculture as: “the set of technological activities focused on the culture and rearing of aquatic species throughout their complete or partial life cycle which is carried out in a selected and controlled environment, either in natural or artificial bodies of water in marine, fresh or brackish-waters. It includes stocking or restocking activities as well as research activities and the primary processing of cultured products”." wrappingWidth="576.234375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="It is worthwhile mentioning that these Regulations classify aquaculture based on the following criteria:" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="a) According to the environment:" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Marine aquaculture: is conducted in marine environments or utilizing sea-water on facilities located along the coastline." wrappingWidth="575.439453125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inland aquaculture: is conducted in inland environments or utilizing fresh-water either from lake (lentic) or river (lotic) sources." wrappingWidth="576.337890625" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Brackish water aquaculture: is conducted in mixo-haline environments." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="b) According to managerial practices: " />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Extensive aquaculture: it includes the stocking or restocking of aquatic species in natural or artificial environments, whose feeding is dependent on the natural aquatic productivity." wrappingWidth="573.564453125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Semi-intensive aquaculture: it utilises natural and supplementary feeding." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Intensive aquaculture: it employs advanced technologies and a higher level of managerial and control practices." wrappingWidth="577.01171875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="c) According to yield levels:" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Commercial aquaculture: is aimed at the production of aquatic species for the generation of economic returns. It may be subdivided into:" wrappingWidth="575.123046875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   - Large scale (production over 50 tonnes/year)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   - Small scale (production between 2 and 50 tonnes/year)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Subsistence aquaculture: volume of production is under 2 tonnes/year)." />
+                              <Text layoutX="20.0" layoutY="3467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guidelines And Codes Of Conduct ">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Regulations of the Law for the Promotion and Development of Aquaculture include a series of provisions related to the formulation of a National Plan for Aquaculture Development. This Plan has to be approved by the Ministry of Production." wrappingWidth="575.794921875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Peruvian Government has adopted agrarian and rural development policies within the National Agreement  which has as its main objective the promotion and development of aquaculture." wrappingWidth="578.169921875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Ministerial Resolution N° 646-97-PE (Resolución Ministerial N. 646-97-PE) approved the “Guidelines on Fisheries Policy for the sustained development of fisheries and aquaculture”. These Guidelines include, amongst their main objectives, the development and implementation of systems and plans of Fisheries and Aquaculture Ordainment to warrant the responsible management of marine and inland hydro-biological resources; the promotion of the development of subsistence aquaculture, mainly in the Andean zones of greatest poverty and in the frontier lands; as well as the control and monitoring of the correct application of fisheries and aquaculture laws and regulations governing such activities." wrappingWidth="579.583984375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="It should also be pointed out that within the framework established by the Plan of Action for the Protection of the Marine Environment and Coastal Areas of the South-eastern Pacific guidelines (Plan de Acción para la Protección del Medio Marino y Áreas Costeras del Pacífico Sudeste)  have been formulated for the regional development of environmentally sustainable marine aquacultureCopy available at: http://cpps-int.org/spanish/planaccion/guiareg.pdf." wrappingWidth="578.5234375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The main guidelines include: the requirement to create development and managerial plans for coastal aquaculture, integrate plans for coastal management, evaluation of Environmental Impact Assessment Studies (EIA) and the establishment of quality control measures for aquaculture products." wrappingWidth="576.775390625" />
+                              <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="International Arrangements ">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peru is a member of the following International and Regional Organisations:" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- World Commerce Organisation (WCO)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- World Health Organisation (WHO)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- World Animal Health Organisaiton (WAHO)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Zone of Free Trade of the Americas (ALCA)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Asia-Pacific Economic Forum (APEC)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Latin American Integration Association (ALADI)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Andean Country Community (CAN)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Permanent Commission for the South Pacific (CPPS)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Latin American Fisheries Development Organisation (OLDEPESCA)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peru participates in the following International Agreements:" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Convention on the International Trade of Endangered Wild Plant and Animal Species (CITES)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Biological Diversity Convention (CBD)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Cartagena Protocol on Biotechnology of the Biological Diversity Convention (CBD)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peru also participates in the following regional and bilateral instruments:" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Agreement for the Protection of the Marine Environment and the Coastal Zone of the South-eastern Pacific (Colombia, Chile, Ecuador, Panama, and Peru) (12/11/81)." wrappingWidth="577.455078125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Protocol for the Conservation and Administration of Marine and Coastal Protected Areas of the South-eastern Pacific (21/09/89)." wrappingWidth="576.8046875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Framework Agreement of fisheries and aquaculture cooperation between the Peruvian Republic and the Ecuadorian republic (18/01/01)." wrappingWidth="577.765625" />
+                              <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Authorization System">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Regulations of the Law for the Promotion and Development of Aquaculture (Ley de Promoción y Desarrollo de la Acuicultura) establishes that concessions and authorizations are rights granted by the Ministry of Production for the development of aquaculture." wrappingWidth="579.021484375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Concessions or leases are granted for the development of aquaculture activities in public property areas, seabeds or marine or inland waters. Authorizations are granted for the development of aquaculture activities carried out on private property, as well as for aquaculture research and stocking/restocking." wrappingWidth="577.7734375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Concessions:" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The General Directorate of the Coast-guard of the National Maritime Authority is empowered to assign sea, river and navigational lakes to the Ministry of Production for the granting of concessions for aquaculture. The Ministry of Production is responsible for the granting of concessions of the thus designated aquaculture areas." wrappingWidth="576.42578125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Based on the designated areas enlisted in the National Aquaculture Registry (Catastro Acuícola Nacional) Copy available at: http://www.produce.gob.pe/mipe/catastro/map_peru.php, the Ministry of Production may convoke by Ministerial Resolution to public contesting or bidding for the granting of such areas to conduct aquaculture activities." wrappingWidth="575.419921875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The terms of the concessions granted by the Ministry of Production must be established in the Agreement on Conservation, Investment and Aquaculture Production signed between the applicant and the Ministry of Production or the Regional Directorate of Production. These Agreements must include, among other rulings, the general outline of the activities schedule to be executed, the program for the management of the environment, the production goals, the corresponding investment and the causes of expiration of the concession. Concessions may be granted for up to 30 years after which period, they may be extended ." wrappingWidth="574.66015625" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Authorizations: " />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="As per the rulings of the Law for the Promotion and Development and Aquaculture and its modifications under Law N° 28326 (Ley N. 28326) , the requirements for the granting of authorizations for the development of aquaculture activities and of research related activities, stocking or re-stocking or water impoundments include:" wrappingWidth="576.509765625" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Official identification document of the applicant (person or company)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Information on the activity to be executed." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Information on the location of the site where the activity is to be executed." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Proof of property and/or possession of the site where the activity is to be executed." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Special Dispositions:" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Holders of concessions and authorizations granted for the execution of aquaculture become the proprietors of the hydro-biological species to be cultured. In turn, they are subjected to the payment of aquaculture rights before the Ministry of Production and to a concession fee for the right of the use of the aquatic area before the General Directorate of the Coast-guard.However, payment of aquaculture rights before the Ministry of Production has been suspended temporarily until December 31st 2010." wrappingWidth="574.04296875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-Specific legal dispositions apply for aquaculture activities when conducted in Natural Protected Areas and in the National Reserve of Paracas." wrappingWidth="578.078125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- The General Directorate of Follow-up, Control and Monitoring of the Ministry of Production is responsible for following up and controlling both authorized and concessions areas." wrappingWidth="549.59375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- The rights of a concession or an authorization cease when the term expires, when the holder resigns, or when both parties thus agree." wrappingWidth="579.298828125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Holders of concessions and authorizations granted for the execution of aquaculture are subject to fines and sanctions established in the General Law of Fisheries (Ley General de Pesca), its Regulations (Reglamento) and their related dispositions Supreme Decree N°015-2007-PRODUCE (1/08/07) / Supreme Decree N° 016-2007-PRODUCE (1/08/07)http://www.elperuano.com.pe/." wrappingWidth="577.20703125" />
+                              <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Access To Land And Water">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Areas for the development of aquaculture activities are designated by the Ministry of Production and empowered by the General Directorate of the Coastguard of the Maritime Peruvian Authority. Concessions for their use are granted by the General Directorate of Aquaculture of the Ministry of Production y previously designated and identified areas " wrappingWidth="576.908203125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Ministry of Production has created a National Aquaculture Registry which includes all areas designated for the development of aquaculture. However, there are also applicants who request concessions for areas beyond those included in the Registry." wrappingWidth="575.431640625" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aquaculture-designated sites should not interfere with other traditional activities carried out in the area. Through Resolution R.P. NN° 012-99-CONAM-PCD, the Peruvian Government approved the guidelines for the formulation and execution of the national programme and regional plans for coastal zone management. However, such Plans have not yet been formulated." wrappingWidth="576.626953125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Ministry of Production must coordinate and determine jointly with the Department of Water Resources, within the Ministry of Agriculture the areas which are considered to have the required availability of water resources for the development of inland aquaculture activities. Applicants must request the authorization of the right of use of water before the Department of Water Resources and pay a previously established fee. The Ministry of Agriculture will determine the corresponding fee based on the volume of water actually consumed." wrappingWidth="576.498046875" />
+                              <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EIA">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="General Environmental Law, Law N. 28611 (Ley N. 28611) establishes that all human activities that imply the construction, works, services and other activities that may potentially affect the environment are subject to the National System for Environmental Impact Assessment –SEIA. As such, the Law of Promotion and Development of Aquaculture states that for engaging in aquaculture activities, either an Environmental Impact Statement (DIA), an Environmental Impact Study (EIA), or the Adaptation Program for Environmental Impact (PAMA), as appropriate, shall be filed." wrappingWidth="576.88671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Regulations of the Law of Promotion and Development of Aquaculture (Ley de Promoción y Desarrollo de la Acuicultura) indicate that an Environmental Certificate of the Environmental Impact Study granted by the General Directorate of Environmental Fisheries Issues of the Ministry of Production will be required for the implementation of larger scale aquaculture practices, as well as for all those activities that may consider the introduction or movement of species." wrappingWidth="575.8046875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Document on Administrative Procedures of the Ministry of Production establishes in its Procedure 53, the requirements and documents that shall be filed by applicants of the above mentioned Environmental Certificate." wrappingWidth="577.330078125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="For the development of smaller scale aquaculture activities, including hatcheries and ornamental fish production centres, as well as for special concessions and management areas, users shall obtain the Environmental Certificate of the Environmental Impact Statement, also granted by the General Directorate of Environmental Fisheries Issues of the Ministry of Production (Texto Único de Procedimientos Administrativos del Ministerio de la Producción) Copy available at: http://www.produce.gob.pe/mipe/tupa/tupa_produce/tupa%20produce.xls . Requirements and documents to be presented are found in Procedure 53 of the Document on Administrative Procedures mentioned above." wrappingWidth="575.35546875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The General Directorate of Environmental Fisheries Issues of the Ministry of Production has issued a Guide for the preparation of Environmental Impact Studies (EIA) for aquaculture projects." wrappingWidth="577.25" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Such Study (EIA) should comprise detailed information on the environmental viability of the project and should include:" wrappingWidth="576.140625" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Executive summary." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Chapter I: Presentation, Introduction and Background." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Chapter III: Study of the baseline of the area where aquaculture activities are to be undertaken." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Chapter IV: Identification and Evaluation of Impacts of the Project." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" - Chapter V: Environmental Management Measures (PMA)." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" - Chapter VI: Environmental Follow-up, Control and Monitoring Programme." />
+                              <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Water And Wastewater">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The General Directorate of Environmental Health (DIGESA) of the Ministry of Health is the sanitary authority responsible for establishing the allowable concentration limits of toxic substances of discharge or wastewaters. Also, the General Law of Water (Decree N° 17752) (Ley General de Aguas, Decreto Ley N. 17752) states that these limits should be revised periodically." wrappingWidth="577.6875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Users that must discharge residual waters and re-use in the development of aquaculture activities shall have the corresponding sanitary authorization granted by DIGESA" wrappingWidth="576.76953125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fish Movement ">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Regulations of the Law of Promotion and Development of Aquaculture establishes that the importation of species in their various biological stages for aquaculture purposes require a Certificate issued by the General Directorate of Aquaculture of the Ministry of Production." wrappingWidth="576.75" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In order to obtain such Certificate, the applicant should previously procure the health certificate issued by the originating country, as well as the national health certificate in the case of species subject to a quarantine period, which is issued by the sanitary authority." wrappingWidth="576.6328125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="When the importation implies the introduction of a new species to a particular environment, an Environmental Impact Assessment Study (EIA) will also be required by the Ministry of Production." wrappingWidth="576.142578125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="For the exportation of aquaculture products, the Peruvian Commission for the Exportation and Tourism (PROMPERU), in coordination with the Ministry of Production, is responsible for the proposal of measures in support of the exportation of such products. The activities to be carried out by such governmental entity will also be coordinated with the Permanent Special Commission in charge of positioning and strengthening of Peruvian fishery products in the export marketsCopy available at: http://www.produce.gob.pe/mipe/normas/ds006-2001-pe.doc." wrappingWidth="577.66796875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Users that require to export live species produced through aquaculture in their various stages, shall request the corresponding authorization before the General Directorate of Aquaculture, complying with the established requirement under Procedure N° 51 of the Document of Administrative Procedures of the Production Ministry, as approved by Superior Decree N° 035-2003-PRODUCE Copy available at: http://www.produce.gob.pe/mipe/tupa/tupa_produce/tupa%20produce.xls." wrappingWidth="577.26953125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stocking or restocking, including the movement of species between different ecosystems, require a Previous Authorization by the Ministry of Production." wrappingWidth="576.724609375" />
+                              <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disease Control">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="According to the dispositions of the Law of Promotion and Development of Aquaculture and of the National Fish Health Service (SANIPES) (Ley de Promoción y Desarrollo de la Acuicultura) , the Ministry of Production is the regulatory body of the National Fish Health Service, which regulates all phases of fisheries and aquaculture activities." wrappingWidth="575.298828125" />
+                              <Text layoutX="20.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The governing authority of the National Fish Health Service is the Peruvian Technological Fisheries Institute (ITP - Instituto Tecnológico Pesquero del Perú) , which also has the responsibility for the formulation, approval and updating of the sanitary and quality norms (health requirements), and of granting of the Official Sanitary and Quality Certificate of all fishery products. The ITP is also in charge of inspection, survey and sanitary control as well as of the marketing conditions of fishery and aquaculture products. The Supreme Decree N° 040-2001-PE, Sanitary Norm for Fishery and Aquaculture Activities (Actividades Pesqueras y Acuícolas) Copy available at: http://www.produce.gob.pe/mipe/normas/ds040-2001-pe.doc, dictates several dispositions for the development of aquaculture. As such, aquaculture units and centres must be located in pollution-free zones and these centres must undertake a Sanitary Program which should include the following:" wrappingWidth="575.298828125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" - Cleanliness and disinfection." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" - Control of residues." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" - Control of pests." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" - Control of the sanitary quality of water." />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Regulations of the Aquaculture Promotion and Development Law ( Reglamento de la Ley de Promoción y Desarrollo de la Acuicultura ) establish that a concession or lease or an authorization holder shall inform the Ministry of Production about any disease appearance that may cause harm either to the species under culture or to wild resources, as well as to the environment, and will allow authorities to undertake the corresponding sanitary inspection." wrappingWidth="577.111328125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Excepting a few general sanitary dispositions, there are no specific dispositions regarding disease control for aquaculture practices." wrappingWidth="575.9296875" />
+                              <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drugs">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="20.0" layoutY="933.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Regulations of the Agrarian Sanitary Law (Reglamento de la Ley de Sanidad Agraria) establishes that pharmaceutical products, biological products for veterinary and feeding use for animals; either national or imported, will be duly registered at the National Agrarian Sanitary Service (SENASA - Servicio Nacional de Sanidad Agraria)   which belongs to the Ministry of Agriculture and is constituted as the National Authority for Agrarian Health." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="903.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The sanitary norm for fisheries and aquaculture activities  states that aquaculture centres must have and apply a sanitary quality product assurance programme aimed at preventing and controlling the presence of chemical pollutants, pesticides and the adequate supply of therapeutic drugs and feed additives." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There is no specific reference on the restrictions on the use of chemical substances or drugs or medicines on the development of aquaculture." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Feed">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="20.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no technical norms related to feeding of hydro biological resources in aquaculture. As was mentioned above, the Regulations of the Agrarian Sanitary Law (Reglamento de la Ley de Sanidad Agraria) establish that all animal feeds, either national or imported, must be registered at the SENASA." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food Safety">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="20.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Regulations of Sanitary Food and Beverages Inspection and Control (Reglamento de Vigilancia y Control Sanitario de los Alimentos y Bebidas) establish the sanitary conditions, requisites and procedures to which producers and processors of food and beverages must abide." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Such Regulations also dictate that the Technological Fisheries Institute (ITP) is responsible for the sanitary inspection of the capture, fishery or harvest, transport and processing of aquatic products, as well as of the sanitary conditions of the landing sites." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The sanitary norm dictating the application of the HACCP Plan in the manufacturing of food and beverages was approved through the Ministerial Resolution N. 449-2006-MINSA ( Resolución Ministerial N. 449-2006-MINSA). The application of this norm is compulsory for all those persons or companies that participate in any process of manufacture, preparation or industrialization of feeds and beverages intended either for the national or international markets, including those enterprises involved in fisheries or aquaculture." wrappingWidth="574.470703125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Miscellaneous ">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Law of Promotion and Development of Aquaculture (Ley de Promoción y Desarrollo de la Acuicultura) envisages several measures for fostering the involvement of persons and enterprises, both national and foreign, in aquaculture. Various tax, labour and judicial stability incentives have been established in order to promote aquaculture." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Also, a Fund for Aquaculture Research (FIA), dependent upon the National Fund for Fishery Development (FONDEPES) has been created, having as its main objective the financing of scientific research activities and transference of technology, as well as training and diffusion of aquaculture information." wrappingWidth="574.470703125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Legislation">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="20.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ley N. 28611, “Ley General del Ambiente”. http://www.conam.org.pe" wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decreto Ley Nº 17.752 - Ley General de Aguas (LEX-FAOC003022)." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decreto Ley Nº 25977, ‘Ley General de Pesca y Enmiendas”. (LEX-FAOC001377)." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decreto Supremo N. 016-2007-PRODUCE, “Reglamento de Inspecciones y Sanciones Pesqueras y Acuícolas” (RISPAC). http://www.elperuano.com.pe/" wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decreto Supremo N. 030-2001-PE, “Reglamento de la Ley de Promoción y Desarrollo de la Acuicultura”. (LEX-FAOC031753)." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decreto Supremo N. 035-2003-PRODUCE, “Texto Único de Procedimientos Administrativos del Ministerio de la Producción”. http://www.produce.gob.pe" wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decreto Supremo N. 040-2001-PE, “Normas Sanitarias para las Actividades Pesqueras y Acuícolas”. (LEX-FAOC031802)." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decreto Supremo Nº 007/98/SA - Reglamento sobre Vigilancia y Control Sanitario de Alimentos y Bebidas (LEX-FAOC014689)." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decreto Supremo Nº 012/01/PE, “Reglamento de la Ley General de Pesca y Normas Conexas”. (LEX-FAOC030956)." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decreto Supremo Nº 048/01/AG - Reglamento de la Ley Marco de Sanidad Agraria (LEX- FAOC026855)." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ley N. 27640 “Ley de Promoción y Desarrollo de la Acuicultura”, modificada mediante Ley N. 27592 y N. 28326. (LEX-FAOC026852)." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ley N. 28559, “Ley del Servicio Nacional de Sanidad Pesquera”-SANIPES.http://www.congreso.gob.pe/" wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resolución Nº 449/06/MINSA - Norma Sanitaria para la Aplicación del Sistema HACCP en la fabricación de alimentos y bebidas. (LEX-FAOC064139)." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resolución Nº 646/97/PE - Lineamientos de política pesquera para el desarrollo sostenido de la pesquería y acuicultura (LEX-FAOC011251)." wrappingWidth="574.470703125" />
+                              <Text layoutX="20.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resolución R.P.N.012-99-CONAM-PCD, “Lineamientos para la Formulación y Ejecución del Programa Nacional y los Planes Regionales de Manejo Integrado de Zonas Costeras”. http://www.conam.org.pe/" wrappingWidth="574.470703125" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
    </children>
 </Pane>
