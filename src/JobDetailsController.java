@@ -35,6 +35,12 @@ public class JobDetailsController
         dateText.setText(String.valueOf(currentJob.getDateDue()));
         managedByText.setText(currentJob.getIntermediaryName());
         detailsText.setText(currentJob.getDescription());
+
+        if(currentJob.isCompleted())
+        {
+            abandonJobButton.setDisable(true);
+            jobCompleteButton.setDisable(true);
+        }
     }
 
     public void markJobComplete()
