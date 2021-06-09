@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IntermediaryViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IntermediaryViewController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="600.0">
          <items>
@@ -46,13 +46,13 @@
                                     <Insets left="5.0" top="5.0" />
                                  </VBox.margin>
                               </Text>
-                              <TableView prefHeight="247.0" prefWidth="591.0">
+                              <TableView fx:id="advertisedJobsTable" prefHeight="247.0" prefWidth="591.0">
                                  <columns>
-                                    <TableColumn prefWidth="119.0" text="Job ID" />
-                                    <TableColumn prefWidth="121.0" text="Fish Type" />
-                                    <TableColumn prefWidth="118.0" text="Amount (Kg)" />
-                                    <TableColumn prefWidth="113.0" text="Date Due" />
-                                    <TableColumn minWidth="3.99993896484375" prefWidth="118.0" text="Pay (Sol/Kg)" />
+                                    <TableColumn fx:id="jobIdAdTbl" prefWidth="119.0" text="Job ID" />
+                                    <TableColumn fx:id="fishTypeAdTbl" prefWidth="121.0" text="Fish Type" />
+                                    <TableColumn fx:id="amountAdTbl" prefWidth="118.0" text="Amount (Kg)" />
+                                    <TableColumn fx:id="dateAdTbl" prefWidth="113.0" text="Date Due" />
+                                    <TableColumn fx:id="payAdTbl" minWidth="3.99993896484375" prefWidth="118.0" text="Pay (Sol/Kg)" />
                                  </columns>
                                  <VBox.margin>
                                     <Insets left="5.0" right="5.0" top="5.0" />
@@ -62,25 +62,23 @@
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
                               </Text>
                               <HBox prefHeight="29.0" prefWidth="600.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="View Details">
+                                    <Button fx:id="viewDetailsAdButton" disable="true" mnemonicParsing="false" onAction="#viewAdJobDetails" text="View Details">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="Modify Details">
+                                    <Button fx:id="modifyDetailsButton" disable="true" mnemonicParsing="false" onAction="#modifyJobDetails" text="Modify Details">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="Mark Job As Complete">
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" text="Remove Job">
+                                    <Button fx:id="removeButton" disable="true" mnemonicParsing="false" onAction="#removeJob" text="Remove Job">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
@@ -107,14 +105,14 @@
                                     <Insets left="5.0" top="5.0" />
                                  </VBox.margin>
                               </Text>
-                              <TableView prefHeight="247.0" prefWidth="591.0">
+                              <TableView fx:id="acceptedJobsTable" prefHeight="247.0" prefWidth="591.0">
                                  <columns>
-                                    <TableColumn prefWidth="65.59997636079788" text="Job ID" />
-                                    <TableColumn prefWidth="124.0" text="Fish Type" />
-                                    <TableColumn prefWidth="100.80000305175781" text="Amount (Kg)" />
-                                    <TableColumn prefWidth="113.60003662109375" text="Date Due" />
-                                    <TableColumn minWidth="3.99993896484375" prefWidth="88.800048828125" text="Pay (Sol/Kg)" />
-                                    <TableColumn minWidth="3.99993896484375" prefWidth="95.1999389648438" text="Accepted By" />
+                                    <TableColumn fx:id="jobIdAcceptedTbl" prefWidth="65.59997636079788" text="Job ID" />
+                                    <TableColumn fx:id="fishTypeAcceptedTbl" prefWidth="124.0" text="Fish Type" />
+                                    <TableColumn fx:id="amountAcceptedTbl" prefWidth="100.80000305175781" text="Amount (Kg)" />
+                                    <TableColumn fx:id="dateAcceptedTbl" prefWidth="113.60003662109375" text="Date Due" />
+                                    <TableColumn fx:id="payAcceptedTbl" minWidth="3.99993896484375" prefWidth="88.800048828125" text="Pay (Sol/Kg)" />
+                                    <TableColumn fx:id="fisherAcceptedTbl" minWidth="3.99993896484375" prefWidth="95.1999389648438" text="Accepted By" />
                                  </columns>
                                  <VBox.margin>
                                     <Insets left="5.0" right="5.0" top="5.0" />
@@ -124,25 +122,18 @@
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
                               </Text>
                               <HBox prefHeight="29.0" prefWidth="600.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="View Details">
+                                    <Button fx:id="viewDetailsAccButton" disable="true" mnemonicParsing="false" onAction="#viewJobDetails" text="View Details">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="Modify Details">
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" text="Mark Job As Complete">
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" text="Remove Job">
+                                    <Button fx:id="completeButton" disable="true" mnemonicParsing="false" onAction="#markJobComplete" text="Mark Job As Complete">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
@@ -169,14 +160,14 @@
                                     <Insets left="5.0" top="5.0" />
                                  </VBox.margin>
                               </Text>
-                              <TableView prefHeight="247.0" prefWidth="591.0">
+                              <TableView fx:id="pastJobsTable" prefHeight="247.0" prefWidth="591.0">
                                  <columns>
-                                    <TableColumn prefWidth="65.59997636079788" text="Job ID" />
-                                    <TableColumn prefWidth="124.0" text="Fish Type" />
-                                    <TableColumn prefWidth="100.80000305175781" text="Amount (Kg)" />
-                                    <TableColumn prefWidth="113.60003662109375" text="Date Due" />
-                                    <TableColumn minWidth="3.99993896484375" prefWidth="88.800048828125" text="Pay (Sol/Kg)" />
-                                    <TableColumn minWidth="3.99993896484375" prefWidth="95.1999389648438" text="Completed By" />
+                                    <TableColumn fx:id="jobIdPastTbl" prefWidth="65.59997636079788" text="Job ID" />
+                                    <TableColumn fx:id="fishTypePastTbl" prefWidth="124.0" text="Fish Type" />
+                                    <TableColumn fx:id="amountPastTbl" prefWidth="100.80000305175781" text="Amount (Kg)" />
+                                    <TableColumn fx:id="datePastTbl" prefWidth="113.60003662109375" text="Date Due" />
+                                    <TableColumn fx:id="payPastTbl" minWidth="3.99993896484375" prefWidth="88.800048828125" text="Pay (Sol/Kg)" />
+                                    <TableColumn fx:id="fisherPastTbl" minWidth="3.99993896484375" prefWidth="95.1999389648438" text="Completed By" />
                                  </columns>
                                  <VBox.margin>
                                     <Insets left="5.0" right="5.0" top="5.0" />
@@ -186,10 +177,13 @@
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
                               </Text>
                               <HBox prefHeight="29.0" prefWidth="600.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="View Details">
+                                    <Button fx:id="viewDetailsPastButton" disable="true" mnemonicParsing="false" onAction="#viewJobDetails" text="View Details">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>

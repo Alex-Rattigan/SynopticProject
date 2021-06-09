@@ -10,6 +10,7 @@ public class Job
     private Date dateDue;
     private String description;
     private boolean isCompleted;
+    private int intermediaryId;
     private String intermediaryName;
     private String fisherName;
 
@@ -36,7 +37,7 @@ public class Job
         this.isCompleted = isCompleted;
     }
 
-    Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId, int fisherId)
+    Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId, Integer fisherId)
     {
         this.id = id;
         this.fishType = fishType;
@@ -48,6 +49,7 @@ public class Job
         this.isCompleted = isCompleted;
         this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
         this.fisherName = DatabaseController.selectFisherRecord(fisherId).getFname() + " " + DatabaseController.selectIntermediaryRecord(fisherId).getSname();
+
     }
 
     Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId)
@@ -60,6 +62,7 @@ public class Job
         this.dateDue = dateDue;
         this.description = description;
         this.isCompleted = isCompleted;
+        this.intermediaryId = intermediaryId;
         this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
     }
 
@@ -138,11 +141,21 @@ public class Job
         return intermediaryName;
     }
 
+    public int getIntermediaryId()
+    {
+        return intermediaryId;
+    }
+
     public void setFisherName(String fisherName){this.fisherName = fisherName;}
+
+    public String getFisherName()
+    {
+        return fisherName;
+    }
 
     public String toString()
     {
-        return "FISH TYPE = " + fishType + ", AMOUNT IN KG = " + amountKg + ", PAY PER KG = " + payPerKg +
+        return "ID = " + id + ", FISH TYPE = " + fishType + ", AMOUNT IN KG = " + amountKg + ", PAY PER KG = " + payPerKg +
         ", DATE SET = " + dateCreated + ", DATE DUE = " + dateDue + ", COMPLETED? = " + false;
     }
 

@@ -1193,7 +1193,7 @@ public class DatabaseController
             {
                 int job_id = result.getInt("job_id");
                 int i_id = result.getInt("intermediary_id");
-                int f_id = result.getInt("fisher_id");
+                Integer f_id = result.getInt("fisher_id");
 
                 job_ids.add(job_id);
                 i_ids.add(i_id);
@@ -1222,7 +1222,9 @@ public class DatabaseController
                             + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
                             + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
 
-                    jobs.add(new Job(job_ids.get(i), fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed, i_ids.get(i), f_ids.get(i)));
+
+                    jobs.add(new Job(job_ids.get(i), fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed, i_ids.get(i)));
+
                 }
 
                 result2.close();
@@ -1233,6 +1235,39 @@ public class DatabaseController
 
             System.out.println("Select for JOBS BY INTERMEDIARY successful.");
             return jobs;
+
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("ERROR: Select for ALL JOBS BY INTERMEDIARY could not be completed.");
+        }
+        return null;
+    }
+
+    public static Fisher selectJobReturnFisher(int job_id)
+    {
+        Statement select = null;
+
+        try {
+            connect();
+
+            select = c.createStatement();
+
+            ResultSet result = select.executeQuery("SELECT * FROM Fishers_Inters_Jobs WHERE job_id = " + job_id + ";");
+
+            Fisher f = null;
+
+            while(result.next())
+            {
+                int fisher_id = result.getInt("fisher_id");
+                f = selectFisherRecord(fisher_id);
+            }
+
+            result.close();
+            select.close();
+            c.close();
+
+            System.out.println("Select for JOBS BY INTERMEDIARY successful.");
+            return f;
 
         } catch(Exception e) {
             e.printStackTrace();
