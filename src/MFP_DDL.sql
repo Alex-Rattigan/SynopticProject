@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS Fishers_Inters_Jobs
 ALTER TABLE Fishers_Inters_Jobs ADD CONSTRAINT pk_FishersIntersJobsID PRIMARY KEY (job_id, intermediary_id);
 
 -- Foreign keys
-ALTER TABLE Fishers_Inters_Jobs ADD CONSTRAINT fk_JobID FOREIGN KEY (job_id) REFERENCES Jobs(job_id);
+ALTER TABLE Fishers_Inters_Jobs ADD CONSTRAINT fk_JobID FOREIGN KEY (job_id) REFERENCES Jobs(job_id) ON DELETE CASCADE;
 ALTER TABLE Fishers_Inters_Jobs ADD CONSTRAINT fk_InterID FOREIGN KEY (intermediary_id) REFERENCES Intermediaries(intermediary_id);
 ALTER TABLE Fishers_Inters_Jobs ADD CONSTRAINT fk_FisherID FOREIGN KEY (fisher_id) REFERENCES Fishers(fisher_id);
 

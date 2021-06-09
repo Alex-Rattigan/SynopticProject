@@ -6,6 +6,7 @@ public class Fisher {
     private String username;
     private String fName;
     private String sName;
+    private String fullName;
     private String password;
     private String mobileNo;
 
@@ -17,6 +18,7 @@ public class Fisher {
         this.sName = sname;
         this.password = password;
         this.mobileNo = mobileNo;
+        this.fullName = fname + " " + sname;
     }
 
     public Fisher(int fisherId, String username, String password, String fname, String sname,  String mobileNo){
@@ -26,6 +28,7 @@ public class Fisher {
         this.sName = sname;
         this.password = password;
         this.mobileNo = mobileNo;
+        this.fullName = fname + " " + sname;
     }
 
     public int getID(){
@@ -60,6 +63,10 @@ public class Fisher {
     }
     public void setMobileNo(String number){
         mobileNo = number;
+    }
+    public String getFullName()
+    {
+        return fullName;
     }
 
     public static void main(String[] args) {

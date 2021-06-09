@@ -24,7 +24,7 @@ public class JobDetailsController
 
     public static void setJobDetails(Job job)
     {
-       currentJob = job;
+       JobDetailsController.currentJob = job;
     }
 
     public void initialize()

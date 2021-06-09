@@ -1,4 +1,7 @@
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+
+// References: http://tutorials.jenkov.com/java-date-time/parsing-formatting-dates.html
 
 public class Job
 {
@@ -8,8 +11,10 @@ public class Job
     private double payPerKg;
     private Date dateCreated;
     private Date dateDue;
+    private String formattedDueDate;
     private String description;
     private boolean isCompleted;
+    private int intermediaryId;
     private String intermediaryName;
     private String fisherName;
 
@@ -22,6 +27,9 @@ public class Job
         this.dateDue = dateDue;
         this.description = description;
         this.isCompleted = isCompleted;
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        this.formattedDueDate = format.format(dateDue);
     }
 
     Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted)
@@ -34,9 +42,12 @@ public class Job
         this.dateDue = dateDue;
         this.description = description;
         this.isCompleted = isCompleted;
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        this.formattedDueDate = format.format(dateDue);
     }
 
-    Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId, int fisherId)
+    Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId, Integer fisherId)
     {
         this.id = id;
         this.fishType = fishType;
@@ -46,8 +57,13 @@ public class Job
         this.dateDue = dateDue;
         this.description = description;
         this.isCompleted = isCompleted;
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        this.formattedDueDate = format.format(dateDue);
+
         this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
         this.fisherName = DatabaseController.selectFisherRecord(fisherId).getFname() + " " + DatabaseController.selectIntermediaryRecord(fisherId).getSname();
+
     }
 
     Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId)
@@ -60,6 +76,11 @@ public class Job
         this.dateDue = dateDue;
         this.description = description;
         this.isCompleted = isCompleted;
+        this.intermediaryId = intermediaryId;
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        this.formattedDueDate = format.format(dateDue);
+
         this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
     }
 
@@ -138,11 +159,26 @@ public class Job
         return intermediaryName;
     }
 
+    public int getIntermediaryId()
+    {
+        return intermediaryId;
+    }
+
     public void setFisherName(String fisherName){this.fisherName = fisherName;}
+
+    public String getFisherName()
+    {
+        return fisherName;
+    }
+
+    public String getFormattedDueDate()
+    {
+        return formattedDueDate;
+    }
 
     public String toString()
     {
-        return "FISH TYPE = " + fishType + ", AMOUNT IN KG = " + amountKg + ", PAY PER KG = " + payPerKg +
+        return "ID = " + id + ", FISH TYPE = " + fishType + ", AMOUNT IN KG = " + amountKg + ", PAY PER KG = " + payPerKg +
         ", DATE SET = " + dateCreated + ", DATE DUE = " + dateDue + ", COMPLETED? = " + false;
     }
 
