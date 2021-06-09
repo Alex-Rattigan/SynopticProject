@@ -891,7 +891,7 @@ public class DatabaseController
 
             update = c.createStatement();
 
-            String statement = "UPDATE Jobs SET date_due = '" + new_description + "' WHERE job_id = " + job_id + ";";
+            String statement = "UPDATE Jobs SET description = '" + new_description + "' WHERE job_id = " + job_id + ";";
 
             update.executeUpdate(statement);
             c.commit();
@@ -981,7 +981,7 @@ public class DatabaseController
 
             delete = c.createStatement();
 
-            String statement = "DELETE ON CASCADE FROM Jobs WHERE job_id = " + job_id + ";";
+            String statement = "DELETE FROM Jobs WHERE job_id = " + job_id + ";";
 
             delete.executeUpdate(statement);
             c.commit();
@@ -1361,5 +1361,9 @@ public class DatabaseController
         insertJob(1, "fish!", 3, 9.1, Date.valueOf("2021-06-08"), Date.valueOf("2021-06-10"), "this is a job",false);
         updateFisherId(12, 16);
         updateFisherId(13, 16);*/
+        /*insertJob(1, "magikarp", 7, 4, Date.valueOf("2021-06-09"), Date.valueOf("2021-06-15"), "gotta catch em all",false);
+        insertJob(1, "koi", 3, 6, Date.valueOf("2021-06-09"), Date.valueOf("2021-06-16"), "this is a job",false);*/
+        /*insertJob(1, "barreleye", 1, 5, Date.valueOf("2021-06-09"), Date.valueOf("2021-06-16"), "this is a job",false);
+        insertJob(1, "koi", 8, 13, Date.valueOf("2021-06-09"), Date.valueOf("2021-06-16"), "this is a job",false);*/
     }
 }

@@ -29,7 +29,7 @@ public class IntermediaryViewController
     @FXML
     private TableColumn<Job, Integer> amountAdTbl;
     @FXML
-    private TableColumn<Job, Date> dateAdTbl;
+    private TableColumn<Job, String> dateAdTbl;
     @FXML
     private TableColumn<Job, Double> payAdTbl;
 
@@ -42,7 +42,7 @@ public class IntermediaryViewController
     @FXML
     private TableColumn<Job, Integer> amountAcceptedTbl;
     @FXML
-    private TableColumn<Job, Date> dateAcceptedTbl;
+    private TableColumn<Job, String> dateAcceptedTbl;
     @FXML
     private TableColumn<Job, Double> payAcceptedTbl;
     @FXML
@@ -57,7 +57,7 @@ public class IntermediaryViewController
     @FXML
     private TableColumn<Job, Integer> amountPastTbl;
     @FXML
-    private TableColumn<Job, Date> datePastTbl;
+    private TableColumn<Job, String> datePastTbl;
     @FXML
     private TableColumn<Job, Double> payPastTbl;
     @FXML
@@ -83,7 +83,7 @@ public class IntermediaryViewController
         jobIdAdTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypeAdTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
         amountAdTbl.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
-        dateAdTbl.setCellValueFactory(new PropertyValueFactory<>("dateDue"));
+        dateAdTbl.setCellValueFactory(new PropertyValueFactory<>("formattedDueDate"));
         payAdTbl.setCellValueFactory(new PropertyValueFactory<>("payPerKg"));
 
         advertisedJobsTable.getItems().addAll(adJobs);
@@ -104,7 +104,7 @@ public class IntermediaryViewController
         jobIdAcceptedTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypeAcceptedTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
         amountAcceptedTbl.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
-        dateAcceptedTbl.setCellValueFactory(new PropertyValueFactory<>("dateDue"));
+        dateAcceptedTbl.setCellValueFactory(new PropertyValueFactory<>("formattedDueDate"));
         payAcceptedTbl.setCellValueFactory(new PropertyValueFactory<>("payPerKg"));
         fisherAcceptedTbl.setCellValueFactory(new PropertyValueFactory<>("fisherName"));
 
@@ -125,7 +125,7 @@ public class IntermediaryViewController
         jobIdPastTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypePastTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
         amountPastTbl.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
-        datePastTbl.setCellValueFactory(new PropertyValueFactory<>("dateDue"));
+        datePastTbl.setCellValueFactory(new PropertyValueFactory<>("formattedDueDate"));
         payPastTbl.setCellValueFactory(new PropertyValueFactory<>("payPerKg"));
         fisherPastTbl.setCellValueFactory(new PropertyValueFactory<>("fisherName"));
 
@@ -173,41 +173,25 @@ public class IntermediaryViewController
 
                 for(Job j : temp)
                 {
-                    if(j.getIntermediaryId() == currentUser.getID())
+                    if(j.getIntermediaryId() == currentUser.getID() && j.getId() == job.getId())
                     {
-                        System.out.println(j.toString() + " BEING ADDED");
                         adJobs.add(j);
                     }
                 }
             }
         }
-
-        System.out.println("ADVERTISED JOBS ----------------------------------");
-        for(int i = 0; i < adJobs.size(); i++)
-        {
-            System.out.println(adJobs.get(i));
-        }
-        System.out.println("ACCEPTED JOBS ----------------------------------");
-        for(int i = 0; i < acceptedJobs.size(); i++)
-        {
-            System.out.println(acceptedJobs.get(i));
-        }
-        System.out.println("PAST JOBS ----------------------------------");
-        for(int i = 0; i < pastJobs.size(); i++)
-        {
-            System.out.println(pastJobs.get(i));
-        }
     }
 
     public void viewAdJobDetails() throws IOException
     {
-        JobDetailsController.setJobDetails(adSelectedRows.get(0));
+        JobDetailsIntermediaryController.setJobDetails(adSelectedRows.get(0));
+        JobDetailsIntermediaryController.setIsFromButton(false);
 
         // Open Job Details page
         Stage stage = null;
         Parent nextScene = null;
         stage = (Stage) viewDetailsAdButton.getScene().getWindow();
-        nextScene = FXMLLoader.load(getClass().getResource("JobDetails.fxml"));
+        nextScene = FXMLLoader.load(getClass().getResource("JobDetailsIntermediary.fxml"));
         assert nextScene != null;
         Scene scene = new Scene(nextScene);
         stage.setScene(scene);
@@ -217,13 +201,15 @@ public class IntermediaryViewController
 
     public void modifyJobDetails() throws IOException
     {
-        JobDetailsController.setJobDetails(adSelectedRows.get(0));
+        JobDetailsIntermediaryController.setJobDetails(adSelectedRows.get(0));
+
+        JobDetailsIntermediaryController.setIsFromButton(true);
 
         // Open Job Details page
         Stage stage = null;
         Parent nextScene = null;
         stage = (Stage) modifyDetailsButton.getScene().getWindow();
-        nextScene = FXMLLoader.load(getClass().getResource("JobDetails.fxml"));
+        nextScene = FXMLLoader.load(getClass().getResource("JobDetailsIntermediary.fxml"));
         assert nextScene != null;
         Scene scene = new Scene(nextScene);
         stage.setScene(scene);
@@ -233,13 +219,42 @@ public class IntermediaryViewController
 
     public void removeJob() throws IOException
     {
-        JobDetailsController.setJobDetails(adSelectedRows.get(0));
+        alert.setTitle("Remove Job");
+        alert.setHeaderText("Are you sure you want to remove this job?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(!result.isPresent())
+        {
+            // do nothing
+        }
+        else if(result.get() == ButtonType.OK)
+        {
+            DatabaseController.deleteJob(adSelectedRows.get(0).getId());
+
+            advertisedJobsTable.getItems().clear();
+            createJobLists();
+            advertisedJobsTable.getItems().addAll(adJobs);
+            advertisedJobsTable.refresh();
+
+            viewDetailsAdButton.setDisable(true);
+            removeButton.setDisable(true);
+            modifyDetailsButton.setDisable(true);
+        }
+        else
+        {
+            // do nothing
+        }
+    }
+
+    public void viewAcceptedJobDetails() throws IOException
+    {
+        JobDetailsIntermediaryController.setJobDetails(acceptedSelectedRows.get(0));
 
         // Open Job Details page
         Stage stage = null;
         Parent nextScene = null;
-        stage = (Stage) removeButton.getScene().getWindow();
-        nextScene = FXMLLoader.load(getClass().getResource("JobDetails.fxml"));
+        stage = (Stage) viewDetailsAccButton.getScene().getWindow();
+        nextScene = FXMLLoader.load(getClass().getResource("JobDetailsIntermediary.fxml"));
         assert nextScene != null;
         Scene scene = new Scene(nextScene);
         stage.setScene(scene);
@@ -247,15 +262,15 @@ public class IntermediaryViewController
         stage.show();
     }
 
-    public void viewJobDetails() throws IOException
+    public void viewPastJobDetails() throws IOException
     {
-        JobDetailsController.setJobDetails(acceptedSelectedRows.get(0));
+        JobDetailsIntermediaryController.setJobDetails(pastSelectedRows.get(0));
 
         // Open Job Details page
         Stage stage = null;
         Parent nextScene = null;
-        stage = (Stage) viewDetailsAccButton.getScene().getWindow();
-        nextScene = FXMLLoader.load(getClass().getResource("JobDetails.fxml"));
+        stage = (Stage) viewDetailsPastButton.getScene().getWindow();
+        nextScene = FXMLLoader.load(getClass().getResource("JobDetailsIntermediary.fxml"));
         assert nextScene != null;
         Scene scene = new Scene(nextScene);
         stage.setScene(scene);

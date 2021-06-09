@@ -128,7 +128,7 @@
                               </Text>
                               <HBox prefHeight="29.0" prefWidth="600.0">
                                  <children>
-                                    <Button fx:id="viewDetailsAccButton" disable="true" mnemonicParsing="false" onAction="#viewJobDetails" text="View Details">
+                                    <Button fx:id="viewDetailsAccButton" disable="true" mnemonicParsing="false" onAction="#viewAcceptedJobDetails" text="View Details">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
@@ -183,7 +183,7 @@
                               </Text>
                               <HBox prefHeight="29.0" prefWidth="600.0">
                                  <children>
-                                    <Button fx:id="viewDetailsPastButton" disable="true" mnemonicParsing="false" onAction="#viewJobDetails" text="View Details">
+                                    <Button fx:id="viewDetailsPastButton" disable="true" mnemonicParsing="false" onAction="#viewPastJobDetails" text="View Details">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
