@@ -38,7 +38,7 @@ public class JobListingsController
     @FXML
     private Button viewDetailsButton, acceptJobButton;
 
-    LinkedList<Job> availableJobs = new LinkedList<>(DatabaseController.selectJobsWithoutFisher());
+    LinkedList<Job> availableJobs = new LinkedList<>();
 
     ObservableList<Job> selectedRows;
 
@@ -46,6 +46,19 @@ public class JobListingsController
 
     public void initialize(){
         createJobList();
+
+        jobId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        fishType.setCellValueFactory(new PropertyValueFactory<>("fishType"));
+        amount.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
+        date.setCellValueFactory(new PropertyValueFactory<>("dateDue"));
+        pay.setCellValueFactory(new PropertyValueFactory<>("payPerKg"));
+        managed.setCellValueFactory(new PropertyValueFactory<>("intermediaryName"));
+
+        jobListingTable.getItems().addAll(availableJobs);
+        TableView.TableViewSelectionModel<Job> availableJobSelectionModel = jobListingTable.getSelectionModel();
+        availableJobSelectionModel.setSelectionMode(SelectionMode.SINGLE);
+        selectedRows = availableJobSelectionModel.getSelectedItems();
+
         selectedRows.addListener(new ListChangeListener<Job>() {
             @Override
             public void onChanged(Change<? extends Job> change) {
@@ -59,17 +72,9 @@ public class JobListingsController
     }
 
     public void createJobList(){
-        jobId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        fishType.setCellValueFactory(new PropertyValueFactory<>("fishType"));
-        amount.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
-        date.setCellValueFactory(new PropertyValueFactory<>("dateDue"));
-        pay.setCellValueFactory(new PropertyValueFactory<>("payPerKg"));
-        managed.setCellValueFactory(new PropertyValueFactory<>("intermediaryName"));
 
-        jobListingTable.getItems().addAll(availableJobs);
-        TableView.TableViewSelectionModel<Job> availableJobSelectionModel = jobListingTable.getSelectionModel();
-        availableJobSelectionModel.setSelectionMode(SelectionMode.SINGLE);
-        selectedRows = availableJobSelectionModel.getSelectedItems();
+        availableJobs = DatabaseController.selectJobsWithoutFisher();
+
     }
 
     public void viewJobDetails() throws IOException{
@@ -100,6 +105,19 @@ public class JobListingsController
             alert.setHeaderText("Are you sure you want to accept this job?");
             Optional<ButtonType> result = alert.showAndWait();
 
+            Intermediary intermediary = DatabaseController.selectIntermediaryRecord(currentJob.getIntermediaryId());
+            assert intermediary != null;
+            String intermediaryPhone = intermediary.getMobileNo();
+            String message =    "Job accepted through MyFishingPal:\n" +
+                                "Intermediary Name: " + currentJob.getIntermediaryName() + "\n" +
+                                "Intermediary Contact Number: " + intermediaryPhone + "\n" +
+                                "Fish Type: " + currentJob.getFishType() + "\n" +
+                                "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
+                                "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
+                                "Due Date: " + currentJob.getDateDue() + "\n" +
+                                "Description : " + currentJob.getDescription();
+            new Email(((Fisher) MyFishingPal.currentUser).getMobileNo(), "Job Accepted Through MyFishingPal", message);
+
             if(!result.isPresent())
             {
                 // do nothing
@@ -107,8 +125,8 @@ public class JobListingsController
             else if(result.get() == ButtonType.OK)
             {
                 DatabaseController.updateFisherId(currentJob.getId(), (((Fisher) MyFishingPal.currentUser).getID()));
+
                 jobListingTable.getItems().clear();
-                availableJobs.clear();
                 createJobList();
                 jobListingTable.getItems().addAll(availableJobs);
                 jobListingTable.refresh();
