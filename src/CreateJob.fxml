@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateJobController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateJobController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="600.0">
         <items>
@@ -20,11 +14,6 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" text="General Information" />
-          <Button mnemonicParsing="false" text="Job Listings" />
-            <Button mnemonicParsing="false" text="View Jobs" />
-            <Button mnemonicParsing="false" text="Profile" />
-            <Button mnemonicParsing="false" text="Help" />
         </items>
       </ToolBar>
       <VBox layoutX="163.0" layoutY="42.0" prefHeight="359.0" prefWidth="226.0">
@@ -37,36 +26,45 @@
                   <Insets left="50.0" top="5.0" />
                </VBox.margin>
             </Text>
-            <TextField maxWidth="-Infinity" promptText="Fish Type">
+            <TextField fx:id="fishType" maxWidth="-Infinity" promptText="Fish Type">
                <VBox.margin>
                   <Insets left="40.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" promptText="Amount (Kg)">
+            <TextField fx:id="amountKg" maxWidth="-Infinity" promptText="Amount (Kg)">
                <VBox.margin>
                   <Insets left="40.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" promptText="Pay (Sol/Kg)">
+            <TextField fx:id="payPerKg" maxWidth="-Infinity" promptText="Pay (Sol/Kg)">
                <VBox.margin>
                   <Insets left="40.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <DatePicker promptText="Complete By">
+            <DatePicker fx:id="dueDate" promptText="Complete By">
                <VBox.margin>
                   <Insets left="40.0" top="5.0" />
                </VBox.margin>
             </DatePicker>
-            <TextArea maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="200.0" promptText="Job Details">
+            <TextArea fx:id="jobDetails" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="200.0" promptText="Job Details">
                <VBox.margin>
                   <Insets left="20.0" top="5.0" />
                </VBox.margin>
             </TextArea>
-            <Button mnemonicParsing="false" text="Create New Job">
-               <VBox.margin>
-                  <Insets left="65.0" top="5.0" />
-               </VBox.margin>
-            </Button>
+            <HBox>
+               <children>
+                  <Button fx:id="createNewJobButton" mnemonicParsing="false" onAction="#createNewJob" text="Create New Job">
+                     <HBox.margin>
+                        <Insets left="35.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="closeButton" mnemonicParsing="false" onAction="#close" text="Close">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>
