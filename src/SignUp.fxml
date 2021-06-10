@@ -38,7 +38,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </PasswordField>
-            <TextField fx:id="mobileNoText" prefHeight="26.0" prefWidth="504.0" promptText="Mobile No.">
+            <TextField fx:id="mobileNoText" prefWidth="504.0" promptText="Mobile No.">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
@@ -61,6 +61,11 @@
             <Button fx:id="completeSignUpButton" mnemonicParsing="false" onAction="#signUp" text="Complete Sign Up">
                <VBox.margin>
                   <Insets left="12.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="backToLoginButton" mnemonicParsing="false" onAction="#backToLogin" text="Back to Login">
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
                </VBox.margin>
             </Button>
          </children>

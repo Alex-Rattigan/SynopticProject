@@ -55,7 +55,7 @@ public class CreateJobController
 
         } else {
 
-            if(Integer.parseInt(amountKg.getText()) < 1 || Double.parseDouble(priceKg.getText()) < 0)
+            if(Integer.parseInt(amountKg.getText()) < 1 || Double.parseDouble(priceKg.getText()) < 0.1)
             {
                 alert.setTitle("Incorrect Value");
                 alert.setHeaderText("At least one of the fields have an incorrect value, please update the price or amount and try again");

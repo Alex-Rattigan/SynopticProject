@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
 
@@ -23,7 +24,7 @@ public class SignUpController {
 
     //Button variable definition
     @FXML
-    private Button completeSignUpButton;
+    private Button completeSignUpButton, backToLoginButton;
 
     //RadioButton variable definition
     @FXML
@@ -171,6 +172,18 @@ public class SignUpController {
         }
         //if the information the user has input in all fields is valid and unique, returns true so the user can be created
         return true;
+    }
+
+    public void backToLogin() throws IOException{
+        Stage stage = null;
+        Parent nextScene = null;
+        stage = (Stage) backToLoginButton.getScene().getWindow();
+        nextScene = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        assert nextScene != null;
+        Scene scene = new Scene(nextScene);
+        stage.setScene(scene);
+        stage.setTitle("MyFishingPal");
+        stage.show();
     }
 
 }
