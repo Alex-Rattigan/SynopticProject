@@ -18,7 +18,8 @@ public class IntermediaryViewController
 {
     @FXML
     private Button helpButton, infoButton, jobListingsButton, viewJobsButton, profileButton, viewDetailsAdButton,
-            modifyDetailsButton, removeButton, viewDetailsPastButton, viewDetailsAccButton, completeButton;
+            modifyDetailsButton, removeButton, viewDetailsPastButton, viewDetailsAccButton, completeButton,
+            createJobButton;
 
     @FXML
     private TableView<Job> advertisedJobsTable;
@@ -142,6 +143,19 @@ public class IntermediaryViewController
             }
         });
 
+    }
+
+    public void createNewJob() throws IOException{
+        // Open Create Job page
+        Stage stage = null;
+        Parent nextScene = null;
+        stage = (Stage) createJobButton.getScene().getWindow();
+        nextScene = FXMLLoader.load(getClass().getResource("CreateJob.fxml"));
+        assert nextScene != null;
+        Scene scene = new Scene(nextScene);
+        stage.setScene(scene);
+        stage.setTitle("MyFishingPal");
+        stage.show();
     }
 
     public void createJobLists()
