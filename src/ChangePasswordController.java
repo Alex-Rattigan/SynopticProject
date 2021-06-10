@@ -14,10 +14,9 @@ public class ChangePasswordController {
 
     @FXML
     private TextField currentPassword, newPassword0, newPassword1;
+
     @FXML
-    private Button confirmButton;
-    @FXML
-    private Button helpButton, infoButton, jobListingButton, viewJobsButton, profileButton;
+    private Button closeButton;
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
@@ -30,15 +29,9 @@ public class ChangePasswordController {
             String newPass1 = newPassword1.getText();
             if (currentPassword0.equals(currentPassword1) && newPass0.equals(newPass1)){
                 DatabaseController.updatePasswordIntermediary(((Intermediary) MyFishingPal.currentUser).getID(), newPass0);
-                Stage stage = null;
-                Parent nextScene = null;
-                stage = (Stage) confirmButton.getScene().getWindow();
-                nextScene = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-                assert nextScene != null;
-                Scene scene = new Scene(nextScene);
-                stage.setScene(scene);
-                stage.setTitle("MyFishingPal");
-                stage.show();
+                alert.setTitle("Successfully Changed Password");
+                alert.setHeaderText("The password has successfully been changed");
+                alert.showAndWait();
             }else {
                 alert.setTitle("Incorrect passwords");
                 alert.setHeaderText("Either the current password did not match our records, or the new passwords weren't the same");
@@ -52,15 +45,9 @@ public class ChangePasswordController {
             String newPass1 = newPassword1.getText();
             if (currentPassword0.equals(currentPassword1) && newPass0.equals(newPass1)){
                 DatabaseController.updatePasswordFisher(((Fisher) MyFishingPal.currentUser).getID(), newPass0);
-                Stage stage = null;
-                Parent nextScene = null;
-                stage = (Stage) confirmButton.getScene().getWindow();
-                nextScene = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-                assert nextScene != null;
-                Scene scene = new Scene(nextScene);
-                stage.setScene(scene);
-                stage.setTitle("MyFishingPal");
-                stage.show();
+                alert.setTitle("Successfully Changed Password");
+                alert.setHeaderText("The password has successfully been changed");
+                alert.showAndWait();
             }else {
                 alert.setTitle("Incorrect passwords");
                 alert.setHeaderText("Either the current password did not match our records, or the new passwords weren't the same");
@@ -69,37 +56,17 @@ public class ChangePasswordController {
         }
     }
 
-    public void changeScene(ActionEvent event) throws IOException{
+    public void close() throws IOException
+    {
+        //changes the scence back to the intermediary view
         Stage stage = null;
         Parent nextScene = null;
-
-        if(event.getSource() == helpButton) {
-            stage = (Stage) helpButton.getScene().getWindow();
-            nextScene = FXMLLoader.load(getClass().getResource("Help.fxml"));
-        } else if(event.getSource() == infoButton){
-            stage = (Stage) infoButton.getScene().getWindow();
-            nextScene = FXMLLoader.load(getClass().getResource("FishingInfo.fxml"));
-        } else if(event.getSource() == jobListingButton){
-            stage = (Stage) jobListingButton.getScene().getWindow();
-            nextScene = FXMLLoader.load(getClass().getResource("JobListings.fxml"));
-        } else if(event.getSource() == viewJobsButton){
-            stage = (Stage) viewJobsButton.getScene().getWindow();
-
-            if(MyFishingPal.currentUser instanceof Fisher)
-            {
-                nextScene = FXMLLoader.load(getClass().getResource("FisherView.fxml"));
-            }
-            else
-            {
-                nextScene = FXMLLoader.load(getClass().getResource("IntermediaryView.fxml"));
-            }
-        } else if(event.getSource() == profileButton){
-            stage = (Stage) profileButton.getScene().getWindow();
-            nextScene = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-        }
+        stage = (Stage) closeButton.getScene().getWindow();
+        nextScene = FXMLLoader.load(getClass().getResource("Profile.fxml"));
         assert nextScene != null;
         Scene scene = new Scene(nextScene);
         stage.setScene(scene);
+        stage.setTitle("MyFishingPal");
         stage.show();
     }
 
