@@ -1266,12 +1266,45 @@ public class DatabaseController
             select.close();
             c.close();
 
-            System.out.println("Select for JOBS BY INTERMEDIARY successful.");
+            System.out.println("Select for RETURN FISHER BY JOB successful.");
             return f;
 
         } catch(Exception e) {
             e.printStackTrace();
-            System.out.println("ERROR: Select for ALL JOBS BY INTERMEDIARY could not be completed.");
+            System.out.println("ERROR: Select for RETURN FISHER BY JOB could not be completed.");
+        }
+        return null;
+    }
+
+    public static Intermediary selectJobReturnIntermediary(int job_id)
+    {
+        Statement select = null;
+
+        try {
+            connect();
+
+            select = c.createStatement();
+
+            ResultSet result = select.executeQuery("SELECT * FROM Fishers_Inters_Jobs WHERE job_id = " + job_id + ";");
+
+            Intermediary i = null;
+
+            while(result.next())
+            {
+                int intermediary_id = result.getInt("intermediary_id");
+                i = selectIntermediaryRecord(intermediary_id);
+            }
+
+            result.close();
+            select.close();
+            c.close();
+
+            System.out.println("Select for RETURN INTERMEDIARY BY JOB successful.");
+            return i;
+
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("ERROR: Select for RETURN INTERMEDIARY BY JOB could not be completed.");
         }
         return null;
     }
