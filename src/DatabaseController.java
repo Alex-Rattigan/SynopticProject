@@ -1398,5 +1398,8 @@ public class DatabaseController
         insertJob(1, "koi", 3, 6, Date.valueOf("2021-06-09"), Date.valueOf("2021-06-16"), "this is a job",false);*/
         /*insertJob(1, "barreleye", 1, 5, Date.valueOf("2021-06-09"), Date.valueOf("2021-06-16"), "this is a job",false);
         insertJob(1, "koi", 8, 13, Date.valueOf("2021-06-09"), Date.valueOf("2021-06-16"), "this is a job",false);*/
+        //insertJob(11, "test", 8, 13, Date.valueOf("2021-06-09"), Date.valueOf("2021-06-16"), "this is a job",false);
+        //insertJob(18, "test", 8, 13, Date.valueOf("2021-06-09"), Date.valueOf("2021-06-16"), "this is a job",false);
+        //insertJob(18, "test2", 8, 13, Date.valueOf("2021-06-09"), Date.valueOf("2021-06-16"), "this is a job",false);
     }
 }
