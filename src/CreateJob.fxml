@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateJobController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateJobController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="600.0">
         <items>
@@ -36,12 +36,12 @@
                   <Insets left="40.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="payPerKg" maxWidth="-Infinity" promptText="Pay (Sol/Kg)">
+            <TextField fx:id="priceKg" maxWidth="-Infinity" promptText="Pay (Sol/Kg)">
                <VBox.margin>
                   <Insets left="40.0" top="5.0" />
                </VBox.margin>
             </TextField>
-            <DatePicker fx:id="dueDate" promptText="Complete By">
+            <DatePicker fx:id="dateToComplete" promptText="Complete By">
                <VBox.margin>
                   <Insets left="40.0" top="5.0" />
                </VBox.margin>
@@ -53,16 +53,14 @@
             </TextArea>
             <HBox>
                <children>
-                  <Button fx:id="createNewJobButton" mnemonicParsing="false" onAction="#createNewJob" text="Create New Job">
+                  <Button fx:id="createJobButton" mnemonicParsing="false" onAction="#createJob" text="Create New Job">
                      <HBox.margin>
-                        <Insets left="35.0" top="10.0" />
-                     </HBox.margin>
-                  </Button>
+                        <Insets left="35.0" top="5.0" />
+                     </HBox.margin></Button>
                   <Button fx:id="closeButton" mnemonicParsing="false" onAction="#close" text="Close">
                      <HBox.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </HBox.margin>
-                  </Button>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
          </children>
