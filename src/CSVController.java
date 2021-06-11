@@ -227,9 +227,13 @@ public class CSVController {
 
         }
 
-        fishers.remove(index);
+        if(index != -1) {
 
-        writeFiles();
+            fishers.remove(index);
+
+            writeFiles();
+
+        }
 
     }
 
@@ -342,21 +346,27 @@ public class CSVController {
 
         }
 
-        intermediaries.remove(index);
+        if (index != -1) {
 
-        writeFiles();
+            intermediaries.remove(index);
+
+            writeFiles();
+
+        }
 
     }
 
     /**************************************** CRUD FOR JOBS ****************************************/
 
-    public static int insertCachedJob(int intermediary_id, String fish_type, int amount_kg, double pay_per_kg, Date date_created, Date date_due, String description, boolean is_completed) {
+    public static int insertCachedJob(int intermediary_id, String fish_type, int amount_kg, double pay_per_kg,
+                                      Date date_created, Date date_due, String description, boolean is_completed) {
 
-        int id = DatabaseController.insertJob(intermediary_id, fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed);
+        int id = DatabaseController.insertJob(intermediary_id, fish_type, amount_kg, pay_per_kg, date_created, date_due,
+                description, is_completed);
 
         jobs.add(new Job(id, fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed));
 
-        joins.add(new String[]{String.valueOf(id), String.valueOf(intermediary_id), null});
+        joins.add(new String[]{String.valueOf(id), String.valueOf(intermediary_id), "0"});
 
         writeFiles();
 
@@ -524,15 +534,27 @@ public class CSVController {
 
         }
 
-        joins.remove(index);
+        if (index != -1) {
 
-        writeFiles();
+            joins.remove(index);
+
+            writeFiles();
+
+        }
 
     }
 
     /**************************************** CRUD FOR FISHERS + INTERMEDIARIES + JOBS ****************************************/
 
-    public static void insertCachedFisherIntermediaryJob(int job_id, int intermediary_id, Integer fisher_id) {
+    public static void insertCachedFisherIntermediaryJob(int job_id, int intermediary_id, Integer fisher_id_integer) {
+
+        int fisher_id = 0;
+
+        if (fisher_id_integer != null) {
+
+            fisher_id = fisher_id_integer;
+
+        }
 
         DatabaseController.insertFisherIntermediaryJob(job_id, intermediary_id, fisher_id);
 
@@ -542,65 +564,141 @@ public class CSVController {
 
     }
 
-    public static LinkedList<Job> selectCachedJobsByFisher(int fisher_id) {
+    public static LinkedList<Job> selectCachedJobsWithoutFisher() {
 
-        LinkedList<Job> linkedList = new LinkedList<>();
+        LinkedList<Integer> job_ids = new LinkedList<>();
+        LinkedList<Integer> intermediary_ids = new LinkedList<>();
 
         for (String[] join : joins) {
 
-            if (Integer.parseInt(join[2]) == fisher_id) {
+            if (Integer.parseInt(join[2]) == 0) {
 
-                int job_id = Integer.parseInt(join[0]);
-
-                for (Job job : jobs) {
-
-                    if (job.getId() == job_id) {
-
-                        linkedList.add(job);
-
-                    }
-
-                }
+                job_ids.add(Integer.parseInt(join[0]));
+                intermediary_ids.add(Integer.parseInt(join[1]));
 
             }
 
         }
 
-        return linkedList;
+        LinkedList<Job> jobsWithoutFisher = new LinkedList<Job>();
+
+        for (int i = 0; i < job_ids.size(); i++) {
+
+            jobsWithoutFisher.add(new Job(selectCachedJob(job_ids.get(i)), intermediary_ids.get(i)));
+
+        }
+
+        return jobsWithoutFisher;
+
+    }
+
+    public static LinkedList<Job> selectCachedJobsByFisher(int fisher_id) {
+
+        LinkedList<Integer> job_ids = new LinkedList<>();
+        LinkedList<Integer> intermediary_ids = new LinkedList<>();
+        LinkedList<Integer> fisher_ids = new LinkedList<>();
+
+        for (String[] join : joins) {
+
+            int currentJobFisher_id = Integer.parseInt(join[2]);
+
+            if (currentJobFisher_id == fisher_id) {
+
+                job_ids.add(Integer.parseInt(join[0]));
+                intermediary_ids.add(Integer.parseInt(join[1]));
+                fisher_ids.add(Integer.parseInt(join[2]));
+
+            }
+
+        }
+
+        LinkedList<Job> jobsByFisher = new LinkedList<>();
+
+        for (int i = 0; i < job_ids.size(); i++) {
+
+            jobsByFisher.add(new Job(selectCachedJob(job_ids.get(i)), intermediary_ids.get(i), fisher_ids.get(i)));
+
+        }
+
+        return jobsByFisher;
 
     }
 
     public static LinkedList<Job> selectCachedJobsByIntermediary(int intermediary_id) {
 
-        LinkedList<Job> linkedList = new LinkedList<>();
+        LinkedList<Integer> job_ids = new LinkedList<>();
+        LinkedList<Integer> intermediary_ids = new LinkedList<>();
 
         for (String[] join : joins) {
 
-            if (Integer.parseInt(join[1]) == intermediary_id) {
+            int currentJobIntermediary_id = Integer.parseInt(join[2]);
 
-                int job_id = Integer.parseInt(join[0]);
+            if (currentJobIntermediary_id == intermediary_id) {
 
-                for (Job job : jobs) {
-
-                    if (job.getId() == job_id) {
-
-                        linkedList.add(job);
-
-                    }
-
-                }
+                job_ids.add(Integer.parseInt(join[0]));
+                intermediary_ids.add(Integer.parseInt(join[1]));
 
             }
 
         }
 
-        return linkedList;
+        LinkedList<Job> jobsByIntermediary = new LinkedList<>();
+
+        for (int i = 0; i < job_ids.size(); i++) {
+
+            jobsByIntermediary.add(new Job(selectCachedJob(job_ids.get(i)), intermediary_ids.get(i)));
+
+        }
+
+        return jobsByIntermediary;
+
+    }
+
+    public static Fisher selectJobReturnFisher(int job_id) {
+
+        Fisher fisher = null;
+
+        for (String[] join : joins) {
+
+            if (Integer.parseInt(join[0]) == job_id) {
+
+                fisher = selectCachedFisherRecord(Integer.parseInt(join[2]));
+
+            }
+
+        }
+
+        return fisher;
+
+    }
+
+    public static Intermediary selectJobReturnIntermediary(int job_id) {
+
+        Intermediary intermediary = null;
+
+        for (String[] join : joins) {
+
+            if (Integer.parseInt(join[0]) == job_id) {
+
+                intermediary = selectCachedIntermediaryRecord(Integer.parseInt(join[1]));
+
+            }
+
+        }
+
+        return intermediary;
 
     }
 
     public static void updateCachedFisherId(int job_id, Integer fisher_id) {
 
         DatabaseController.updateFisherId(job_id, fisher_id);
+
+        if (fisher_id == null) {
+
+            fisher_id = 0;
+
+        }
 
         for (String[] join : joins) {
 
@@ -611,6 +709,16 @@ public class CSVController {
             }
 
         }
+
+        writeFiles();
+
+    }
+
+    //Testing
+    public static void main(String[] args) {
+
+        loadFiles();
+        writeFiles();
 
     }
 

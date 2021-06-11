@@ -26,8 +26,6 @@ public class SyncMain {
             connection = DriverManager.getConnection("jdbc:postgresql://alexpinorwich.ddns.net:5432/myfishingpal", "pi", "12345");
             connection.setAutoCommit(false);
 
-            System.out.println("Connection to database successful.");
-
         } catch(Exception e) {
 
             e.printStackTrace();
@@ -61,8 +59,6 @@ public class SyncMain {
                 String lname = result.getString("lname");
                 String mob_no = result.getString("mobile_no");
 
-                System.out.println("ID = " + fisher_id + ", USERNAME = " + username + ", NAME = " + fname + " " + lname + ", MOBILE NO = " + mob_no);
-
                 fishers.add(new String[]{String.valueOf(fisher_id), username, password, fname, lname, mob_no});
 
             }
@@ -71,7 +67,6 @@ public class SyncMain {
             select.close();
             connection.close();
 
-            System.out.println("Select for ALL FISHERS successful.");
             return fishers;
 
         } catch(Exception e) {
@@ -109,8 +104,6 @@ public class SyncMain {
                 String lname = result.getString("lname");
                 String mob_no = result.getString("mobile_no");
 
-                System.out.println("ID = " + intermediary_id + ", USERNAME = " + username + ", NAME = " + fname + " " + lname + ", MOBILE NO = " + mob_no);
-
                 intermediaries.add(new String[]{String.valueOf(intermediary_id), username, password, fname, lname, mob_no});
 
             }
@@ -119,7 +112,6 @@ public class SyncMain {
             select.close();
             connection.close();
 
-            System.out.println("Select for ALL INTERMEDIARY successful.");
             return intermediaries;
 
         } catch(Exception e) {
@@ -159,10 +151,6 @@ public class SyncMain {
                 String description = result.getString("description");
                 boolean is_completed = result.getBoolean("is_completed");
 
-                System.out.println("ID = " + job_id + ", FISH TYPE = " + fish_type + ", AMOUNT (KG) = " + amount_kg
-                        + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
-                        + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
-
                 jobs.add(new String[]{String.valueOf(job_id), fish_type, String.valueOf(amount_kg), String.valueOf(pay_per_kg), String.valueOf(date_created), String.valueOf(date_due), description, String.valueOf(is_completed)});
 
             }
@@ -171,7 +159,6 @@ public class SyncMain {
             select.close();
             connection.close();
 
-            System.out.println("Select for ALL JOBS successful.");
             return jobs;
 
         } catch(Exception e) {
@@ -206,7 +193,6 @@ public class SyncMain {
                 int intermediary_id = result.getInt("intermediary_id");
                 Integer fisher_id = result.getInt("fisher_id");
 
-                System.out.println("Job ID = " + job_id + ", Intermediary ID = " + intermediary_id + ", Fisher ID = " + fisher_id);
 
                 joins.add(new String[]{String.valueOf(job_id), String.valueOf(intermediary_id), String.valueOf(fisher_id)});
 
@@ -216,7 +202,6 @@ public class SyncMain {
             select.close();
             connection.close();
 
-            System.out.println("Select for ALL JOINS successful.");
             return joins;
 
         } catch(Exception e) {
