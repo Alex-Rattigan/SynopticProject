@@ -47,10 +47,10 @@ public class SignUpController {
             if (intermediaryButton.isSelected()) {
                 //Executes the checkDetails method to check that all details are valid
                 if(checkDetails()) {
-                    //DatabaseController method to insert a new Intermediary
-                    DatabaseController.insertIntermediaryRecord(username, password, forename, surname, mobileNo);
+                    //CSVController method to insert a new Intermediary
+                    CSVController.insertIntermediaryRecord(username, password, forename, surname, mobileNo);
                     //Sets the currentUser to the user that has just been created
-                    MyFishingPal.currentUser = DatabaseController.checkIntermediaryExists(username);
+                    MyFishingPal.currentUser = CSVController.checkIntermediaryExists(username);
 
                     //Changes to the next scene
                     Stage stage = null;
@@ -68,10 +68,10 @@ public class SignUpController {
             {
                 //Executes the checkDetails method to check that all details are valid
                 if(checkDetails()) {
-                    //DatabaseController method to insert a new Fisher
-                    DatabaseController.insertFisherRecord(username, password, forename, surname, mobileNo);
+                    //CSVController method to insert a new Fisher
+                    CSVController.insertFisherRecord(username, password, forename, surname, mobileNo);
                     //Sets the currentUser to the user that has just been created
-                    MyFishingPal.currentUser = DatabaseController.checkFisherExists(username);
+                    MyFishingPal.currentUser = CSVController.checkFisherExists(username);
 
                     //Changes to the next scene, got this code from Richard Blant's Software Engineering Coursework
                     Stage stage = null;
@@ -92,7 +92,7 @@ public class SignUpController {
                 alert.showAndWait();
             }
 
-            //This will catch the DatabaseController method to see if any of the information is invalid with the constraints
+            //This will catch the CSVController method to see if any of the information is invalid with the constraints
         }catch (Exception e){
             alert.setTitle("");
             alert.setHeaderText("Invalid information in atleast one field, or has been left blank");
@@ -134,7 +134,7 @@ public class SignUpController {
         }
 
         //creates a LinkedList of Intermediary Users
-        LinkedList<Intermediary> listOfIntermediaries = DatabaseController.selectAllIntermediaryRecords();
+        LinkedList<Intermediary> listOfIntermediaries = CSVController.selectAllIntermediaryRecords();
         //Goes through the whole list of Intermediaries
         for(Intermediary i : listOfIntermediaries) {
             //if the username is not unique, show this alert
@@ -153,7 +153,7 @@ public class SignUpController {
         }
 
         //creates a LinkedList of Fisher Users
-        LinkedList<Fisher> listOfFishers = DatabaseController.selectAllFisherRecords();
+        LinkedList<Fisher> listOfFishers = CSVController.selectAllFisherRecords();
         //Goes through the whole list of Fishers
         for(Fisher f : listOfFishers) {
             //if the username is not unique, show this alert

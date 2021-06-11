@@ -73,7 +73,7 @@ public class JobListingsController
 
     public void createJobList(){
 
-        availableJobs = DatabaseController.selectJobsWithoutFisher();
+        availableJobs = CSVController.selectJobsWithoutFisher();
 
     }
 
@@ -106,7 +106,7 @@ public class JobListingsController
             Optional<ButtonType> result = alert.showAndWait();
 
             //Email the Fisher the details of the job and the Intermediary that offered it
-            Intermediary intermediary = DatabaseController.selectIntermediaryRecord(currentJob.getIntermediaryId());
+            Intermediary intermediary = CSVController.selectIntermediaryRecord(currentJob.getIntermediaryId());
             assert intermediary != null;
             String intermediaryPhone = intermediary.getMobileNo();
             String message =    "Job accepted through MyFishingPal:\n" +
@@ -136,7 +136,7 @@ public class JobListingsController
             }
             else if(result.get() == ButtonType.OK)
             {
-                DatabaseController.updateFisherId(currentJob.getId(), (((Fisher) MyFishingPal.currentUser).getID()));
+                CSVController.updateFisherId(currentJob.getId(), (((Fisher) MyFishingPal.currentUser).getID()));
 
                 jobListingTable.getItems().clear();
                 createJobList();

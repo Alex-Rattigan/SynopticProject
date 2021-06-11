@@ -22,13 +22,13 @@ public class ChangePasswordController {
 
     public void changePassword() throws IOException{
         if(MyFishingPal.currentUser instanceof Intermediary) {
-            Intermediary i = DatabaseController.selectIntermediaryRecord(((Intermediary) MyFishingPal.currentUser).getID());
+            Intermediary i = CSVController.selectIntermediaryRecord(((Intermediary) MyFishingPal.currentUser).getID());
             String currentPassword0 = i.getPassword();
             String currentPassword1 = currentPassword.getText();
             String newPass0 = newPassword0.getText();
             String newPass1 = newPassword1.getText();
             if (currentPassword0.equals(currentPassword1) && newPass0.equals(newPass1)){
-                DatabaseController.updatePasswordIntermediary(((Intermediary) MyFishingPal.currentUser).getID(), newPass0);
+                CSVController.updatePasswordIntermediary(((Intermediary) MyFishingPal.currentUser).getID(), newPass0);
                 alert.setTitle("Successfully Changed Password");
                 alert.setHeaderText("The password has successfully been changed");
                 alert.showAndWait();
@@ -38,13 +38,13 @@ public class ChangePasswordController {
                 alert.showAndWait();
             }
         } else if(MyFishingPal.currentUser instanceof Fisher){
-            Fisher f = DatabaseController.selectFisherRecord(((Fisher) MyFishingPal.currentUser).getID());
+            Fisher f = CSVController.selectFisherRecord(((Fisher) MyFishingPal.currentUser).getID());
             String currentPassword0 = f.getPassword();
             String currentPassword1 = currentPassword.getText();
             String newPass0 = newPassword0.getText();
             String newPass1 = newPassword1.getText();
             if (currentPassword0.equals(currentPassword1) && newPass0.equals(newPass1)){
-                DatabaseController.updatePasswordFisher(((Fisher) MyFishingPal.currentUser).getID(), newPass0);
+                CSVController.updatePasswordFisher(((Fisher) MyFishingPal.currentUser).getID(), newPass0);
                 alert.setTitle("Successfully Changed Password");
                 alert.setHeaderText("The password has successfully been changed");
                 alert.showAndWait();

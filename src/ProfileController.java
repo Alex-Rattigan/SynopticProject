@@ -24,13 +24,13 @@ public class ProfileController {
 
     public void displayInfo(){
         if(MyFishingPal.currentUser instanceof Intermediary) {
-            Intermediary i = DatabaseController.selectIntermediaryRecord(((Intermediary) MyFishingPal.currentUser).getID());
+            Intermediary i = CSVController.selectIntermediaryRecord(((Intermediary) MyFishingPal.currentUser).getID());
             userUsername.setText(i.getUsername());
             userForename.setText(i.getFname());
             userSurname.setText(i.getSname());
             userNumber.setText(i.getMobileNo());
         } else if(MyFishingPal.currentUser instanceof Fisher){
-            Fisher f = DatabaseController.selectFisherRecord(((Fisher) MyFishingPal.currentUser).getID());
+            Fisher f = CSVController.selectFisherRecord(((Fisher) MyFishingPal.currentUser).getID());
             userUsername.setText(f.getUsername());
             userForename.setText(f.getFname());
             userSurname.setText(f.getSname());

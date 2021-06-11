@@ -115,7 +115,7 @@ public class FisherViewController
 
     public void createJobLists()
     {
-        jobs = DatabaseController.selectJobsByFisher(currentUser.getID());
+        jobs = CSVController.selectJobsByFisher(currentUser.getID());
 
         if(activeJobs.size() != 0 || pastJobs.size() != 0)
         {
@@ -182,7 +182,7 @@ public class FisherViewController
         }
         else if(result.get() == ButtonType.OK)
         {
-            DatabaseController.updateCompleted(job.getId(), true);
+            CSVController.updateCompleted(job.getId(), true);
             activeJobsTable.getItems().clear();
             pastJobsTable.getItems().clear();
             createJobLists();
@@ -215,7 +215,7 @@ public class FisherViewController
         }
         else if(result.get() == ButtonType.OK)
         {
-            DatabaseController.updateFisherId(job.getId(), null);
+            CSVController.updateFisherId(job.getId(), null);
             activeJobsTable.getItems().clear();
             pastJobsTable.getItems().clear();
             createJobLists();

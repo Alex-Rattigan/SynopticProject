@@ -52,7 +52,7 @@ public class JobListingsDetailsController
             }
             else if(result.get() == ButtonType.OK)
             {
-                DatabaseController.updateFisherId(currentJob.getId(), (((Fisher) MyFishingPal.currentUser).getID()));
+                CSVController.updateFisherId(currentJob.getId(), (((Fisher) MyFishingPal.currentUser).getID()));
                 changeScene();
             }
             else

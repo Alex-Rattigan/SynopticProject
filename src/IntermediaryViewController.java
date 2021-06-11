@@ -160,7 +160,7 @@ public class IntermediaryViewController
 
     public void createJobLists()
     {
-        jobs = DatabaseController.selectJobByIntermediary(currentUser.getID());
+        jobs = CSVController.selectJobsByIntermediary(currentUser.getID());
 
         if(adJobs.size() != 0 || pastJobs.size() != 0 || acceptedJobs.size() != 0)
         {
@@ -171,19 +171,19 @@ public class IntermediaryViewController
 
         for (Job job : jobs)
         {
-            if (!job.isCompleted() && DatabaseController.selectJobReturnFisher(job.getId()) != null)
+            if (!job.isCompleted() && CSVController.selectJobReturnFisher(job.getId()) != null)
             {
-                job.setFisherName(DatabaseController.selectJobReturnFisher(job.getId()).getFname() + " " + DatabaseController.selectJobReturnFisher(job.getId()).getSname());
+                job.setFisherName(CSVController.selectJobReturnFisher(job.getId()).getFname() + " " + CSVController.selectJobReturnFisher(job.getId()).getSname());
                 acceptedJobs.add(job);
             }
             else if(job.isCompleted())
             {
-                job.setFisherName(DatabaseController.selectJobReturnFisher(job.getId()).getFname() + " " + DatabaseController.selectJobReturnFisher(job.getId()).getSname());
+                job.setFisherName(CSVController.selectJobReturnFisher(job.getId()).getFname() + " " + CSVController.selectJobReturnFisher(job.getId()).getSname());
                 pastJobs.add(job);
             }
             else
             {
-                LinkedList<Job> temp = DatabaseController.selectJobsWithoutFisher();
+                LinkedList<Job> temp = CSVController.selectJobsWithoutFisher();
 
                 for(Job j : temp)
                 {
@@ -243,7 +243,7 @@ public class IntermediaryViewController
         }
         else if(result.get() == ButtonType.OK)
         {
-            DatabaseController.deleteJob(adSelectedRows.get(0).getId());
+            CSVController.deleteJob(adSelectedRows.get(0).getId());
 
             advertisedJobsTable.getItems().clear();
             createJobLists();
@@ -306,7 +306,7 @@ public class IntermediaryViewController
         }
         else if(result.get() == ButtonType.OK)
         {
-            DatabaseController.updateCompleted(job.getId(), true);
+            CSVController.updateCompleted(job.getId(), true);
             acceptedJobsTable.getItems().clear();
             pastJobsTable.getItems().clear();
             createJobLists();
