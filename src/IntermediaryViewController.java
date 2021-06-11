@@ -263,6 +263,7 @@ public class IntermediaryViewController
     public void viewAcceptedJobDetails() throws IOException
     {
         JobDetailsIntermediaryController.setJobDetails(acceptedSelectedRows.get(0));
+        JobDetailsIntermediaryController.setIsFromButton(false);
 
         // Open Job Details page
         Stage stage = null;
@@ -279,6 +280,7 @@ public class IntermediaryViewController
     public void viewPastJobDetails() throws IOException
     {
         JobDetailsIntermediaryController.setJobDetails(pastSelectedRows.get(0));
+        JobDetailsIntermediaryController.setIsFromButton(false);
 
         // Open Job Details page
         Stage stage = null;
