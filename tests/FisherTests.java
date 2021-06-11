@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FisherTests {
 
     @Test
-    void testGettersAndSetters() {
+    public void testGettersAndSetters() {
 
         //Create test object
         Fisher fisher = new Fisher(1, "username1", "password1", "fname1", "sname1", "911111111");
@@ -35,7 +35,7 @@ public class FisherTests {
     }
 
     @Test
-    void testToString() {
+    public void testToString() {
 
         //Create test object
         Fisher fisher = new Fisher(1, "username1", "password1", "fname1", "sname1", "911111111");

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class IntermediaryTests {
 
     @Test
-    void testGettersAndSetters() {
+    public void testGettersAndSetters() {
 
         //Create test object
         Intermediary intermediary = new Intermediary(1, "username1", "password1", "fname1", "sname1", "911111111");
@@ -34,7 +34,7 @@ public class IntermediaryTests {
     }
 
     @Test
-    void testToString() {
+    public void testToString() {
 
         //Create test object
         Fisher fisher = new Fisher(1, "username1", "password1", "fname1", "sname1", "911111111");
