@@ -106,13 +106,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="585.0" prefWidth="600.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="675.0" prefWidth="600.0">
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="326.0" prefWidth="600.0" vbarPolicy="ALWAYS">
                                  <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="468.0" prefWidth="599.0">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="646.0" prefWidth="599.0">
                                        <children>
-                                          <VBox maxHeight="-Infinity" prefHeight="420.0" prefWidth="598.0">
+                                          <VBox maxHeight="-Infinity" prefHeight="614.0" prefWidth="598.0">
                                              <children>
                                                 <Text layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Species">
                                                    <font>
