@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Optional;
 
 public class JobListingsDetailsController
@@ -42,22 +43,63 @@ public class JobListingsDetailsController
 
             currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
 
-            alert.setTitle("Accept Job");
-            alert.setHeaderText("Are you sure you want to accept this job?");
-            Optional<ButtonType> result = alert.showAndWait();
+            //Check if the selected job is still available
+            LinkedList<Job> availableJobsLive = DatabaseController.selectJobsWithoutFisher();
+            boolean currentJobLive = false;
+            assert availableJobsLive != null;
+            for (Job job : availableJobsLive) {
 
-            if(!result.isPresent())
-            {
-                // do nothing
+                if (job.getId() == currentJob.getId()) {
+
+                    currentJobLive = true;
+                    break;
+
+                }
+
             }
-            else if(result.get() == ButtonType.OK)
-            {
-                DatabaseController.updateFisherId(currentJob.getId(), (((Fisher) MyFishingPal.currentUser).getID()));
-                changeScene();
+
+            //If job is available, proceed as normal:
+            if (currentJobLive) {
+
+                currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
+
+                alert.setTitle("Accept Job");
+                alert.setHeaderText("Are you sure you want to accept this job?");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                //Email the Fisher the details of the job and the Intermediary that offered it
+                Intermediary intermediary = DatabaseController.selectIntermediaryRecord(currentJob.getIntermediaryId());
+                assert intermediary != null;
+                String intermediaryPhone = intermediary.getMobileNo();
+                String message =    "Job accepted through MyFishingPal:\n" +
+                        "Intermediary Name: " + currentJob.getIntermediaryName() + "\n" +
+                        "Intermediary Contact Number: " + intermediaryPhone + "\n" +
+                        "Fish Type: " + currentJob.getFishType() + "\n" +
+                        "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
+                        "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
+                        "Due Date: " + currentJob.getDateDue() + "\n" +
+                        "Description: " + currentJob.getDescription();
+                new Email(((Fisher) MyFishingPal.currentUser).getMobileNo(), "You Have Accepted Job #" + currentJob.getId() + " Through MyFishingPal", message);
+
+                //Email the Intermediary the details of the job and the Fisher that accepted
+                message =   "Job accepted through MyFishingPal:\n" +
+                        "Fisher Name: " + ((Fisher) MyFishingPal.currentUser).getFullName() + "\n" +
+                        "Fisher Contact Number: " + ((Fisher) MyFishingPal.currentUser).getMobileNo() + "\n" +
+                        "Fish Type: " + currentJob.getFishType() + "\n" +
+                        "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
+                        "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
+                        "Due Date: " + currentJob.getDateDue() + "\n" +
+                        "Description: " + currentJob.getDescription();
+                new Email(intermediary.getMobileNo(), "Your Job #" + currentJob.getId() + " Has Been Accepted Through MyFishingPal", message);
+
             }
-            else
-            {
-                // do nothing
+            //If selected job is not available, show an error
+            else {
+
+                alert.setTitle("Job Already Taken");
+                alert.setHeaderText("Someone else has already taken this job. Please try another.");
+                Optional<ButtonType> result = alert.showAndWait();
+
             }
         }
     }

@@ -99,28 +99,47 @@ public class JobListingsController
             selectedRows = availableJobSelectionModel.getSelectedItems();
 
             Job currentJob = selectedRows.get(0);
-            currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
 
-            alert.setTitle("Accept Job");
-            alert.setHeaderText("Are you sure you want to accept this job?");
-            Optional<ButtonType> result = alert.showAndWait();
+            //Check if the selected job is still available
+            LinkedList<Job> availableJobsLive = DatabaseController.selectJobsWithoutFisher();
+            boolean currentJobLive = false;
+            assert availableJobsLive != null;
+            for (Job job : availableJobsLive) {
 
-            //Email the Fisher the details of the job and the Intermediary that offered it
-            Intermediary intermediary = DatabaseController.selectIntermediaryRecord(currentJob.getIntermediaryId());
-            assert intermediary != null;
-            String intermediaryPhone = intermediary.getMobileNo();
-            String message =    "Job accepted through MyFishingPal:\n" +
-                                "Intermediary Name: " + currentJob.getIntermediaryName() + "\n" +
-                                "Intermediary Contact Number: " + intermediaryPhone + "\n" +
-                                "Fish Type: " + currentJob.getFishType() + "\n" +
-                                "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
-                                "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
-                                "Due Date: " + currentJob.getDateDue() + "\n" +
-                                "Description: " + currentJob.getDescription();
-            new Email(((Fisher) MyFishingPal.currentUser).getMobileNo(), "You Have Accepted Job #" + currentJob.getId() + " Through MyFishingPal", message);
+                if (job.getId() == currentJob.getId()) {
 
-            //Email the Intermediary the details of the job and the Fisher that accepted
-            message =   "Job accepted through MyFishingPal:\n" +
+                    currentJobLive = true;
+                    break;
+
+                }
+
+            }
+
+            //If job is available, proceed as normal:
+            if (currentJobLive) {
+
+                currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
+
+                alert.setTitle("Accept Job");
+                alert.setHeaderText("Are you sure you want to accept this job?");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                //Email the Fisher the details of the job and the Intermediary that offered it
+                Intermediary intermediary = DatabaseController.selectIntermediaryRecord(currentJob.getIntermediaryId());
+                assert intermediary != null;
+                String intermediaryPhone = intermediary.getMobileNo();
+                String message =    "Job accepted through MyFishingPal:\n" +
+                        "Intermediary Name: " + currentJob.getIntermediaryName() + "\n" +
+                        "Intermediary Contact Number: " + intermediaryPhone + "\n" +
+                        "Fish Type: " + currentJob.getFishType() + "\n" +
+                        "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
+                        "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
+                        "Due Date: " + currentJob.getDateDue() + "\n" +
+                        "Description: " + currentJob.getDescription();
+                new Email(((Fisher) MyFishingPal.currentUser).getMobileNo(), "You Have Accepted Job #" + currentJob.getId() + " Through MyFishingPal", message);
+
+                //Email the Intermediary the details of the job and the Fisher that accepted
+                message =   "Job accepted through MyFishingPal:\n" +
                         "Fisher Name: " + ((Fisher) MyFishingPal.currentUser).getFullName() + "\n" +
                         "Fisher Contact Number: " + ((Fisher) MyFishingPal.currentUser).getMobileNo() + "\n" +
                         "Fish Type: " + currentJob.getFishType() + "\n" +
@@ -128,28 +147,59 @@ public class JobListingsController
                         "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
                         "Due Date: " + currentJob.getDateDue() + "\n" +
                         "Description: " + currentJob.getDescription();
-            new Email(intermediary.getMobileNo(), "Your Job #" + currentJob.getId() + " Has Been Accepted Through MyFishingPal", message);
+                new Email(intermediary.getMobileNo(), "Your Job #" + currentJob.getId() + " Has Been Accepted Through MyFishingPal", message);
 
-            if(!result.isPresent())
-            {
-                // do nothing
-            }
-            else if(result.get() == ButtonType.OK)
-            {
-                DatabaseController.updateFisherId(currentJob.getId(), (((Fisher) MyFishingPal.currentUser).getID()));
+                if(!result.isPresent())
+                {
+                    // do nothing
+                }
+                else if(result.get() == ButtonType.OK)
+                {
+                    DatabaseController.updateFisherId(currentJob.getId(), (((Fisher) MyFishingPal.currentUser).getID()));
 
-                jobListingTable.getItems().clear();
-                createJobList();
-                jobListingTable.getItems().addAll(availableJobs);
-                jobListingTable.refresh();
+                    jobListingTable.getItems().clear();
+                    createJobList();
+                    jobListingTable.getItems().addAll(availableJobs);
+                    jobListingTable.refresh();
 
-                viewDetailsButton.setDisable(true);
-                acceptJobButton.setDisable(true);
+                    viewDetailsButton.setDisable(true);
+                    acceptJobButton.setDisable(true);
+                }
+                else
+                {
+                    // do nothing
+                }
+
             }
-            else
-            {
-                // do nothing
+            //If selected job is not available, show an error
+            else {
+
+                alert.setTitle("Job Already Taken");
+                alert.setHeaderText("Someone else has already taken this job. Please try another.");
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if(!result.isPresent()) {
+
+                    // do nothing
+
+                } else if(result.get() == ButtonType.OK) {
+
+                    jobListingTable.getItems().clear();
+                    createJobList();
+                    jobListingTable.getItems().addAll(availableJobs);
+                    jobListingTable.refresh();
+
+                    viewDetailsButton.setDisable(true);
+                    acceptJobButton.setDisable(true);
+
+                } else {
+
+                    // do nothing
+
+                }
+
             }
+
         }
     }
 
