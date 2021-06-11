@@ -52,13 +52,10 @@ public class LoginController
 
     public boolean checkPassword() throws IOException
     {
-        //test data
-        //DatabaseController.insertFisherRecord("james9201","pass","james","rod","07308247748");
-        //DatabaseController.insertIntermediaryRecord("frank92041","test","james","rod","07309247748");
 
         //checks if the username matches any current usernames
-        Intermediary currentIntermediary = DatabaseController.checkIntermediaryExists(usernametxt.getText());
-        Fisher currentFisher = DatabaseController.checkFisherExists(usernametxt.getText());
+        Intermediary currentIntermediary = CSVController.checkIntermediaryExists(usernametxt.getText());
+        Fisher currentFisher = CSVController.checkFisherExists(usernametxt.getText());
         //if the username doesnt exist
         if(currentFisher == null && currentIntermediary == null)
         {
