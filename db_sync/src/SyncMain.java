@@ -206,6 +206,8 @@ public class SyncMain {
                 int intermediary_id = result.getInt("intermediary_id");
                 Integer fisher_id = result.getInt("fisher_id");
 
+                System.out.println("" + fisher_id);
+
                 System.out.println("Job ID = " + job_id + ", Intermediary ID = " + intermediary_id + ", Fisher ID = " + fisher_id);
 
                 joins.add(new String[]{String.valueOf(job_id), String.valueOf(intermediary_id), String.valueOf(fisher_id)});

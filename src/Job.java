@@ -18,7 +18,7 @@ public class Job
     private String intermediaryName;
     private String fisherName;
 
-    Job(String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted)
+    public Job(String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted)
     {
         this.fishType = fishType;
         this.amountKg = amountKg;
@@ -32,7 +32,7 @@ public class Job
         this.formattedDueDate = format.format(dateDue);
     }
 
-    Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted)
+    public Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted)
     {
         this.id = id;
         this.fishType = fishType;
@@ -47,7 +47,7 @@ public class Job
         this.formattedDueDate = format.format(dateDue);
     }
 
-    Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId, Integer fisherId)
+    public Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId, Integer fisherId)
     {
         this.id = id;
         this.fishType = fishType;
@@ -66,7 +66,7 @@ public class Job
 
     }
 
-    Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId)
+    public Job(int id, String fishType, int amountKg, double payPerKg, Date dateCreated, Date dateDue, String description, boolean isCompleted, int intermediaryId)
     {
         this.id = id;
         this.fishType = fishType;
@@ -82,6 +82,45 @@ public class Job
         this.formattedDueDate = format.format(dateDue);
 
         this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
+    }
+
+    public Job (Job job, int intermediaryId, Integer fisherId) {
+
+        this.id = job.getId();
+        this.fishType = job.getFishType();
+        this.amountKg = job.getAmountKg();
+        this.payPerKg = job.getPayPerKg();
+        this.dateCreated = job.getDateCreated();
+        this.dateDue = job.getDateDue();
+        this.description = job.getDescription();
+        this.isCompleted = job.isCompleted();
+        this.intermediaryId = intermediaryId;
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        this.formattedDueDate = format.format(this.dateDue);
+
+        this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
+        this.fisherName = DatabaseController.selectFisherRecord(fisherId).getFname() + " " + DatabaseController.selectIntermediaryRecord(fisherId).getSname();
+
+    }
+
+    public Job (Job job, int intermediaryId) {
+
+        this.id = job.getId();
+        this.fishType = job.getFishType();
+        this.amountKg = job.getAmountKg();
+        this.payPerKg = job.getPayPerKg();
+        this.dateCreated = job.getDateCreated();
+        this.dateDue = job.getDateDue();
+        this.description = job.getDescription();
+        this.isCompleted = job.isCompleted();
+        this.intermediaryId = intermediaryId;
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        this.formattedDueDate = format.format(this.dateDue);
+
+        this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
+
     }
 
     public int getId()
