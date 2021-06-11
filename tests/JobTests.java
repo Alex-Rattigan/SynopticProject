@@ -1,9 +1,8 @@
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Date;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class JobTests {
 
