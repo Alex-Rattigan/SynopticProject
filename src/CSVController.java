@@ -129,7 +129,7 @@ public class CSVController {
         assert fisher != null;
         int id = fisher.getID();
 
-        fishers.add(new Fisher(id, username, fname, lname, password, mobNo));
+        fishers.add(new Fisher(id, username, password, fname, lname, mobNo));
 
         writeFiles();
 
@@ -248,7 +248,7 @@ public class CSVController {
         assert intermediary != null;
         int id = intermediary.getID();
 
-        intermediaries.add(new Intermediary(id, username, fname, lname, password, mobNo));
+        intermediaries.add(new Intermediary(id, username, password, fname, lname, mobNo));
 
         writeFiles();
 

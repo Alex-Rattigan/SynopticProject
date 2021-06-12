@@ -1180,7 +1180,7 @@ public class DatabaseController
         return null;
     }
 
-    public static LinkedList<Job> selectJobByIntermediary(int intermediary_id)
+    public static LinkedList<Job> selectJobsByIntermediary(int intermediary_id)
     {
         Statement select = null;
 
