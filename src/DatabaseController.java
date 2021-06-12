@@ -1023,6 +1023,7 @@ public class DatabaseController
 
     // ------------------------------ CRUD FOR FISHERS + INTERMEDIARIES + JOBS -------------------------------- //
 
+    /** Can we delete this method? It's never used and is going to be a pain to write a test for - Alex **/
     public static void insertFisherIntermediaryJob(int job_id, int intermediary_id, Integer fisher_id)
     {
         Statement insert = null;

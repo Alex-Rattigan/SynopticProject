@@ -251,7 +251,7 @@ public class DatabaseControllerTests {
     @Order(11)
     public void testSelectAllJobs() {
 
-        //Select all Job into a LinkedList
+        //Select all Jobs into a LinkedList
         LinkedList<Job> jobs = DatabaseController.selectAllJobs();
 
         //Check that returned list isn't null
@@ -401,13 +401,53 @@ public class DatabaseControllerTests {
 
     }
 
-    /**************************************** CRUD FOR FISHERS + INTERMEDIARIES + JOBS ****************************************/
+    /**************************************** CRUD FOR JOINS ****************************************/
 
     @Test
     @Order(19)
     public void testInsertFisherIntermediaryJob() {
 
+        //Left empty as DatabaseController.insertFisherIntermediaryJob() may be deleted
 
+    }
+
+    @Test
+    @Order(20)
+    public void testSelectJobsWithoutFisher() {
+
+        //Select all Jobs without a Fisher into a LinkedList
+        LinkedList<Job> jobs = DatabaseController.selectJobsWithoutFisher();
+
+        //Check that returned list isn't null
+        assertNotNull(jobs);
+
+        //Check that the returned list has at least one Job
+        assertNotEquals(0, jobs.size());
+
+    }
+
+    @Test
+    @Order(21)
+    public void testSelectJobByFisherAndUpdateFisherId() {
+
+        //Retrieve the test Fisher id
+        Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
+        int fisher_id = fisher.getID();
+
+        //Retrieve the test Intermediary id
+        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+        int intermediary_id = intermediary.getID();
+
+        //Retrieve the test Job id
+        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+        int job_id = jobs.get(0).getId();
+
+        //Update the test Job's Fisher id
+        DatabaseController.updateFisherId(job_id, fisher_id);
+
+        //Check if fisher id was saved
+        Job job = DatabaseController.selectJob(job_id);
+        assertEquals(job.getFisherName(), fisher.getFullName());
 
     }
 
@@ -415,21 +455,66 @@ public class DatabaseControllerTests {
     @Order(12)  //This is out of order intentionally as tested function is needed to test CRUD for Jobs
     public void testSelectJobByIntermediary() {
 
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
+
+//        //Retrieve the test Intermediary id
+//        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+//        int intermediary_id = intermediary.getID();
+//
+//        //Select all Jobs with matching Intermediary id
+//        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+//
+//        //Check that returned list isn't null
+//        assertNotNull(jobs);
+//
+//        //Check that the returned list has at one Job
+//        assertEquals(1, jobs.size());
+
+    }
+
+    @Test
+    @Order(22)
+    public void testSelectJobReturnFisher() {
+
+        //Retrieve the test Fisher id
+        Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
+        int fisher_id = fisher.getID();
+
         //Retrieve the test Intermediary id
         Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
         int intermediary_id = intermediary.getID();
 
-        //Select all Jobs with matching Intermediary id
+        //Retrieve the test Job id
         LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+        int job_id = jobs.get(0).getId();
 
-        //Check that returned list isn't null
-        assertNotNull(jobs);
+        //Select the Fisher using the Job id
+        fisher = DatabaseController.selectJobReturnFisher(job_id);
 
-        //Check that the returned list has at one Job
-        assertEquals(1, jobs.size());
+        //Check that correct Fisher is returned
+        assertEquals(fisher_id, fisher.getID());
 
     }
 
+    @Test
+    @Order(23)
+    public void testSelectJobReturnIntermediary() {
 
+        //Retrieve the test Intermediary id
+        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+        int intermediary_id = intermediary.getID();
+
+        //Retrieve the test Job id
+        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+        int job_id = jobs.get(0).getId();
+
+        //Select the Intermediary using the Job id
+        intermediary = DatabaseController.selectJobReturnIntermediary(job_id);
+
+        //Check that correct Intermediary is returned
+        assertEquals(intermediary_id, intermediary.getID());
+
+    }
 
 }
