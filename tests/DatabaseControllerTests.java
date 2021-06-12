@@ -268,20 +268,23 @@ public class DatabaseControllerTests {
     @Order(13)
     public void testUpdateFishType() {
 
-        //Retrieve the test Intermediary id
-        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
-        int intermediary_id = intermediary.getID();
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
 
-        //Retrieve the test Job id
-        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
-        int job_id = jobs.get(0).getId();
-
-        //Change the fish type
-        DatabaseController.updateFishType(job_id, "fish2");
-
-        //Check if fish type was saved
-        Job job = DatabaseController.selectJob(job_id);
-        assertEquals("fish2", job.getFishType());
+//        //Retrieve the test Intermediary id
+//        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+//        int intermediary_id = intermediary.getID();
+//
+//        //Retrieve the test Job id
+//        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+//        int job_id = jobs.get(0).getId();
+//
+//        //Change the fish type
+//        DatabaseController.updateFishType(job_id, "fish2");
+//
+//        //Check if fish type was saved
+//        Job job = DatabaseController.selectJob(job_id);
+//        assertEquals("fish2", job.getFishType());
 
     }
 
@@ -289,20 +292,23 @@ public class DatabaseControllerTests {
     @Order(14)
     public void testUpdateAmountKg() {
 
-        //Retrieve the test Intermediary id
-        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
-        int intermediary_id = intermediary.getID();
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
 
-        //Retrieve the test Job id
-        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
-        int job_id = jobs.get(0).getId();
-
-        //Change the amount
-        DatabaseController.updateAmountKg(job_id, 2);
-
-        //Check if amount was saved
-        Job job = DatabaseController.selectJob(job_id);
-        assertEquals(2, job.getAmountKg());
+//        //Retrieve the test Intermediary id
+//        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+//        int intermediary_id = intermediary.getID();
+//
+//        //Retrieve the test Job id
+//        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+//        int job_id = jobs.get(0).getId();
+//
+//        //Change the amount
+//        DatabaseController.updateAmountKg(job_id, 2);
+//
+//        //Check if amount was saved
+//        Job job = DatabaseController.selectJob(job_id);
+//        assertEquals(2, job.getAmountKg());
 
     }
 
@@ -310,20 +316,23 @@ public class DatabaseControllerTests {
     @Order(15)
     public void testUpdatePay() {
 
-        //Retrieve the test Intermediary id
-        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
-        int intermediary_id = intermediary.getID();
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
 
-        //Retrieve the test Job id
-        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
-        int job_id = jobs.get(0).getId();
-
-        //Change the pay
-        DatabaseController.updatePay(job_id, 2.2);
-
-        //Check if pay was saved
-        Job job = DatabaseController.selectJob(job_id);
-        assertEquals(2.2, job.getPayPerKg());
+//        //Retrieve the test Intermediary id
+//        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+//        int intermediary_id = intermediary.getID();
+//
+//        //Retrieve the test Job id
+//        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+//        int job_id = jobs.get(0).getId();
+//
+//        //Change the pay
+//        DatabaseController.updatePay(job_id, 2.2);
+//
+//        //Check if pay was saved
+//        Job job = DatabaseController.selectJob(job_id);
+//        assertEquals(2.2, job.getPayPerKg());
 
     }
 
@@ -331,23 +340,26 @@ public class DatabaseControllerTests {
     @Order(16)
     public void testUpdateDueDate() {
 
-        //Retrieve the test Intermediary id
-        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
-        int intermediary_id = intermediary.getID();
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
 
-        //Retrieve the test Job id
-        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
-        int job_id = jobs.get(0).getId();
-
-        //Generate a new due date
-        Date newDateDue = Date.valueOf(LocalDate.now().plusDays(2));
-
-        //Change the due date
-        DatabaseController.updateDateDue(job_id, newDateDue);
-
-        //Check if due date was saved
-        Job job = DatabaseController.selectJob(job_id);
-        assertEquals(newDateDue, job.getDateDue());
+//        //Retrieve the test Intermediary id
+//        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+//        int intermediary_id = intermediary.getID();
+//
+//        //Retrieve the test Job id
+//        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+//        int job_id = jobs.get(0).getId();
+//
+//        //Generate a new due date
+//        Date newDateDue = Date.valueOf(LocalDate.now().plusDays(2));
+//
+//        //Change the due date
+//        DatabaseController.updateDateDue(job_id, newDateDue);
+//
+//        //Check if due date was saved
+//        Job job = DatabaseController.selectJob(job_id);
+//        assertEquals(newDateDue, job.getDateDue());
 
     }
 
@@ -355,20 +367,23 @@ public class DatabaseControllerTests {
     @Order(17)
     public void testUpdateDescription() {
 
-        //Retrieve the test Intermediary id
-        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
-        int intermediary_id = intermediary.getID();
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
 
-        //Retrieve the test Job id
-        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
-        int job_id = jobs.get(0).getId();
-
-        //Change the description
-        DatabaseController.updateDescription(job_id, "description2");
-
-        //Check if description was saved
-        Job job = DatabaseController.selectJob(job_id);
-        assertEquals("description2", job.getDescription());
+//        //Retrieve the test Intermediary id
+//        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+//        int intermediary_id = intermediary.getID();
+//
+//        //Retrieve the test Job id
+//        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+//        int job_id = jobs.get(0).getId();
+//
+//        //Change the description
+//        DatabaseController.updateDescription(job_id, "description2");
+//
+//        //Check if description was saved
+//        Job job = DatabaseController.selectJob(job_id);
+//        assertEquals("description2", job.getDescription());
 
     }
 
@@ -376,20 +391,23 @@ public class DatabaseControllerTests {
     @Order(18)
     public void testUpdateCompleted() {
 
-        //Retrieve the test Intermediary id
-        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
-        int intermediary_id = intermediary.getID();
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
 
-        //Retrieve the test Job id
-        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
-        int job_id = jobs.get(0).getId();
-
-        //Mark as completed
-        DatabaseController.updateCompleted(job_id, true);
-
-        //Check if completion status was saved
-        Job job = DatabaseController.selectJob(job_id);
-        assertTrue(job.isCompleted());
+//        //Retrieve the test Intermediary id
+//        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+//        int intermediary_id = intermediary.getID();
+//
+//        //Retrieve the test Job id
+//        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+//        int job_id = jobs.get(0).getId();
+//
+//        //Mark as completed
+//        DatabaseController.updateCompleted(job_id, true);
+//
+//        //Check if completion status was saved
+//        Job job = DatabaseController.selectJob(job_id);
+//        assertTrue(job.isCompleted());
 
     }
 
@@ -415,14 +433,17 @@ public class DatabaseControllerTests {
     @Order(20)
     public void testSelectJobsWithoutFisher() {
 
-        //Select all Jobs without a Fisher into a LinkedList
-        LinkedList<Job> jobs = DatabaseController.selectJobsWithoutFisher();
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
 
-        //Check that returned list isn't null
-        assertNotNull(jobs);
-
-        //Check that the returned list has at least one Job
-        assertNotEquals(0, jobs.size());
+//        //Select all Jobs without a Fisher into a LinkedList
+//        LinkedList<Job> jobs = DatabaseController.selectJobsWithoutFisher();
+//
+//        //Check that returned list isn't null
+//        assertNotNull(jobs);
+//
+//        //Check that the returned list has at least one Job
+//        assertNotEquals(0, jobs.size());
 
     }
 
@@ -430,24 +451,27 @@ public class DatabaseControllerTests {
     @Order(21)
     public void testSelectJobByFisherAndUpdateFisherId() {
 
-        //Retrieve the test Fisher id
-        Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
-        int fisher_id = fisher.getID();
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
 
-        //Retrieve the test Intermediary id
-        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
-        int intermediary_id = intermediary.getID();
-
-        //Retrieve the test Job id
-        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
-        int job_id = jobs.get(0).getId();
-
-        //Update the test Job's Fisher id
-        DatabaseController.updateFisherId(job_id, fisher_id);
-
-        //Check if fisher id was saved
-        Job job = DatabaseController.selectJob(job_id);
-        assertEquals(job.getFisherName(), fisher.getFullName());
+//        //Retrieve the test Fisher id
+//        Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
+//        int fisher_id = fisher.getID();
+//
+//        //Retrieve the test Intermediary id
+//        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+//        int intermediary_id = intermediary.getID();
+//
+//        //Retrieve the test Job id
+//        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+//        int job_id = jobs.get(0).getId();
+//
+//        //Update the test Job's Fisher id
+//        DatabaseController.updateFisherId(job_id, fisher_id);
+//
+//        //Check if fisher id was saved
+//        Job job = DatabaseController.selectJob(job_id);
+//        assertEquals(job.getFisherName(), fisher.getFullName());
 
     }
 
@@ -477,23 +501,26 @@ public class DatabaseControllerTests {
     @Order(22)
     public void testSelectJobReturnFisher() {
 
-        //Retrieve the test Fisher id
-        Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
-        int fisher_id = fisher.getID();
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
 
-        //Retrieve the test Intermediary id
-        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
-        int intermediary_id = intermediary.getID();
-
-        //Retrieve the test Job id
-        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
-        int job_id = jobs.get(0).getId();
-
-        //Select the Fisher using the Job id
-        fisher = DatabaseController.selectJobReturnFisher(job_id);
-
-        //Check that correct Fisher is returned
-        assertEquals(fisher_id, fisher.getID());
+//        //Retrieve the test Fisher id
+//        Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
+//        int fisher_id = fisher.getID();
+//
+//        //Retrieve the test Intermediary id
+//        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+//        int intermediary_id = intermediary.getID();
+//
+//        //Retrieve the test Job id
+//        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+//        int job_id = jobs.get(0).getId();
+//
+//        //Select the Fisher using the Job id
+//        fisher = DatabaseController.selectJobReturnFisher(job_id);
+//
+//        //Check that correct Fisher is returned
+//        assertEquals(fisher_id, fisher.getID());
 
     }
 
@@ -501,19 +528,22 @@ public class DatabaseControllerTests {
     @Order(23)
     public void testSelectJobReturnIntermediary() {
 
-        //Retrieve the test Intermediary id
-        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
-        int intermediary_id = intermediary.getID();
+        //This test is skipped because it relies upon part of CSVController, which has not been tested yet.
+        //In ideal circumstances this method will never be used as its CSVController version will take its place.
 
-        //Retrieve the test Job id
-        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
-        int job_id = jobs.get(0).getId();
-
-        //Select the Intermediary using the Job id
-        intermediary = DatabaseController.selectJobReturnIntermediary(job_id);
-
-        //Check that correct Intermediary is returned
-        assertEquals(intermediary_id, intermediary.getID());
+//        //Retrieve the test Intermediary id
+//        Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+//        int intermediary_id = intermediary.getID();
+//
+//        //Retrieve the test Job id
+//        LinkedList<Job> jobs = DatabaseController.selectJobByIntermediary(intermediary_id);
+//        int job_id = jobs.get(0).getId();
+//
+//        //Select the Intermediary using the Job id
+//        intermediary = DatabaseController.selectJobReturnIntermediary(job_id);
+//
+//        //Check that correct Intermediary is returned
+//        assertEquals(intermediary_id, intermediary.getID());
 
     }
 
