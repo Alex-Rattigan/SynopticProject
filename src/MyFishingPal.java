@@ -36,6 +36,9 @@ public class MyFishingPal extends Application {
 
     public static void main(String[] args) {
 
+        //Update local database - in real deployment this would run twice per day, not every startup
+        SyncMain.main(new String[]{});
+
         //Load cached data
         CSVController.loadFiles();
 

@@ -61,8 +61,8 @@ public class Job
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.formattedDueDate = format.format(dateDue);
 
-        this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
-        this.fisherName = DatabaseController.selectFisherRecord(fisherId).getFname() + " " + DatabaseController.selectIntermediaryRecord(fisherId).getSname();
+        this.intermediaryName = CSVController.selectIntermediaryRecord(intermediaryId).getFname() + " " + CSVController.selectIntermediaryRecord(intermediaryId).getSname();
+        this.fisherName = CSVController.selectFisherRecord(fisherId).getFname() + " " + CSVController.selectIntermediaryRecord(fisherId).getSname();
 
     }
 
@@ -81,7 +81,7 @@ public class Job
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.formattedDueDate = format.format(dateDue);
 
-        this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
+        this.intermediaryName = CSVController.selectIntermediaryRecord(intermediaryId).getFname() + " " + CSVController.selectIntermediaryRecord(intermediaryId).getSname();
     }
 
     public Job (Job job, int intermediaryId, Integer fisherId) {
@@ -99,8 +99,8 @@ public class Job
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.formattedDueDate = format.format(this.dateDue);
 
-        this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
-        this.fisherName = DatabaseController.selectFisherRecord(fisherId).getFname() + " " + DatabaseController.selectIntermediaryRecord(fisherId).getSname();
+        this.intermediaryName = CSVController.selectIntermediaryRecord(intermediaryId).getFname() + " " + CSVController.selectIntermediaryRecord(intermediaryId).getSname();
+        this.fisherName = CSVController.selectFisherRecord(fisherId).getFname() + " " + CSVController.selectIntermediaryRecord(fisherId).getSname();
 
     }
 
@@ -119,7 +119,7 @@ public class Job
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.formattedDueDate = format.format(this.dateDue);
 
-        this.intermediaryName = DatabaseController.selectIntermediaryRecord(intermediaryId).getFname() + " " + DatabaseController.selectIntermediaryRecord(intermediaryId).getSname();
+        this.intermediaryName = CSVController.selectIntermediaryRecord(intermediaryId).getFname() + " " + CSVController.selectIntermediaryRecord(intermediaryId).getSname();
 
     }
 

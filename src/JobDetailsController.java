@@ -55,7 +55,7 @@ public class JobDetailsController
         }
         else if(result.get() == ButtonType.OK)
         {
-            DatabaseController.updateCompleted(currentJob.getId(), true);
+            CSVController.updateCompleted(currentJob.getId(), true);
             jobCompleteButton.setDisable(true);
             abandonJobButton.setDisable(true);
         }
@@ -77,7 +77,7 @@ public class JobDetailsController
         }
         else if(result.get() == ButtonType.OK)
         {
-            DatabaseController.updateFisherId(currentJob.getId(), null);
+            CSVController.updateFisherId(currentJob.getId(), null);
             abandonJobButton.setDisable(true);
             jobCompleteButton.setDisable(true);
         }

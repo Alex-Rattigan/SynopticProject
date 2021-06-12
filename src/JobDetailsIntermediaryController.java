@@ -54,7 +54,7 @@ public class JobDetailsIntermediaryController
         datePicker.setVisible(false);
         datePicker.setValue(currentJob.getDateDue().toLocalDate());
 
-        LinkedList<Job> jobsWithoutFishers = DatabaseController.selectJobsWithoutFisher();
+        LinkedList<Job> jobsWithoutFishers = CSVController.selectJobsWithoutFisher();
 
         boolean isNullFisher = false;
 
@@ -72,8 +72,8 @@ public class JobDetailsIntermediaryController
         }
         else
         {
-            acceptedByText.setText(DatabaseController.selectJobReturnFisher(currentJob.getId()).getFname() + " " +
-                    DatabaseController.selectJobReturnFisher(currentJob.getId()).getSname());
+            acceptedByText.setText(CSVController.selectJobReturnFisher(currentJob.getId()).getFname() + " " +
+                    CSVController.selectJobReturnFisher(currentJob.getId()).getSname());
         }
 
         detailsText.setText(currentJob.getDescription());
@@ -142,27 +142,27 @@ public class JobDetailsIntermediaryController
             {
                 if(!fishTypeText.getText().equals(currentJob.getFishType()))
                 {
-                    DatabaseController.updateFishType(currentJob.getId(), fishTypeText.getText());
+                    CSVController.updateFishType(currentJob.getId(), fishTypeText.getText());
                 }
 
                 if(Integer.parseInt(amountText.getText()) != currentJob.getAmountKg())
                 {
-                    DatabaseController.updateAmountKg(currentJob.getId(), Integer.parseInt(amountText.getText()));
+                    CSVController.updateAmountKg(currentJob.getId(), Integer.parseInt(amountText.getText()));
                 }
 
                 if(Double.parseDouble(payText.getText()) != currentJob.getPayPerKg())
                 {
-                    DatabaseController.updatePay(currentJob.getId(), Double.parseDouble(payText.getText()));
+                    CSVController.updatePay(currentJob.getId(), Double.parseDouble(payText.getText()));
                 }
 
                 if(!datePicker.getValue().isEqual(currentJob.getDateDue().toLocalDate()))
                 {
-                    DatabaseController.updateDateDue(currentJob.getId(), Date.valueOf(datePicker.getValue()));
+                    CSVController.updateDateDue(currentJob.getId(), Date.valueOf(datePicker.getValue()));
                 }
 
                 if(!detailsText.getText().equals(currentJob.getDescription()))
                 {
-                    DatabaseController.updateDescription(currentJob.getId(), detailsText.getText());
+                    CSVController.updateDescription(currentJob.getId(), detailsText.getText());
                 }
             }
         }
@@ -189,7 +189,7 @@ public class JobDetailsIntermediaryController
         }
         else if(result.get() == ButtonType.OK)
         {
-            DatabaseController.deleteJob(currentJob.getId());
+            CSVController.deleteJob(currentJob.getId());
             removeJobButton.setDisable(true);
             modifyButton.setDisable(true);
         }

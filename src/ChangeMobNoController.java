@@ -28,10 +28,10 @@ public class ChangeMobNoController {
 
     public void displayNumber(){
         if(MyFishingPal.currentUser instanceof Intermediary) {
-            Intermediary i = DatabaseController.selectIntermediaryRecord(((Intermediary) MyFishingPal.currentUser).getID());
+            Intermediary i = CSVController.selectIntermediaryRecord(((Intermediary) MyFishingPal.currentUser).getID());
             currentNumber.setText(i.getMobileNo());
         } else if(MyFishingPal.currentUser instanceof Fisher){
-            Fisher f = DatabaseController.selectFisherRecord(((Fisher) MyFishingPal.currentUser).getID());
+            Fisher f = CSVController.selectFisherRecord(((Fisher) MyFishingPal.currentUser).getID());
             currentNumber.setText(f.getMobileNo());
         }
     }
@@ -40,7 +40,7 @@ public class ChangeMobNoController {
         if(checkDetails()) {
             if (MyFishingPal.currentUser instanceof Intermediary) {
                 String number = newNumber.getText();
-                DatabaseController.updateMobileNoIntermediary(((Intermediary) MyFishingPal.currentUser).getID(), number);
+                CSVController.updateMobileNoIntermediary(((Intermediary) MyFishingPal.currentUser).getID(), number);
                 alert.setTitle("Successfully Changed Phone Number");
                 alert.setHeaderText("The phone number has successfully been changed");
                 alert.showAndWait();
@@ -55,7 +55,7 @@ public class ChangeMobNoController {
 //                stage.show();
             } else if (MyFishingPal.currentUser instanceof Fisher) {
                 String number = newNumber.getText();
-                DatabaseController.updateMobileNoFisher(((Fisher) MyFishingPal.currentUser).getID(), number);
+                CSVController.updateMobileNoFisher(((Fisher) MyFishingPal.currentUser).getID(), number);
                 alert.setTitle("Successfully Changed Phone Number");
                 alert.setHeaderText("The phone number has successfully been changed");
                 alert.showAndWait();
@@ -87,7 +87,7 @@ public class ChangeMobNoController {
             alert.showAndWait();
             return false;
         }
-        LinkedList<Intermediary> listOfIntermediaries = DatabaseController.selectAllIntermediaryRecords();
+        LinkedList<Intermediary> listOfIntermediaries = CSVController.selectAllIntermediaryRecords();
         for(Intermediary i : listOfIntermediaries) {
             if(mobileNo.equalsIgnoreCase(i.getMobileNo())){
                 alert.setTitle("Invalid Mobile Number");
@@ -96,7 +96,7 @@ public class ChangeMobNoController {
                 return false;
             }
         }
-        LinkedList<Fisher> listOfFishers = DatabaseController.selectAllFisherRecords();
+        LinkedList<Fisher> listOfFishers = CSVController.selectAllFisherRecords();
         for(Fisher f : listOfFishers) {
             if (mobileNo.equalsIgnoreCase(f.getMobileNo())) {
                 alert.setTitle("Invalid Mobile Number");

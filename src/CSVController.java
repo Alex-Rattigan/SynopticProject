@@ -120,7 +120,7 @@ public class CSVController {
 
     /**************************************** CRUD FOR FISHERS ****************************************/
 
-    public static int insertCachedFisherRecord(String username, String password, String fname, String lname, String mobNo) {
+    public static int insertFisherRecord(String username, String password, String fname, String lname, String mobNo) {
 
         DatabaseController.insertFisherRecord(username, password, fname, lname, mobNo);
 
@@ -137,7 +137,7 @@ public class CSVController {
 
     }
 
-    public static Fisher checkCachedFisherExists(String username) {
+    public static Fisher checkFisherExists(String username) {
 
         for (Fisher fisher : fishers) {
 
@@ -153,13 +153,13 @@ public class CSVController {
 
     }
 
-    public static LinkedList<Fisher> selectAllCachedFisherRecords() {
+    public static LinkedList<Fisher> selectAllFisherRecords() {
 
         return new LinkedList<>(fishers);
 
     }
 
-    public static Fisher selectCachedFisherRecord(int fisher_id) {
+    public static Fisher selectFisherRecord(int fisher_id) {
 
         for (Fisher fisher : fishers) {
 
@@ -175,7 +175,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedPasswordFisher(int fisher_id, String new_password) {
+    public static void updatePasswordFisher(int fisher_id, String new_password) {
 
         DatabaseController.updatePasswordFisher(fisher_id, new_password);
 
@@ -193,7 +193,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedMobileNoFisher(int fisher_id, String new_mob_no) {
+    public static void updateMobileNoFisher(int fisher_id, String new_mob_no) {
 
         DatabaseController.updateMobileNoFisher(fisher_id, new_mob_no);
 
@@ -211,7 +211,7 @@ public class CSVController {
 
     }
 
-    public static void deleteCachedFisherRecord(int fisher_id) {
+    public static void deleteFisherRecord(int fisher_id) {
 
         DatabaseController.deleteFisherRecord(fisher_id);
 
@@ -239,7 +239,7 @@ public class CSVController {
 
     /**************************************** CRUD FOR INTERMEDIARIES ****************************************/
 
-    public static int insertCachedIntermediaryRecord(String username, String password, String fname, String lname, String mobNo) {
+    public static int insertIntermediaryRecord(String username, String password, String fname, String lname, String mobNo) {
 
         DatabaseController.insertIntermediaryRecord(username, password, fname, lname, mobNo);
 
@@ -256,7 +256,7 @@ public class CSVController {
 
     }
 
-    public static Intermediary checkCachedIntermediariesExists(String username) {
+    public static Intermediary checkIntermediaryExists(String username) {
 
         for (Intermediary intermediary : intermediaries) {
 
@@ -272,13 +272,13 @@ public class CSVController {
 
     }
 
-    public static LinkedList<Intermediary> selectAllCachedIntermediaryRecords() {
+    public static LinkedList<Intermediary> selectAllIntermediaryRecords() {
 
         return new LinkedList<>(intermediaries);
 
     }
 
-    public static Intermediary selectCachedIntermediaryRecord(int intermediary_id) {
+    public static Intermediary selectIntermediaryRecord(int intermediary_id) {
 
         for (Intermediary intermediary : intermediaries) {
 
@@ -294,7 +294,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedPasswordIntermediary(int intermediary_id, String new_password) {
+    public static void updatePasswordIntermediary(int intermediary_id, String new_password) {
 
         DatabaseController.updatePasswordIntermediary(intermediary_id, new_password);
 
@@ -312,7 +312,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedMobileNoIntermediary(int intermediary_id, String new_mob_no) {
+    public static void updateMobileNoIntermediary(int intermediary_id, String new_mob_no) {
 
         DatabaseController.updateMobileNoIntermediary(intermediary_id, new_mob_no);
 
@@ -330,7 +330,7 @@ public class CSVController {
 
     }
 
-    public static void deleteCachedIntermediaryRecord(int intermediary_id) {
+    public static void deleteIntermediaryRecord(int intermediary_id) {
 
         DatabaseController.deleteIntermediaryRecord(intermediary_id);
 
@@ -358,7 +358,7 @@ public class CSVController {
 
     /**************************************** CRUD FOR JOBS ****************************************/
 
-    public static int insertCachedJob(int intermediary_id, String fish_type, int amount_kg, double pay_per_kg,
+    public static int insertJob(int intermediary_id, String fish_type, int amount_kg, double pay_per_kg,
                                       Date date_created, Date date_due, String description, boolean is_completed) {
 
         int id = DatabaseController.insertJob(intermediary_id, fish_type, amount_kg, pay_per_kg, date_created, date_due,
@@ -374,13 +374,13 @@ public class CSVController {
 
     }
 
-    public static LinkedList<Job> selectAllCachedJobs() {
+    public static LinkedList<Job> selectAllJobs() {
 
         return new LinkedList<>(jobs);
 
     }
 
-    public static Job selectCachedJob(int job_id) {
+    public static Job selectJob(int job_id) {
 
         for (Job job : jobs) {
 
@@ -396,7 +396,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedFishType(int job_id, String new_type) {
+    public static void updateFishType(int job_id, String new_type) {
 
         DatabaseController.updateFishType(job_id, new_type);
 
@@ -414,7 +414,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedAmountKg(int job_id, int new_amount) {
+    public static void updateAmountKg(int job_id, int new_amount) {
 
         DatabaseController.updateAmountKg(job_id, new_amount);
 
@@ -432,7 +432,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedPay(int job_id, double new_pay){
+    public static void updatePay(int job_id, double new_pay){
 
         DatabaseController.updatePay(job_id, new_pay);
 
@@ -450,7 +450,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedDateDue(int job_id, Date new_date) {
+    public static void updateDateDue(int job_id, Date new_date) {
 
         DatabaseController.updateDateDue(job_id, new_date);
 
@@ -468,7 +468,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedDescription(int job_id, String new_description) {
+    public static void updateDescription(int job_id, String new_description) {
 
         DatabaseController.updateDescription(job_id, new_description);
 
@@ -486,7 +486,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedCompleted(int job_id, boolean is_completed) {
+    public static void updateCompleted(int job_id, boolean is_completed) {
 
         DatabaseController.updateCompleted(job_id, is_completed);
 
@@ -504,7 +504,7 @@ public class CSVController {
 
     }
 
-    public static void deleteCachedJob(int job_id) {
+    public static void deleteJob(int job_id) {
 
         DatabaseController.deleteJob(job_id);
 
@@ -546,7 +546,7 @@ public class CSVController {
 
     /**************************************** CRUD FOR FISHERS + INTERMEDIARIES + JOBS ****************************************/
 
-    public static void insertCachedFisherIntermediaryJob(int job_id, int intermediary_id, Integer fisher_id_integer) {
+    public static void insertFisherIntermediaryJob(int job_id, int intermediary_id, Integer fisher_id_integer) {
 
         int fisher_id = 0;
 
@@ -564,7 +564,7 @@ public class CSVController {
 
     }
 
-    public static LinkedList<Job> selectCachedJobsWithoutFisher() {
+    public static LinkedList<Job> selectJobsWithoutFisher() {
 
         LinkedList<Integer> job_ids = new LinkedList<>();
         LinkedList<Integer> intermediary_ids = new LinkedList<>();
@@ -584,7 +584,7 @@ public class CSVController {
 
         for (int i = 0; i < job_ids.size(); i++) {
 
-            jobsWithoutFisher.add(new Job(selectCachedJob(job_ids.get(i)), intermediary_ids.get(i)));
+            jobsWithoutFisher.add(new Job(selectJob(job_ids.get(i)), intermediary_ids.get(i)));
 
         }
 
@@ -592,7 +592,7 @@ public class CSVController {
 
     }
 
-    public static LinkedList<Job> selectCachedJobsByFisher(int fisher_id) {
+    public static LinkedList<Job> selectJobsByFisher(int fisher_id) {
 
         LinkedList<Integer> job_ids = new LinkedList<>();
         LinkedList<Integer> intermediary_ids = new LinkedList<>();
@@ -616,7 +616,7 @@ public class CSVController {
 
         for (int i = 0; i < job_ids.size(); i++) {
 
-            jobsByFisher.add(new Job(selectCachedJob(job_ids.get(i)), intermediary_ids.get(i), fisher_ids.get(i)));
+            jobsByFisher.add(new Job(selectJob(job_ids.get(i)), intermediary_ids.get(i), fisher_ids.get(i)));
 
         }
 
@@ -624,14 +624,14 @@ public class CSVController {
 
     }
 
-    public static LinkedList<Job> selectCachedJobsByIntermediary(int intermediary_id) {
+    public static LinkedList<Job> selectJobsByIntermediary(int intermediary_id) {
 
         LinkedList<Integer> job_ids = new LinkedList<>();
         LinkedList<Integer> intermediary_ids = new LinkedList<>();
 
         for (String[] join : joins) {
 
-            int currentJobIntermediary_id = Integer.parseInt(join[2]);
+            int currentJobIntermediary_id = Integer.parseInt(join[1]);
 
             if (currentJobIntermediary_id == intermediary_id) {
 
@@ -646,7 +646,7 @@ public class CSVController {
 
         for (int i = 0; i < job_ids.size(); i++) {
 
-            jobsByIntermediary.add(new Job(selectCachedJob(job_ids.get(i)), intermediary_ids.get(i)));
+            jobsByIntermediary.add(new Job(selectJob(job_ids.get(i)), intermediary_ids.get(i)));
 
         }
 
@@ -662,7 +662,7 @@ public class CSVController {
 
             if (Integer.parseInt(join[0]) == job_id) {
 
-                fisher = selectCachedFisherRecord(Integer.parseInt(join[2]));
+                fisher = selectFisherRecord(Integer.parseInt(join[2]));
 
             }
 
@@ -680,7 +680,7 @@ public class CSVController {
 
             if (Integer.parseInt(join[0]) == job_id) {
 
-                intermediary = selectCachedIntermediaryRecord(Integer.parseInt(join[1]));
+                intermediary = selectIntermediaryRecord(Integer.parseInt(join[1]));
 
             }
 
@@ -690,7 +690,7 @@ public class CSVController {
 
     }
 
-    public static void updateCachedFisherId(int job_id, Integer fisher_id) {
+    public static void updateFisherId(int job_id, Integer fisher_id) {
 
         DatabaseController.updateFisherId(job_id, fisher_id);
 

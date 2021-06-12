@@ -69,7 +69,7 @@ public class CreateJobController
                     Intermediary currentUser = (Intermediary) MyFishingPal.currentUser;
 
                     //adds a job
-                    DatabaseController.insertJob(currentUser.getID(), fishType.getText(), Integer.parseInt(amountKg.getText()), Double.parseDouble(priceKg.getText()), Date.valueOf(currentDate), Date.valueOf(dateToComplete.getValue()), jobDetails.getText(), false);
+                    CSVController.insertJob(currentUser.getID(), fishType.getText(), Integer.parseInt(amountKg.getText()), Double.parseDouble(priceKg.getText()), Date.valueOf(currentDate), Date.valueOf(dateToComplete.getValue()), jobDetails.getText(), false);
 
                     //changes scene
                     Stage stage = null;
