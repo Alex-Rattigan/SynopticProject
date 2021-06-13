@@ -1,4 +1,4 @@
-import javax.swing.plaf.nimbus.State;
+
 import java.sql.*;
 import java.util.LinkedList;
 
@@ -8,7 +8,7 @@ public class DatabaseController
     private static Connection c = null;
 
     // Method for connecting to DB
-    public static void connect()
+    public static boolean connect()
     {
         try
         {
@@ -18,10 +18,15 @@ public class DatabaseController
 
             System.out.println("Connection to database successful.");
 
+            return true;
+
         } catch(Exception e) {
             e.printStackTrace();
             System.out.println("ERROR: Connection to database could not be established.");
         }
+
+        return false;
+
     }
 
     // -------------------------------------------- CRUD FOR FISHERS -------------------------------------------- //
@@ -642,7 +647,7 @@ public class DatabaseController
                         + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
                         + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
 
-                jobs.add(new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed));
+                jobs.add(new Job(job_id, fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed));
             }
 
             result.close();
@@ -686,7 +691,7 @@ public class DatabaseController
                         + ", PAY PER KG = " + pay_per_kg + ", DATE CREATED = " + date_created + ", DATE DUE = "
                         + date_due + ", DESCRIPTION = " + description + ", COMPLETED? = " + is_completed );
 
-                job = new Job(fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed);
+                job = new Job(id, fish_type, amount_kg, pay_per_kg, date_created, date_due, description, is_completed);
             }
 
             result.close();
@@ -1018,6 +1023,7 @@ public class DatabaseController
 
     // ------------------------------ CRUD FOR FISHERS + INTERMEDIARIES + JOBS -------------------------------- //
 
+    /** Can we delete this method? It's never used and is going to be a pain to write a test for - Alex **/
     public static void insertFisherIntermediaryJob(int job_id, int intermediary_id, Integer fisher_id)
     {
         Statement insert = null;
@@ -1174,7 +1180,7 @@ public class DatabaseController
         return null;
     }
 
-    public static LinkedList<Job> selectJobByIntermediary(int intermediary_id)
+    public static LinkedList<Job> selectJobsByIntermediary(int intermediary_id)
     {
         Statement select = null;
 
