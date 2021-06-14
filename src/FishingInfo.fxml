@@ -15,6 +15,9 @@
  *                it at any time to ensure that they themselves are using the app correctly and abiding by local
  *                laws and to ensure others are kept to the same standard.
  *                The FishingInfoController is the class that provides this user interface with functionality.
+ * References:  http://www.fao.org/fishery/legalframework/nalo_peru/en
+                http://www.fao.org/fishery/docs/DOCUMENT/fcp/en/FI_CP_PE.pdf
+                http://www.fao.org/fi/oldsite/FCP/en/PER/profile.htm
  ******************************************************************************************************************/
  -->
 <?import javafx.geometry.Insets?>
