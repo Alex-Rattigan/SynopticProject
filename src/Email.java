@@ -4,7 +4,7 @@
  */
 
 
-/****************************************
+/*
  *
  * File:        Email.java
  *
@@ -16,7 +16,7 @@
  *              prototype. In the real deployed program, this would be replaced by an SMS system to better meet the
  *              conditions of the infrastructure where it is designed for.
  *
- ***************************************/
+ */
 
 import java.util.*;
 import javax.mail.*;
