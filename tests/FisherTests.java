@@ -1,4 +1,16 @@
 
+/*
+ *
+ * File:        FisherTests.java
+ *
+ * Date:        18/06/2021
+ *
+ * Author:      Alex Rattigan
+ *
+ * Description: Provides a test for every method in Fisher.java
+ *
+ */
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,7 +20,8 @@ public class FisherTests {
     public void testGettersAndSetters() {
 
         //Create test object
-        Fisher fisher = new Fisher(1, "username1", "password1", "fname1", "sname1", "911111111");
+        Fisher fisher = new Fisher(1, "username1", "password1", "fname1", "sname1",
+                "911111111");
 
         //Test getters
         assertEquals(1, fisher.getID());
@@ -38,10 +51,12 @@ public class FisherTests {
     public void testToString() {
 
         //Create test object
-        Fisher fisher = new Fisher(1, "username1", "password1", "fname1", "sname1", "911111111");
+        Fisher fisher = new Fisher(1, "username1", "password1", "fname1", "sname1",
+                "911111111");
 
         //Test toString
-        String expected = "Fisher{fisherId=1, username='username1', fName='fname1', sName='sname1', password='password1', mobileNo=911111111}";
+        String expected = "Fisher{fisherId=1, username='username1', fName='fname1', sName='sname1'," +
+                "password='password1', mobileNo=911111111}";
         String actual = fisher.toString();
         assertEquals(expected, actual);
 
