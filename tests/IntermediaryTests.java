@@ -54,7 +54,7 @@ public class IntermediaryTests {
                 "911111111");
 
         //Test toString
-        String expected = "Fisher{fisherId=1, username='username1', fName='fname1', sName='sname1'," +
+        String expected = "Fisher{fisherId=1, username='username1', fName='fname1', sName='sname1', " +
                 "password='password1', mobileNo=911111111}";
         String actual = fisher.toString();
         assertEquals(expected, actual);
