@@ -93,6 +93,36 @@
                                  </font>
                               </Text>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peruvian waters are part of the anti-cyclonic movement of the eastern part of the Southern Pacific Ocean and are characterised by slow-moving surface currents. There are abnormal variations to the water flows known as “El Niño”, which are known to disturb and kill the micro-organisms which act as food for some of the local species, which leads to a lower yield of fish for certain fishing periods. " wrappingWidth="574.751953125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="When carrying out certain jobs on the water in this territory you must have the following:When carrying out certain jobs on the water in this territory you must have the following:" wrappingWidth="574.751953125">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Official identification  " wrappingWidth="574.751953125">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Information on what you are doing" wrappingWidth="574.751953125">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Information on where you plan to do it " wrappingWidth="574.751953125">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="- Proof that you own or have permission to work in that area" wrappingWidth="574.751953125">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="When out at sea you must be careful what you do with any extra waste in this area, including fishing nets, extra equipment or sewage . If it is not disposed of correctly there could be repercussions." wrappingWidth="574.751953125">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Text>
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -194,7 +224,27 @@
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   - Purse seines" wrappingWidth="576.775390625" />
                               <Text layoutX="20.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   - Shellfish extractors" wrappingWidth="576.775390625" />
                               <Text layoutX="20.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   - Other gear" wrappingWidth="576.775390625" />
-                              <Text layoutX="20.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please ensure that your vessel fits the rules, guidelines and legislation based on your vessel classification, if it does not meet the regulations you may risk reprecussions." wrappingWidth="576.775390625" />
+                              <Text layoutX="20.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please ensure that your vessel fits the rules, guidelines and legislation based on your vessel classification, if it does not meet the regulations you may risk reprecussions. " wrappingWidth="576.775390625" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="If you are planning on fishing and you aren’t native to peru (vessel flying a foreign flag) you must have a permit saying the reason for your stayIf you are planning on fishing and you aren’t native to peru (vessel flying a foreign flag) you must have a permit saying the reason for your stay" wrappingWidth="576.775390625">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-Fishing on behalf of a Peruvian country " wrappingWidth="576.775390625">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-Researching fish" wrappingWidth="576.775390625">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="-Fishing specifies that are listed by the peru fishing ministries " wrappingWidth="576.775390625">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Text>
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -228,6 +278,8 @@
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Regulation on Fisheries Management of Jack Mackerel and Chub Mackerel – Supreme Decree N° 011-2007-PRODUCE" wrappingWidth="576.380859375" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Regulation on Fisheries and Aquaculture Management for the Lake Titicaca Catchment Area – Supreme Decree N° 023-2008- PRODUCE" wrappingWidth="575.951171875" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Regulation on Fisheries Management in the Peruvian Amazon – Supreme Decree N° 015- 2009 - PRODUCE" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="General Law of Water (Decree N° 17752)General Law of Water (Decree N° 17752)" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Supreme Decree N° 040-2001-PEThe Supreme Decree N° 040-2001-PE" />
                            </children>
                         </VBox>
                      </children>
