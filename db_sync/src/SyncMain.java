@@ -1,4 +1,20 @@
 
+/*
+ *
+ * File:        SyncMain.java
+ *
+ * Date:        05/06/2021
+ *
+ * Author:      Alex Rattigan
+ *
+ * Description: For this prototype, this class simply provides a method for the main program to call. However, in a
+ *              real deployment, this would be packaged as a standalone OS service that runs twice per day: once at
+ *              midnight and once at noon.
+ *              This class updates the local database cache to reflect any changes made to the database by other
+ *              computers that also have the main program installed on them.
+ *
+ */
+
 import java.io.FileWriter;
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,7 +39,8 @@ public class SyncMain {
         try {
 
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://alexpinorwich.ddns.net:5432/myfishingpal", "pi", "12345");
+            connection = DriverManager.getConnection("jdbc:postgresql://alexpinorwich.ddns.net:5432/myfishingpal",
+                    "pi", "12345");
             connection.setAutoCommit(false);
 
         } catch(Exception e) {
@@ -38,7 +55,7 @@ public class SyncMain {
     // Get all Fishers as String[]s
     private static ArrayList<String[]> selectAllFisherRecords() {
 
-        Statement select = null;
+        Statement select;
 
         ArrayList<String[]> fishers = new ArrayList<>();
 
@@ -83,7 +100,7 @@ public class SyncMain {
     // Get all Intermediaries as String[]s
     private static ArrayList<String[]> selectAllIntermediaryRecords() {
 
-        Statement select = null;
+        Statement select;
 
         ArrayList<String[]> intermediaries = new ArrayList<>();
 
@@ -104,7 +121,8 @@ public class SyncMain {
                 String lname = result.getString("lname");
                 String mob_no = result.getString("mobile_no");
 
-                intermediaries.add(new String[]{String.valueOf(intermediary_id), username, password, fname, lname, mob_no});
+                intermediaries.add(new String[]{String.valueOf(intermediary_id), username, password, fname, lname,
+                        mob_no});
 
             }
 
@@ -128,7 +146,7 @@ public class SyncMain {
     // Get all Jobs as String[]s
     private static ArrayList<String[]> selectAllJobs() {
 
-        Statement select = null;
+        Statement select;
 
         ArrayList<String[]> jobs = new ArrayList<>();
 
@@ -151,7 +169,9 @@ public class SyncMain {
                 String description = result.getString("description");
                 boolean is_completed = result.getBoolean("is_completed");
 
-                jobs.add(new String[]{String.valueOf(job_id), fish_type, String.valueOf(amount_kg), String.valueOf(pay_per_kg), String.valueOf(date_created), String.valueOf(date_due), description, String.valueOf(is_completed)});
+                jobs.add(new String[]{String.valueOf(job_id), fish_type, String.valueOf(amount_kg),
+                        String.valueOf(pay_per_kg), String.valueOf(date_created), String.valueOf(date_due), description,
+                        String.valueOf(is_completed)});
 
             }
 
@@ -175,7 +195,7 @@ public class SyncMain {
     // Get all Joins as String[]s
     private static ArrayList<String[]> selectAllJoins() {
 
-        Statement select = null;
+        Statement select;
 
         ArrayList<String[]> joins = new ArrayList<>();
 
@@ -194,7 +214,8 @@ public class SyncMain {
                 Integer fisher_id = result.getInt("fisher_id");
 
 
-                joins.add(new String[]{String.valueOf(job_id), String.valueOf(intermediary_id), String.valueOf(fisher_id)});
+                joins.add(new String[]{String.valueOf(job_id), String.valueOf(intermediary_id),
+                        String.valueOf(fisher_id)});
 
             }
 
@@ -215,6 +236,8 @@ public class SyncMain {
 
     }
 
+    // Overwrite any existing database cache files with new versions that contain the most up to date database
+    // information
     private static void writeFiles() {
 
         try {
@@ -222,7 +245,8 @@ public class SyncMain {
             FileWriter fileWriter = new FileWriter(fishersFile);
             for (String[] fisher : fishers) {
 
-                fileWriter.write(fisher[0] + "," + fisher[1] + "," + fisher[2] + "," + fisher[3] + "," + fisher[4] + "," + fisher[5] + "\n");
+                fileWriter.write(fisher[0] + "," + fisher[1] + "," + fisher[2] + "," + fisher[3] + "," + fisher[4] +
+                        "," + fisher[5] + "\n");
 
             }
             fileWriter.flush();
@@ -231,7 +255,8 @@ public class SyncMain {
             fileWriter = new FileWriter(intermediariesFile);
             for (String[] intermediary : intermediaries) {
 
-                fileWriter.write(intermediary[0] + "," + intermediary[1] + "," + intermediary[2] + "," + intermediary[3] + "," + intermediary[4] + "," + intermediary[5] + "\n");
+                fileWriter.write(intermediary[0] + "," + intermediary[1] + "," + intermediary[2] + "," +
+                        intermediary[3] + "," + intermediary[4] + "," + intermediary[5] + "\n");
 
             }
             fileWriter.flush();
@@ -240,7 +265,8 @@ public class SyncMain {
             fileWriter = new FileWriter(jobsFile);
             for (String[] job : jobs) {
 
-                fileWriter.write(job[0] + "," + job[1] + "," + job[2] + "," + job[3] + "," + job[4] + "," + job[5] + "," + job[6] + "," + job[7] + "\n");
+                fileWriter.write(job[0] + "," + job[1] + "," + job[2] + "," + job[3] + "," + job[4] + "," + job[5] +
+                        "," + job[6] + "," + job[7] + "\n");
 
             }
             fileWriter.flush();
@@ -258,12 +284,14 @@ public class SyncMain {
         } catch (Exception e) {
 
             //e.printStackTrace();
-            System.out.println(fishersFile + ", " + intermediariesFile + ", " + jobsFile + ", or " + joinsFile + " failed to write.");
+            System.out.println(fishersFile + ", " + intermediariesFile + ", " + jobsFile + ", or " + joinsFile +
+                    " failed to write.");
 
         }
 
     }
 
+    // Main method that controls the cache update
     public static void main(String[] args) {
 
         fishers = selectAllFisherRecords();

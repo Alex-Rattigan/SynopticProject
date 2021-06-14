@@ -1,17 +1,35 @@
+
+/*
+ *
+ * File:        CSVController.java
+ *
+ * Date:        06/06/2021
+ *
+ * Author:      Alex Rattigan
+ *
+ * Description: Provides a copy of every method in DatabaseController.java, as well as some file management methods,
+ *              to allow the program to run off a local database cache rather than accessing the internet every time
+ *              data is needed.
+ *
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class CSVController {
 
+    //Cache files
     private static final String fishersFile = "Fishers.mfp";
     private static final String intermediariesFile = "Intermediaries.mfp";
     private static final String jobsFile = "Jobs.mfp";
     private static final String joinsFile = "Joins.mfp";
 
+    //ArrayLists to hold data in memory for faster access
     private static final ArrayList<Fisher> fishers = new ArrayList<>();
     private static final ArrayList<Intermediary> intermediaries = new ArrayList<>();
     private static final ArrayList<Job> jobs = new ArrayList<>();
@@ -36,7 +54,8 @@ public class CSVController {
             while ((line = bufferedReader.readLine()) != null) {
 
                 String[] split = line.split(",");
-                intermediaries.add(new Intermediary(Integer.parseInt(split[0]), split[1], split[2], split[3], split[4], split[5]));
+                intermediaries.add(new Intermediary(Integer.parseInt(split[0]), split[1], split[2], split[3], split[4],
+                        split[5]));
 
             }
             bufferedReader.close();
@@ -46,7 +65,9 @@ public class CSVController {
 
                 String[] split = line.split(",");
 
-                jobs.add(new Job(Integer.parseInt(split[0]), split[1], Integer.parseInt(split[2]), Double.parseDouble(split[3]), Date.valueOf(split[4]), Date.valueOf(split[5]), split[6], Boolean.parseBoolean(split[7])));
+                jobs.add(new Job(Integer.parseInt(split[0]), split[1], Integer.parseInt(split[2]),
+                        Double.parseDouble(split[3]), Date.valueOf(split[4]), Date.valueOf(split[5]), split[6],
+                        Boolean.parseBoolean(split[7])));
 
             }
             bufferedReader.close();
@@ -61,8 +82,9 @@ public class CSVController {
 
         } catch (Exception e) {
 
-            //e.printStackTrace();
-            System.out.println(fishersFile + ", " + intermediariesFile + ", " + jobsFile + ", or " + joinsFile + " failed to read.");
+            System.out.println(fishersFile + ", " + intermediariesFile + ", " + jobsFile + ", or " + joinsFile +
+                    " failed to read.");
+            System.exit(1);
 
         }
 
@@ -76,7 +98,8 @@ public class CSVController {
             FileWriter fileWriter = new FileWriter(fishersFile);
             for (Fisher fisher : fishers) {
 
-                fileWriter.write(fisher.getID() + "," + fisher.getUsername() + "," + fisher.getPassword() + "," + fisher.getFname() + "," + fisher.getSname() + "," + fisher.getMobileNo() + "\n");
+                fileWriter.write(fisher.getID() + "," + fisher.getUsername() + "," + fisher.getPassword() + "," +
+                        fisher.getFname() + "," + fisher.getSname() + "," + fisher.getMobileNo() + "\n");
 
             }
             fileWriter.flush();
@@ -85,7 +108,9 @@ public class CSVController {
             fileWriter = new FileWriter(intermediariesFile);
             for (Intermediary intermediary : intermediaries) {
 
-                fileWriter.write(intermediary.getID() + "," + intermediary.getUsername() + "," + intermediary.getPassword() + "," + intermediary.getFname() + "," + intermediary.getSname() + "," + intermediary.getMobileNo() + "\n");
+                fileWriter.write(intermediary.getID() + "," + intermediary.getUsername() + "," +
+                        intermediary.getPassword() + "," + intermediary.getFname() + "," + intermediary.getSname() +
+                        "," + intermediary.getMobileNo() + "\n");
 
             }
             fileWriter.flush();
@@ -94,7 +119,9 @@ public class CSVController {
             fileWriter = new FileWriter(jobsFile);
             for (Job job : jobs) {
 
-                fileWriter.write(job.getId() + "," + job.getFishType() + "," + job.getAmountKg() + "," + job.getPayPerKg() + "," + job.getDateCreated() + "," + job.getDateDue() + "," + job.getDescription() + "," + job.isCompleted() + "\n");
+                fileWriter.write(job.getId() + "," + job.getFishType() + "," + job.getAmountKg() + "," +
+                        job.getPayPerKg() + "," + job.getDateCreated() + "," + job.getDateDue() + "," +
+                        job.getDescription() + "," + job.isCompleted() + "\n");
 
             }
             fileWriter.flush();
@@ -111,8 +138,8 @@ public class CSVController {
 
         } catch (Exception e) {
 
-            //e.printStackTrace();
-            System.out.println(fishersFile + ", " + intermediariesFile + ", " + jobsFile + ", or " + joinsFile + " failed to write.");
+            System.out.println(fishersFile + ", " + intermediariesFile + ", " + jobsFile + ", or " + joinsFile +
+                    " failed to write.");
 
         }
 
@@ -120,7 +147,7 @@ public class CSVController {
 
     /**************************************** CRUD FOR FISHERS ****************************************/
 
-    public static int insertFisherRecord(String username, String password, String fname, String lname, String mobNo) {
+    public static void insertFisherRecord(String username, String password, String fname, String lname, String mobNo) {
 
         DatabaseController.insertFisherRecord(username, password, fname, lname, mobNo);
 
@@ -132,8 +159,6 @@ public class CSVController {
         fishers.add(new Fisher(id, username, password, fname, lname, mobNo));
 
         writeFiles();
-
-        return id;
 
     }
 
@@ -239,7 +264,8 @@ public class CSVController {
 
     /**************************************** CRUD FOR INTERMEDIARIES ****************************************/
 
-    public static int insertIntermediaryRecord(String username, String password, String fname, String lname, String mobNo) {
+    public static void insertIntermediaryRecord(String username, String password, String fname, String lname,
+                                                String mobNo) {
 
         DatabaseController.insertIntermediaryRecord(username, password, fname, lname, mobNo);
 
@@ -251,8 +277,6 @@ public class CSVController {
         intermediaries.add(new Intermediary(id, username, password, fname, lname, mobNo));
 
         writeFiles();
-
-        return id;
 
     }
 
@@ -544,25 +568,7 @@ public class CSVController {
 
     }
 
-    /**************************************** CRUD FOR FISHERS + INTERMEDIARIES + JOBS ****************************************/
-
-    public static void insertFisherIntermediaryJob(int job_id, int intermediary_id, Integer fisher_id_integer) {
-
-        int fisher_id = 0;
-
-        if (fisher_id_integer != null) {
-
-            fisher_id = fisher_id_integer;
-
-        }
-
-        DatabaseController.insertFisherIntermediaryJob(job_id, intermediary_id, fisher_id);
-
-        joins.add(new String[]{String.valueOf(job_id), String.valueOf(intermediary_id), String.valueOf(fisher_id)});
-
-        writeFiles();
-
-    }
+    /************************************ CRUD FOR FISHERS + INTERMEDIARIES + JOBS ************************************/
 
     public static LinkedList<Job> selectJobsWithoutFisher() {
 
@@ -580,11 +586,11 @@ public class CSVController {
 
         }
 
-        LinkedList<Job> jobsWithoutFisher = new LinkedList<Job>();
+        LinkedList<Job> jobsWithoutFisher = new LinkedList<>();
 
         for (int i = 0; i < job_ids.size(); i++) {
 
-            jobsWithoutFisher.add(new Job(selectJob(job_ids.get(i)), intermediary_ids.get(i)));
+            jobsWithoutFisher.add(new Job(Objects.requireNonNull(selectJob(job_ids.get(i))), intermediary_ids.get(i)));
 
         }
 
@@ -616,7 +622,8 @@ public class CSVController {
 
         for (int i = 0; i < job_ids.size(); i++) {
 
-            jobsByFisher.add(new Job(selectJob(job_ids.get(i)), intermediary_ids.get(i), fisher_ids.get(i)));
+            jobsByFisher.add(new Job(Objects.requireNonNull(selectJob(job_ids.get(i))), intermediary_ids.get(i),
+                    fisher_ids.get(i)));
 
         }
 
@@ -646,7 +653,7 @@ public class CSVController {
 
         for (int i = 0; i < job_ids.size(); i++) {
 
-            jobsByIntermediary.add(new Job(selectJob(job_ids.get(i)), intermediary_ids.get(i)));
+            jobsByIntermediary.add(new Job(Objects.requireNonNull(selectJob(job_ids.get(i))), intermediary_ids.get(i)));
 
         }
 
