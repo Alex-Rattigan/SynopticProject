@@ -1,4 +1,16 @@
 
+/*
+ *
+ * File:        CSVControllerTests.java
+ *
+ * Date:        18/06/2021
+ *
+ * Author:      Alex Rattigan
+ *
+ * Description: Provides a test for every method in CSVController.java
+ *
+ */
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -31,7 +43,8 @@ public class CSVControllerTests {
     public void testInsertAndSelectFisher() {
 
         //Insert test Fisher
-        CSVController.insertFisherRecord(currentDateTimeOneString, "password1", "fname1", "sname1", currentDateTimeOneString);
+        CSVController.insertFisherRecord(currentDateTimeOneString, "password1", "fname1", "sname1",
+                currentDateTimeOneString);
 
         //Select test Fisher back out by username
         Fisher fisher = CSVController.checkFisherExists(currentDateTimeOneString);
@@ -134,7 +147,8 @@ public class CSVControllerTests {
     public void testInsertAndSelectIntermediary() {
 
         //Insert test Intermediary
-        CSVController.insertIntermediaryRecord(currentDateTimeTwoString, "password1", "fname1", "sname1", currentDateTimeTwoString);
+        CSVController.insertIntermediaryRecord(currentDateTimeTwoString, "password1", "fname1",
+                "sname1", currentDateTimeTwoString);
 
         //Select test Intermediary back out by username
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
@@ -243,7 +257,8 @@ public class CSVControllerTests {
         //Insert test Job
         Date dateCreated = Date.valueOf(currentDateTimeOne.toLocalDate());
         Date dateDue = Date.valueOf(currentDateTimeTwo.toLocalDate());
-        job_id = CSVController.insertJob(intermediary_id, "fish1", 1, 1.1, dateCreated, dateDue, "description1", false);
+        job_id = CSVController.insertJob(intermediary_id, "fish1", 1, 1.1, dateCreated,
+                dateDue, "description1", false);
 
         //Select test Job back out
         Job job = CSVController.selectJob(job_id);
@@ -376,13 +391,7 @@ public class CSVControllerTests {
 
     /**************************************** CRUD FOR JOINS ****************************************/
 
-    @Test
-    @Order(19)
-    public void testInsertFisherIntermediaryJob() {
-
-        //Left empty as CSVController.insertFisherIntermediaryJob() may be deleted
-
-    }
+    //Test 19 missing as it tested a deleted method.
 
     @Test
     @Order(20)
