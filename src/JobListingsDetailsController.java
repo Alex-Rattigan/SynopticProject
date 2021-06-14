@@ -17,7 +17,7 @@ public class JobListingsDetailsController
     @FXML
     private TextArea detailsText;
     @FXML
-    private Button closeButton;
+    private Button closeButton, acceptJobButton;
 
     public static Job currentJob;
 
@@ -30,6 +30,10 @@ public class JobListingsDetailsController
 
     public void initialize()
     {
+        if(MyFishingPal.currentUser instanceof Intermediary){
+            acceptJobButton.setDisable(true);
+        }
+
         fishTypeText.setText(currentJob.getFishType());
         amountText.setText(String.valueOf(currentJob.getAmountKg()));
         payText.setText(String.valueOf(currentJob.getPayPerKg()));
