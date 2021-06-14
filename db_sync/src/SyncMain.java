@@ -55,7 +55,7 @@ public class SyncMain {
     // Get all Fishers as String[]s
     private static ArrayList<String[]> selectAllFisherRecords() {
 
-        Statement select = null;
+        Statement select;
 
         ArrayList<String[]> fishers = new ArrayList<>();
 
@@ -100,7 +100,7 @@ public class SyncMain {
     // Get all Intermediaries as String[]s
     private static ArrayList<String[]> selectAllIntermediaryRecords() {
 
-        Statement select = null;
+        Statement select;
 
         ArrayList<String[]> intermediaries = new ArrayList<>();
 
@@ -146,7 +146,7 @@ public class SyncMain {
     // Get all Jobs as String[]s
     private static ArrayList<String[]> selectAllJobs() {
 
-        Statement select = null;
+        Statement select;
 
         ArrayList<String[]> jobs = new ArrayList<>();
 
@@ -195,7 +195,7 @@ public class SyncMain {
     // Get all Joins as String[]s
     private static ArrayList<String[]> selectAllJoins() {
 
-        Statement select = null;
+        Statement select;
 
         ArrayList<String[]> joins = new ArrayList<>();
 
