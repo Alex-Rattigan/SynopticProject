@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--
+/*******************************************************************************************************************
+ * File:          IntermediaryView.fxml
+ *
+ * Date:          05/06/2021
+ *
+ * Author:        Sophie Musk
+ *
+ * Description:   The IntermediaryView.fxml makes up the user interface for the IntermediaryView screen, providing
+                  the user with the ability to view the jobs they are currently advertising that have not been
+                  accepted by a fisher nor completed by a fisher, they will also be able to view the jobs they
+                  advertised which have been accepted but not yet completed by a fisher as well as being able to
+                  view the jobs that have been completed by the fishers.
+ *                The intermediaries will be able to view details in the advertised, accepted and completed tabs.
+                  They will be able to modify the details, remove job and create a job in the advertised tab.
+                  They will be able to mark a job as complete in the accepted tab.
+ *                The IntermediaryViewController is the class that provides this user interface with functionality
+ ******************************************************************************************************************/
+ -->
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>

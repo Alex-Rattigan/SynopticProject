@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--
+/*******************************************************************************************************************
+ * File:          Login.fxml
+ *
+ * Date:          04/06/2021
+ *
+ * Author:        Sophie Musk
+ *
+ * Description:   The Login.fxml makes up the user interface for the Login screen, providing the user with a field
+ *                in which they can put their username and their password in order to attempt to log in to the
+ *                app.
+ *                The LoginController is the class that provides this user interface with functionality
+ ******************************************************************************************************************/
+ -->
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
