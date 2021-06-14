@@ -1,4 +1,16 @@
 
+/*
+ *
+ * File:        IntermediaryTests.java
+ *
+ * Date:        18/06/2021
+ *
+ * Author:      Alex Rattigan
+ *
+ * Description: Provides a test for every method in Intermediary.java
+ *
+ */
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,7 +20,8 @@ public class IntermediaryTests {
     public void testGettersAndSetters() {
 
         //Create test object
-        Intermediary intermediary = new Intermediary(1, "username1", "password1", "fname1", "sname1", "911111111");
+        Intermediary intermediary = new Intermediary(1, "username1", "password1",
+                "fname1", "sname1", "911111111");
 
         //Test getters
         assertEquals(1, intermediary.getID());
@@ -37,10 +50,12 @@ public class IntermediaryTests {
     public void testToString() {
 
         //Create test object
-        Fisher fisher = new Fisher(1, "username1", "password1", "fname1", "sname1", "911111111");
+        Fisher fisher = new Fisher(1, "username1", "password1", "fname1", "sname1",
+                "911111111");
 
         //Test toString
-        String expected = "Fisher{fisherId=1, username='username1', fName='fname1', sName='sname1', password='password1', mobileNo=911111111}";
+        String expected = "Fisher{fisherId=1, username='username1', fName='fname1', sName='sname1'," +
+                "password='password1', mobileNo=911111111}";
         String actual = fisher.toString();
         assertEquals(expected, actual);
 
