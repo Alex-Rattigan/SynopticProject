@@ -1,7 +1,7 @@
 
 /*
  *
- * File:        DatabaseController.java
+ * File:        DatabaseControllerTests.java
  *
  * Date:        18/06/2021
  *
