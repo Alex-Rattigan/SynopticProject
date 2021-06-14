@@ -438,8 +438,9 @@ public class CSVControllerTests {
         CSVController.updateFisherId(job_id, fisher_id);
 
         //Check if fisher id was saved
-        Job job = CSVController.selectJob(job_id);
-        assertEquals("fname1 sname1", fisher.getFullName());
+        fisher = CSVController.selectJobReturnFisher(job_id);
+        assertNotNull(fisher);
+        assertEquals(fisher_id, fisher.getID());
 
     }
 
