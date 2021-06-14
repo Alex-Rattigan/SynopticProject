@@ -61,7 +61,7 @@ public class JobTests {
                 Date.valueOf("2010-10-10"), "description1", false);
 
         //Test toString
-        String expected = "ID = 1, FISH TYPE = fish1, AMOUNT IN KG = 1, PAY PER KG = 1.1, DATE SET = 2001-01-01," +
+        String expected = "ID = 1, FISH TYPE = fish1, AMOUNT IN KG = 1, PAY PER KG = 1.1, DATE SET = 2001-01-01, " +
                 "DATE DUE = 2010-10-10, COMPLETED? = false";
         String actual = job.toString();
         assertEquals(expected, actual);
