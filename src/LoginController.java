@@ -3,15 +3,14 @@
  *
  * Date: 7th June
  *
- * Author:
+ * Author: Thomas Myers, Richey blant
  *
  * Reference:
  *
- * Description:
+ * Description: A login page for both the intermediary and the fishermen
  *
- * History:
- *
- *
+ * History: 7/6/2021 - v1 Thomas Created Initial prototype
+ *          8/6/2021 - v1.1 Richey added alerts rather than changing labels for errors
  *
 *****************************************************************************************************************************************************************/
 
@@ -37,6 +36,7 @@ public class LoginController
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
+    //changes the scene to the register screen
     public void register() throws IOException{
         Stage stage = null;
         Parent nextScene = null;
@@ -51,6 +51,7 @@ public class LoginController
 
     public void login() throws IOException
     {
+        //if the user is logged in, change scene
         if(checkPassword()){
             Stage stage = null;
             Parent nextScene = null;
@@ -81,9 +82,11 @@ public class LoginController
 
         //login for intermediary
         if (currentFisher == null)
-        {//if intermediary
-            if(usernametxt.getText().equalsIgnoreCase(currentIntermediary.getUsername())) //if username entered == username in the database
+        {
+            //checks to see if the intermediarys account exists
+            if(usernametxt.getText().equalsIgnoreCase(currentIntermediary.getUsername()))
             {
+                //checks to see if that user has a password that matches the one they entered
                 if(passwordtxt.getText().equals(currentIntermediary.getPassword()))
                 {
                     MyFishingPal.currentUser=currentIntermediary;
@@ -99,8 +102,10 @@ public class LoginController
 
             //login for fisherman
         } else {
+            //checks to see if the fishermans account exists
             if(usernametxt.getText().equalsIgnoreCase(currentFisher.getUsername()))
             {
+                //checks to see if that user has a password that matches the one they entered
                 if(passwordtxt.getText().equals(currentFisher.getPassword()))
                 {
                     MyFishingPal.currentUser=currentFisher;
