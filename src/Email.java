@@ -18,11 +18,16 @@
  *
  */
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class Email {
+
+    private static String username;
+    private static String password;
 
     //Most of this code adapted from https://stackoverflow.com/questions/9086420/using-javamail-to-send-from-hotmail
     private void sendEmail(String senderUsername, String senderPassword, String recipient, String subject,
@@ -61,11 +66,29 @@ public class Email {
         }
     }
 
+    // Get the login information for the Database from a local file
+    public static void login() {
+
+        try {
+
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("email.mfp"));
+            String[] split = bufferedReader.readLine().split(",");
+            username = split[0];
+            password = split[1];
+
+        } catch (Exception e) {
+
+            System.out.println("ERROR: email.mfp could not be read.");
+            System.exit(1);
+
+        }
+
+    }
+
     public Email(String recipient, String subject, String message) {
 
-        // Very insecure to have this hard-coded but this is just a prototype program
-        String senderUsername = "info@myfishingpal.ddns.net";
-        String senderPassword = "password1";
+        String senderUsername = username;
+        String senderPassword = password;
 
         this.sendEmail(senderUsername, senderPassword, recipient, subject, message);
 
@@ -75,7 +98,9 @@ public class Email {
     // TESTING
     public static void main(String[] args) {
 
-        String recipient = "test@alexrattigan.co.uk";
+        login();
+
+        String recipient = username;
 
         int randInt = ((int)(Math.random() * 899999) + 100000);
         String message = "A random 6 digit number: " + randInt;

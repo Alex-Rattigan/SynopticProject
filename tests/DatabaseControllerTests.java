@@ -11,10 +11,7 @@
  *
  */
 
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,6 +32,13 @@ public class DatabaseControllerTests {
     private static final String currentDateTimeTwoString = format.format(currentDateTimeTwo);
 
     private static int job_id;
+
+    @BeforeEach
+    public void init() {
+
+        DatabaseController.login();
+
+    }
 
     @Test
     @Order(1)

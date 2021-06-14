@@ -15,6 +15,8 @@
  *
  */
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.sql.*;
 import java.util.ArrayList;
@@ -33,6 +35,9 @@ public class SyncMain {
     private static ArrayList<String[]> jobs = new ArrayList<>();
     private static ArrayList<String[]> joins = new ArrayList<>();
 
+    private static String username;
+    private static String password;
+
     // Method for connecting to DB
     private static void connect() {
 
@@ -40,13 +45,32 @@ public class SyncMain {
 
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://alexpinorwich.ddns.net:5432/myfishingpal",
-                    "pi", "12345");
+                    username, password);
             connection.setAutoCommit(false);
 
         } catch(Exception e) {
 
             e.printStackTrace();
             System.out.println("ERROR: Connection to database could not be established.");
+
+        }
+
+    }
+
+    // Get the login information for the Database from a local file
+    public static void login() {
+
+        try {
+
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("db.mfp"));
+            String[] split = bufferedReader.readLine().split(",");
+            username = split[0];
+            password = split[1];
+
+        } catch (Exception e) {
+
+            System.out.println("ERROR: db.mfp could not be read.");
+            System.exit(1);
 
         }
 
@@ -293,6 +317,8 @@ public class SyncMain {
 
     // Main method that controls the cache update
     public static void main(String[] args) {
+
+        login();
 
         fishers = selectAllFisherRecords();
         intermediaries = selectAllIntermediaryRecords();
