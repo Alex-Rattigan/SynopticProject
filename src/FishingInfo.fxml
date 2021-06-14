@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FishingInfoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FishingInfoController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="600.0">
         <items>
@@ -93,7 +86,7 @@
                                  </font>
                               </Text>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peruvian waters are part of the anti-cyclonic movement of the eastern part of the Southern Pacific Ocean and are characterised by slow-moving surface currents. There are abnormal variations to the water flows known as “El Niño”, which are known to disturb and kill the micro-organisms which act as food for some of the local species, which leads to a lower yield of fish for certain fishing periods. " wrappingWidth="574.751953125" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="When carrying out certain jobs on the water in this territory you must have the following:When carrying out certain jobs on the water in this territory you must have the following:" wrappingWidth="574.751953125">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="When carrying out certain jobs on the water in this territory you must have the following:" wrappingWidth="574.751953125">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>

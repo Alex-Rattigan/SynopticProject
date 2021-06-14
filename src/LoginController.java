@@ -1,12 +1,26 @@
-import javafx.event.ActionEvent;
+/****************************************************************************************************************************************************************
+ * File: LoginController
+ *
+ * Date: 7th June
+ *
+ * Author:
+ *
+ * Reference:
+ *
+ * Description:
+ *
+ * History:
+ *
+ *
+ *
+*****************************************************************************************************************************************************************/
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import java.io.IOException;
-
 import javafx.stage.Stage;
 
 
