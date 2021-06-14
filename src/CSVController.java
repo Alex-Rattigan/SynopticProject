@@ -1,5 +1,5 @@
 
-/****************************************
+/*
  *
  * File:        CSVController.java
  *
@@ -11,7 +11,7 @@
  *              to allow the program to run off a local database cache rather than accessing the internet every time
  *              data is needed.
  *
- ***************************************/
+ */
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,6 +19,7 @@ import java.io.FileWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class CSVController {
 
@@ -146,7 +147,7 @@ public class CSVController {
 
     /**************************************** CRUD FOR FISHERS ****************************************/
 
-    public static int insertFisherRecord(String username, String password, String fname, String lname, String mobNo) {
+    public static void insertFisherRecord(String username, String password, String fname, String lname, String mobNo) {
 
         DatabaseController.insertFisherRecord(username, password, fname, lname, mobNo);
 
@@ -158,8 +159,6 @@ public class CSVController {
         fishers.add(new Fisher(id, username, password, fname, lname, mobNo));
 
         writeFiles();
-
-        return id;
 
     }
 
@@ -265,8 +264,8 @@ public class CSVController {
 
     /**************************************** CRUD FOR INTERMEDIARIES ****************************************/
 
-    public static int insertIntermediaryRecord(String username, String password, String fname, String lname,
-                                               String mobNo) {
+    public static void insertIntermediaryRecord(String username, String password, String fname, String lname,
+                                                String mobNo) {
 
         DatabaseController.insertIntermediaryRecord(username, password, fname, lname, mobNo);
 
@@ -278,8 +277,6 @@ public class CSVController {
         intermediaries.add(new Intermediary(id, username, password, fname, lname, mobNo));
 
         writeFiles();
-
-        return id;
 
     }
 
@@ -573,24 +570,6 @@ public class CSVController {
 
     /************************************ CRUD FOR FISHERS + INTERMEDIARIES + JOBS ************************************/
 
-    public static void insertFisherIntermediaryJob(int job_id, int intermediary_id, Integer fisher_id_integer) {
-
-        int fisher_id = 0;
-
-        if (fisher_id_integer != null) {
-
-            fisher_id = fisher_id_integer;
-
-        }
-
-        DatabaseController.insertFisherIntermediaryJob(job_id, intermediary_id, fisher_id);
-
-        joins.add(new String[]{String.valueOf(job_id), String.valueOf(intermediary_id), String.valueOf(fisher_id)});
-
-        writeFiles();
-
-    }
-
     public static LinkedList<Job> selectJobsWithoutFisher() {
 
         LinkedList<Integer> job_ids = new LinkedList<>();
@@ -607,11 +586,11 @@ public class CSVController {
 
         }
 
-        LinkedList<Job> jobsWithoutFisher = new LinkedList<Job>();
+        LinkedList<Job> jobsWithoutFisher = new LinkedList<>();
 
         for (int i = 0; i < job_ids.size(); i++) {
 
-            jobsWithoutFisher.add(new Job(selectJob(job_ids.get(i)), intermediary_ids.get(i)));
+            jobsWithoutFisher.add(new Job(Objects.requireNonNull(selectJob(job_ids.get(i))), intermediary_ids.get(i)));
 
         }
 
@@ -643,7 +622,8 @@ public class CSVController {
 
         for (int i = 0; i < job_ids.size(); i++) {
 
-            jobsByFisher.add(new Job(selectJob(job_ids.get(i)), intermediary_ids.get(i), fisher_ids.get(i)));
+            jobsByFisher.add(new Job(Objects.requireNonNull(selectJob(job_ids.get(i))), intermediary_ids.get(i),
+                    fisher_ids.get(i)));
 
         }
 
@@ -673,7 +653,7 @@ public class CSVController {
 
         for (int i = 0; i < job_ids.size(); i++) {
 
-            jobsByIntermediary.add(new Job(selectJob(job_ids.get(i)), intermediary_ids.get(i)));
+            jobsByIntermediary.add(new Job(Objects.requireNonNull(selectJob(job_ids.get(i))), intermediary_ids.get(i)));
 
         }
 
