@@ -1,3 +1,17 @@
+
+/****************************************
+ * File:        CSVController.java
+ *
+ * Date:        06/06/2021
+ *
+ * Author:      Alex Rattigan
+ *
+ * Description: Provides a copy of every method in DatabaseController.java, as well as some file management methods,
+ *              to allow the program to run off a local database cache rather than accessing the internet every time
+ *              data is needed.
+ *
+ ***************************************/
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -7,11 +21,13 @@ import java.util.LinkedList;
 
 public class CSVController {
 
+    //Cache files
     private static final String fishersFile = "Fishers.mfp";
     private static final String intermediariesFile = "Intermediaries.mfp";
     private static final String jobsFile = "Jobs.mfp";
     private static final String joinsFile = "Joins.mfp";
 
+    //ArrayLists to hold data in memory for faster access
     private static final ArrayList<Fisher> fishers = new ArrayList<>();
     private static final ArrayList<Intermediary> intermediaries = new ArrayList<>();
     private static final ArrayList<Job> jobs = new ArrayList<>();
@@ -61,8 +77,8 @@ public class CSVController {
 
         } catch (Exception e) {
 
-            //e.printStackTrace();
             System.out.println(fishersFile + ", " + intermediariesFile + ", " + jobsFile + ", or " + joinsFile + " failed to read.");
+            System.exit(1);
 
         }
 
@@ -111,7 +127,6 @@ public class CSVController {
 
         } catch (Exception e) {
 
-            //e.printStackTrace();
             System.out.println(fishersFile + ", " + intermediariesFile + ", " + jobsFile + ", or " + joinsFile + " failed to write.");
 
         }
