@@ -25,7 +25,8 @@ import javax.mail.internet.*;
 public class Email {
 
     //Most of this code adapted from https://stackoverflow.com/questions/9086420/using-javamail-to-send-from-hotmail
-    private void sendEmail(String senderUsername, String senderPassword, String recipient, String subject, String messageString) {
+    private void sendEmail(String senderUsername, String senderPassword, String recipient, String subject,
+                           String messageString) {
 
         // Setup mail server
         Properties properties = System.getProperties();
