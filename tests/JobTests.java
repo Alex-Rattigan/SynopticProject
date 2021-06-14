@@ -1,4 +1,16 @@
 
+/*
+ *
+ * File:        JobTests.java
+ *
+ * Date:        18/06/2021
+ *
+ * Author:      Alex Rattigan
+ *
+ * Description: Provides a test for every method in Job.java
+ *
+ */
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +22,8 @@ public class JobTests {
     public void testGettersAndSetters() {
 
         //Create test object
-        Job job = new Job(1, "fish1", 1, 1.1, Date.valueOf("2001-01-01"), Date.valueOf("2010-10-10"), "description1", false);
+        Job job = new Job(1, "fish1", 1, 1.1, Date.valueOf("2001-01-01"),
+                Date.valueOf("2010-10-10"), "description1", false);
 
         //Test getters
         assertEquals(1, job.getId());
@@ -44,10 +57,12 @@ public class JobTests {
     public void testToString() {
 
         //Create test object
-        Job job = new Job(1, "fish1", 1, 1.1, Date.valueOf("2001-01-01"), Date.valueOf("2010-10-10"), "description1", false);
+        Job job = new Job(1, "fish1", 1, 1.1, Date.valueOf("2001-01-01"),
+                Date.valueOf("2010-10-10"), "description1", false);
 
         //Test toString
-        String expected = "ID = 1, FISH TYPE = fish1, AMOUNT IN KG = 1, PAY PER KG = 1.1, DATE SET = 2001-01-01, DATE DUE = 2010-10-10, COMPLETED? = false";
+        String expected = "ID = 1, FISH TYPE = fish1, AMOUNT IN KG = 1, PAY PER KG = 1.1, DATE SET = 2001-01-01," +
+                "DATE DUE = 2010-10-10, COMPLETED? = false";
         String actual = job.toString();
         assertEquals(expected, actual);
 

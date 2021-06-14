@@ -1,4 +1,16 @@
 
+/*
+ *
+ * File:        CSVControllerTests.java
+ *
+ * Date:        18/06/2021
+ *
+ * Author:      Alex Rattigan
+ *
+ * Description: Provides a test for every method in CSVController.java
+ *
+ */
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -31,7 +43,8 @@ public class CSVControllerTests {
     public void testInsertAndSelectFisher() {
 
         //Insert test Fisher
-        CSVController.insertFisherRecord(currentDateTimeOneString, "password1", "fname1", "sname1", currentDateTimeOneString);
+        CSVController.insertFisherRecord(currentDateTimeOneString, "password1", "fname1", "sname1",
+                currentDateTimeOneString);
 
         //Select test Fisher back out by username
         Fisher fisher = CSVController.checkFisherExists(currentDateTimeOneString);
@@ -80,10 +93,12 @@ public class CSVControllerTests {
         Fisher fisher = CSVController.checkFisherExists(currentDateTimeOneString);
 
         //Change the mobile number
+        assertNotNull(fisher);
         CSVController.updatePasswordFisher(fisher.getID(), "password2");
 
         //Check if password was saved
         fisher = CSVController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         assertEquals("password2", fisher.getPassword());
 
     }
@@ -100,10 +115,12 @@ public class CSVControllerTests {
         String newCurrentDateTimeString = format.format(newCurrentDateTime);
 
         //Change the password
+        assertNotNull(fisher);
         CSVController.updateMobileNoFisher(fisher.getID(), newCurrentDateTimeString);
 
         //Check if password was saved
         fisher = CSVController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         assertEquals(newCurrentDateTimeString, fisher.getMobileNo());
 
     }
@@ -114,6 +131,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Fisher id
         Fisher fisher = CSVController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         int fisher_id = fisher.getID();
 
         //Delete the Fisher
@@ -134,7 +152,8 @@ public class CSVControllerTests {
     public void testInsertAndSelectIntermediary() {
 
         //Insert test Intermediary
-        CSVController.insertIntermediaryRecord(currentDateTimeTwoString, "password1", "fname1", "sname1", currentDateTimeTwoString);
+        CSVController.insertIntermediaryRecord(currentDateTimeTwoString, "password1", "fname1",
+                "sname1", currentDateTimeTwoString);
 
         //Select test Intermediary back out by username
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
@@ -183,10 +202,12 @@ public class CSVControllerTests {
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
 
         //Change the mobile number
+        assertNotNull(intermediary);
         CSVController.updatePasswordIntermediary(intermediary.getID(), "password2");
 
         //Check if password was saved
         intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         assertEquals("password2", intermediary.getPassword());
 
     }
@@ -203,10 +224,12 @@ public class CSVControllerTests {
         String newCurrentDateTimeString = format.format(newCurrentDateTime);
 
         //Change the password
+        assertNotNull(intermediary);
         CSVController.updateMobileNoIntermediary(intermediary.getID(), newCurrentDateTimeString);
 
         //Check if password was saved
         intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         assertEquals(newCurrentDateTimeString, intermediary.getMobileNo());
 
     }
@@ -217,6 +240,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Intermediary id
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Delete the Intermediary
@@ -238,12 +262,14 @@ public class CSVControllerTests {
 
         //Retrieve test Intermediary
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Insert test Job
         Date dateCreated = Date.valueOf(currentDateTimeOne.toLocalDate());
         Date dateDue = Date.valueOf(currentDateTimeTwo.toLocalDate());
-        job_id = CSVController.insertJob(intermediary_id, "fish1", 1, 1.1, dateCreated, dateDue, "description1", false);
+        job_id = CSVController.insertJob(intermediary_id, "fish1", 1, 1.1, dateCreated,
+                dateDue, "description1", false);
 
         //Select test Job back out
         Job job = CSVController.selectJob(job_id);
@@ -287,6 +313,7 @@ public class CSVControllerTests {
 
         //Check if fish type was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals("fish2", job.getFishType());
 
     }
@@ -300,6 +327,7 @@ public class CSVControllerTests {
 
         //Check if amount was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals(2, job.getAmountKg());
 
     }
@@ -313,6 +341,7 @@ public class CSVControllerTests {
 
         //Check if pay was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals(2.2, job.getPayPerKg());
 
     }
@@ -329,6 +358,7 @@ public class CSVControllerTests {
 
         //Check if due date was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals(newDateDue, job.getDateDue());
 
     }
@@ -342,6 +372,7 @@ public class CSVControllerTests {
 
         //Check if description was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals("description2", job.getDescription());
 
     }
@@ -355,6 +386,7 @@ public class CSVControllerTests {
 
         //Check if completion status was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertTrue(job.isCompleted());
 
     }
@@ -376,13 +408,7 @@ public class CSVControllerTests {
 
     /**************************************** CRUD FOR JOINS ****************************************/
 
-    @Test
-    @Order(19)
-    public void testInsertFisherIntermediaryJob() {
-
-        //Left empty as CSVController.insertFisherIntermediaryJob() may be deleted
-
-    }
+    //Test 19 missing as it tested a deleted method.
 
     @Test
     @Order(20)
@@ -405,14 +431,16 @@ public class CSVControllerTests {
 
         //Retrieve the test Fisher id
         Fisher fisher = CSVController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         int fisher_id = fisher.getID();
 
         //Update the test Job's Fisher id
         CSVController.updateFisherId(job_id, fisher_id);
 
         //Check if fisher id was saved
-        Job job = CSVController.selectJob(job_id);
-        assertEquals("fname1 sname1", fisher.getFullName());
+        fisher = CSVController.selectJobReturnFisher(job_id);
+        assertNotNull(fisher);
+        assertEquals(fisher_id, fisher.getID());
 
     }
 
@@ -422,6 +450,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Intermediary id
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Select all Jobs with matching Intermediary id
@@ -441,6 +470,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Fisher id
         Fisher fisher = CSVController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         int fisher_id = fisher.getID();
 
         //Select the Fisher using the Job id
@@ -457,6 +487,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Intermediary id
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Select the Intermediary using the Job id

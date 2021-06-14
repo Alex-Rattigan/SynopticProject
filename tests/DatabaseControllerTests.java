@@ -1,4 +1,16 @@
 
+/*
+ *
+ * File:        DatabaseControllerTests.java
+ *
+ * Date:        18/06/2021
+ *
+ * Author:      Alex Rattigan
+ *
+ * Description: Provides a test for every method in DatabaseController.java
+ *
+ */
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -41,7 +53,8 @@ public class DatabaseControllerTests {
     public void testInsertAndSelectFisher() {
 
         //Insert test Fisher
-        DatabaseController.insertFisherRecord(currentDateTimeOneString, "password1", "fname1", "sname1", currentDateTimeOneString);
+        DatabaseController.insertFisherRecord(currentDateTimeOneString, "password1", "fname1",
+                "sname1", currentDateTimeOneString);
 
         //Select test Fisher back out by username
         Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
@@ -90,10 +103,12 @@ public class DatabaseControllerTests {
         Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
 
         //Change the mobile number
+        assertNotNull(fisher);
         DatabaseController.updatePasswordFisher(fisher.getID(), "password2");
 
         //Check if password was saved
         fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         assertEquals("password2", fisher.getPassword());
 
     }
@@ -110,10 +125,12 @@ public class DatabaseControllerTests {
         String newCurrentDateTimeString = format.format(newCurrentDateTime);
 
         //Change the password
+        assertNotNull(fisher);
         DatabaseController.updateMobileNoFisher(fisher.getID(), newCurrentDateTimeString);
 
         //Check if password was saved
         fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         assertEquals(newCurrentDateTimeString, fisher.getMobileNo());
 
     }
@@ -124,6 +141,7 @@ public class DatabaseControllerTests {
 
         //Retrieve the test Fisher id
         Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         int fisher_id = fisher.getID();
 
         //Delete the Fisher
@@ -144,7 +162,8 @@ public class DatabaseControllerTests {
     public void testInsertAndSelectIntermediary() {
 
         //Insert test Intermediary
-        DatabaseController.insertIntermediaryRecord(currentDateTimeTwoString, "password1", "fname1", "sname1", currentDateTimeTwoString);
+        DatabaseController.insertIntermediaryRecord(currentDateTimeTwoString, "password1", "fname1",
+                "sname1", currentDateTimeTwoString);
 
         //Select test Intermediary back out by username
         Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
@@ -193,10 +212,12 @@ public class DatabaseControllerTests {
         Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
 
         //Change the mobile number
+        assertNotNull(intermediary);
         DatabaseController.updatePasswordIntermediary(intermediary.getID(), "password2");
 
         //Check if password was saved
         intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         assertEquals("password2", intermediary.getPassword());
 
     }
@@ -213,10 +234,12 @@ public class DatabaseControllerTests {
         String newCurrentDateTimeString = format.format(newCurrentDateTime);
 
         //Change the password
+        assertNotNull(intermediary);
         DatabaseController.updateMobileNoIntermediary(intermediary.getID(), newCurrentDateTimeString);
 
         //Check if password was saved
         intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         assertEquals(newCurrentDateTimeString, intermediary.getMobileNo());
 
     }
@@ -227,6 +250,7 @@ public class DatabaseControllerTests {
 
         //Retrieve the test Intermediary id
         Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Delete the Intermediary
@@ -248,12 +272,14 @@ public class DatabaseControllerTests {
 
         //Retrieve test Intermediary
         Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Insert test Job
         Date dateCreated = Date.valueOf(currentDateTimeOne.toLocalDate());
         Date dateDue = Date.valueOf(currentDateTimeTwo.toLocalDate());
-        job_id = DatabaseController.insertJob(intermediary_id, "fish1", 1, 1.1, dateCreated, dateDue, "description1", false);
+        job_id = DatabaseController.insertJob(intermediary_id, "fish1", 1, 1.1, dateCreated,
+                dateDue, "description1", false);
 
         //Select test Job back out
         Job job = DatabaseController.selectJob(job_id);
@@ -297,6 +323,7 @@ public class DatabaseControllerTests {
 
         //Check if fish type was saved
         Job job = DatabaseController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals("fish2", job.getFishType());
 
     }
@@ -310,6 +337,7 @@ public class DatabaseControllerTests {
 
         //Check if amount was saved
         Job job = DatabaseController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals(2, job.getAmountKg());
 
     }
@@ -323,6 +351,7 @@ public class DatabaseControllerTests {
 
         //Check if pay was saved
         Job job = DatabaseController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals(2.2, job.getPayPerKg());
 
     }
@@ -339,6 +368,7 @@ public class DatabaseControllerTests {
 
         //Check if due date was saved
         Job job = DatabaseController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals(newDateDue, job.getDateDue());
 
     }
@@ -352,6 +382,7 @@ public class DatabaseControllerTests {
 
         //Check if description was saved
         Job job = DatabaseController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals("description2", job.getDescription());
 
     }
@@ -365,6 +396,7 @@ public class DatabaseControllerTests {
 
         //Check if completion status was saved
         Job job = DatabaseController.selectJob(job_id);
+        assertNotNull(job);
         assertTrue(job.isCompleted());
 
     }
@@ -418,14 +450,16 @@ public class DatabaseControllerTests {
 
         //Retrieve the test Fisher id
         Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         int fisher_id = fisher.getID();
 
         //Update the test Job's Fisher id
         DatabaseController.updateFisherId(job_id, fisher_id);
 
         //Check if fisher id was saved
-        Job job = DatabaseController.selectJob(job_id);
-        assertEquals("fname1 sname1", fisher.getFullName());
+        fisher = DatabaseController.selectJobReturnFisher(job_id);
+        assertNotNull(fisher);
+        assertEquals(fisher_id, fisher.getID());
 
     }
 
@@ -457,12 +491,14 @@ public class DatabaseControllerTests {
 
         //Retrieve the test Fisher id
         Fisher fisher = DatabaseController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         int fisher_id = fisher.getID();
 
         //Select the Fisher using the Job id
         fisher = DatabaseController.selectJobReturnFisher(job_id);
 
         //Check that correct Fisher is returned
+        assertNotNull(fisher);
         assertEquals(fisher_id, fisher.getID());
 
     }
@@ -473,12 +509,14 @@ public class DatabaseControllerTests {
 
         //Retrieve the test Intermediary id
         Intermediary intermediary = DatabaseController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Select the Intermediary using the Job id
         intermediary = DatabaseController.selectJobReturnIntermediary(job_id);
 
         //Check that correct Intermediary is returned
+        assertNotNull(intermediary);
         assertEquals(intermediary_id, intermediary.getID());
 
     }
