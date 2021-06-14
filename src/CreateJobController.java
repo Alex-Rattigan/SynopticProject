@@ -1,10 +1,23 @@
+/****************************************************************************************************************************************************************
+ * File: CreateJobController
+ *
+ * Date: 9th June
+ *
+ * Author: Thomas Myers
+ *
+ * Reference: [1] java date and time https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html
+ *
+ * Description: A create job form for the intermediary
+ *
+ *****************************************************************************************************************************************************************/
+
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -55,6 +68,7 @@ public class CreateJobController
 
         } else {
 
+            //checks if an incorrect value has been inputted
             if(Integer.parseInt(amountKg.getText()) < 1 || Double.parseDouble(priceKg.getText()) <= 0)
             {
                 alert.setTitle("Incorrect Value");
@@ -63,6 +77,7 @@ public class CreateJobController
 
             } else {
 
+                //checks to see if the date the user selected is after the current date
                 if(currentDate.compareTo(dateToComplete.getValue()) < 0 )
                 {
 
