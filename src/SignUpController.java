@@ -1,3 +1,24 @@
+/*******************************************************************************************************************
+ * File: SignUpController.java
+ *
+ * Date: 7/6/2021
+ *
+ * Author: Richey Blant
+ *
+ * Description: This class is the controller class for the SignUp.fxml page, this is where all of the functionality
+ * of the page comes from, making sure the buttons are doing what they are meant to and the information is getting
+ * used when the user submits it. There is also some error checking to make sure that the user doesn't enter invalid
+ * information or information that is incorrect. Throughout this file where it says Mobile Number or Phone Number, we
+ * used email addresses so we could test that these were working, obviously in a real implementation we would of had it
+ * working with phone numbers.
+ *
+ * References: [1] Email regex from Alex Rattigan's Software Engineering Coursework, provided by Alex Rattigan
+ *
+ *             [2] Change scene code from Richey Blant & Ruby Moore's Software Engineering Coursework, provided by
+ *             Richey Blant
+ *
+ ******************************************************************************************************************/
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -174,6 +195,7 @@ public class SignUpController {
         return true;
     }
 
+    //this takes the user back to the first screen, the login screen, when the button is clicked
     public void backToLogin() throws IOException{
         Stage stage = null;
         Parent nextScene = null;
