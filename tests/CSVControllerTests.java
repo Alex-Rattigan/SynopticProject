@@ -93,10 +93,12 @@ public class CSVControllerTests {
         Fisher fisher = CSVController.checkFisherExists(currentDateTimeOneString);
 
         //Change the mobile number
+        assertNotNull(fisher);
         CSVController.updatePasswordFisher(fisher.getID(), "password2");
 
         //Check if password was saved
         fisher = CSVController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         assertEquals("password2", fisher.getPassword());
 
     }
@@ -113,10 +115,12 @@ public class CSVControllerTests {
         String newCurrentDateTimeString = format.format(newCurrentDateTime);
 
         //Change the password
+        assertNotNull(fisher);
         CSVController.updateMobileNoFisher(fisher.getID(), newCurrentDateTimeString);
 
         //Check if password was saved
         fisher = CSVController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         assertEquals(newCurrentDateTimeString, fisher.getMobileNo());
 
     }
@@ -127,6 +131,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Fisher id
         Fisher fisher = CSVController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         int fisher_id = fisher.getID();
 
         //Delete the Fisher
@@ -197,10 +202,12 @@ public class CSVControllerTests {
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
 
         //Change the mobile number
+        assertNotNull(intermediary);
         CSVController.updatePasswordIntermediary(intermediary.getID(), "password2");
 
         //Check if password was saved
         intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         assertEquals("password2", intermediary.getPassword());
 
     }
@@ -217,10 +224,12 @@ public class CSVControllerTests {
         String newCurrentDateTimeString = format.format(newCurrentDateTime);
 
         //Change the password
+        assertNotNull(intermediary);
         CSVController.updateMobileNoIntermediary(intermediary.getID(), newCurrentDateTimeString);
 
         //Check if password was saved
         intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         assertEquals(newCurrentDateTimeString, intermediary.getMobileNo());
 
     }
@@ -231,6 +240,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Intermediary id
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Delete the Intermediary
@@ -252,6 +262,7 @@ public class CSVControllerTests {
 
         //Retrieve test Intermediary
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Insert test Job
@@ -302,6 +313,7 @@ public class CSVControllerTests {
 
         //Check if fish type was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals("fish2", job.getFishType());
 
     }
@@ -315,6 +327,7 @@ public class CSVControllerTests {
 
         //Check if amount was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals(2, job.getAmountKg());
 
     }
@@ -328,6 +341,7 @@ public class CSVControllerTests {
 
         //Check if pay was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals(2.2, job.getPayPerKg());
 
     }
@@ -344,6 +358,7 @@ public class CSVControllerTests {
 
         //Check if due date was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals(newDateDue, job.getDateDue());
 
     }
@@ -357,6 +372,7 @@ public class CSVControllerTests {
 
         //Check if description was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertEquals("description2", job.getDescription());
 
     }
@@ -370,6 +386,7 @@ public class CSVControllerTests {
 
         //Check if completion status was saved
         Job job = CSVController.selectJob(job_id);
+        assertNotNull(job);
         assertTrue(job.isCompleted());
 
     }
@@ -414,6 +431,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Fisher id
         Fisher fisher = CSVController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         int fisher_id = fisher.getID();
 
         //Update the test Job's Fisher id
@@ -431,6 +449,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Intermediary id
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Select all Jobs with matching Intermediary id
@@ -450,6 +469,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Fisher id
         Fisher fisher = CSVController.checkFisherExists(currentDateTimeOneString);
+        assertNotNull(fisher);
         int fisher_id = fisher.getID();
 
         //Select the Fisher using the Job id
@@ -466,6 +486,7 @@ public class CSVControllerTests {
 
         //Retrieve the test Intermediary id
         Intermediary intermediary = CSVController.checkIntermediaryExists(currentDateTimeTwoString);
+        assertNotNull(intermediary);
         int intermediary_id = intermediary.getID();
 
         //Select the Intermediary using the Job id
