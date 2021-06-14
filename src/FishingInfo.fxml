@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--
+/*******************************************************************************************************************
+ * File:          FishingInfo.fxml
+ *
+ * Date:          06/06/2021
+ *
+ * Author:        Sophie Musk - User Interface, research
+ *                Tom Myers - Research
+ *
+ * Description:   The FishingInfo.fxml makes up the user interface for the FishingInfo page, which provides new
+ *                users with information about Peruvian fishing legislation in order to ensure that the users do
+ *                not break any of these laws and hence get themselves in legal trouble and banned off of the app.
+ *                The new users will be shown this page after logging in, and after this they will be able to access
+ *                it at any time to ensure that they themselves are using the app correctly and abiding by local
+ *                laws and to ensure others are kept to the same standard.
+ *                The FishingInfoController is the class that provides this user interface with functionality.
+ ******************************************************************************************************************/
+ -->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>

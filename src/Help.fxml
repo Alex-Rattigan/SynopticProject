@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--
+/*******************************************************************************************************************
+ * File:          Help.fxml
+ *
+ * Date:          04/06/2021
+ *
+ * Author:        Sophie Musk
+ *
+ * Description:   The Help.fxml makes up the user interface for the Help screen, providing the user with general
+ *                help for both types of user (fisher/intermediary) as well as specific help for the two.
+ *                The LoginController is the class that provides this user interface with functionality
+ ******************************************************************************************************************/
+ -->
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
