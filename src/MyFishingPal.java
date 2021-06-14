@@ -36,6 +36,12 @@ public class MyFishingPal extends Application {
 
     public static void main(String[] args) {
 
+        //Log in to database
+        DatabaseController.login();
+
+        //Log in to email
+        Email.login();
+
         //Update local database - in real deployment this would run twice per day, not every startup
         SyncMain.main(new String[]{});
 

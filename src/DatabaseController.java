@@ -1,4 +1,6 @@
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.sql.*;
 import java.util.LinkedList;
 
@@ -7,13 +9,16 @@ public class DatabaseController
 {
     private static Connection c = null;
 
+    private static String username;
+    private static String password;
+
     // Method for connecting to DB
     public static boolean connect()
     {
         try
         {
             Class.forName("org.postgresql.Driver");
-            c = DriverManager.getConnection("jdbc:postgresql://alexpinorwich.ddns.net:5432/myfishingpal", "pi", "12345");
+            c = DriverManager.getConnection("jdbc:postgresql://alexpinorwich.ddns.net:5432/myfishingpal", username, password);
             c.setAutoCommit(false);
 
             System.out.println("Connection to database successful.");
@@ -26,6 +31,25 @@ public class DatabaseController
         }
 
         return false;
+
+    }
+
+    // Get the login information for the Database from a local file
+    public static void login() {
+
+        try {
+
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("db.mfp"));
+            String[] split = bufferedReader.readLine().split(",");
+            username = split[0];
+            password = split[1];
+
+        } catch (Exception e) {
+
+            System.out.println("ERROR: db.mfp could not be read.");
+            System.exit(1);
+
+        }
 
     }
 
