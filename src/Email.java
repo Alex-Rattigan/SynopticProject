@@ -66,7 +66,7 @@ public class Email {
         }
     }
 
-    // Get the login information for the Database from a local file
+    // Get the login information for the Email from a local file
     public static void login() {
 
         try {
