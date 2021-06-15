@@ -1,7 +1,20 @@
+/*******************************************************************************************************************
+ * File: Job.java
+ *
+ * Date: 04/06/2021
+ *
+ * Author: RM
+ *
+ * Description: Object class for containing Job objects modelled in the Jobs table in the database. This class can also
+ *              be used to model records found in the join table between Jobs, Fishers and Intermediaries.
+ *
+ * References: [1] http://tutorials.jenkov.com/java-date-time/parsing-formatting-dates.html
+ *
+ ******************************************************************************************************************/
+
+
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-
-// References: http://tutorials.jenkov.com/java-date-time/parsing-formatting-dates.html
 
 public class Job
 {
@@ -28,6 +41,7 @@ public class Job
         this.description = description;
         this.isCompleted = isCompleted;
 
+        // used for displayed dates consistently across tables and date-pickers
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.formattedDueDate = format.format(dateDue);
     }
@@ -43,6 +57,7 @@ public class Job
         this.description = description;
         this.isCompleted = isCompleted;
 
+        // used for displayed dates consistently across tables and date-pickers
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.formattedDueDate = format.format(dateDue);
     }
@@ -58,6 +73,7 @@ public class Job
         this.description = description;
         this.isCompleted = isCompleted;
 
+        // used for displayed dates consistently across tables and date-pickers
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.formattedDueDate = format.format(dateDue);
 
@@ -78,6 +94,7 @@ public class Job
         this.isCompleted = isCompleted;
         this.intermediaryId = intermediaryId;
 
+        // used for displayed dates consistently across tables and date-pickers
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.formattedDueDate = format.format(dateDue);
 
@@ -96,6 +113,7 @@ public class Job
         this.isCompleted = job.isCompleted();
         this.intermediaryId = intermediaryId;
 
+        // used for displayed dates consistently across tables and date-pickers
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.formattedDueDate = format.format(this.dateDue);
 
@@ -116,6 +134,7 @@ public class Job
         this.isCompleted = job.isCompleted();
         this.intermediaryId = intermediaryId;
 
+        // used for displayed dates consistently across tables and date-pickers
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         this.formattedDueDate = format.format(this.dateDue);
 

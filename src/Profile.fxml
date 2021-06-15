@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+/*******************************************************************************************************************
+ * File: Profile.fxml
+ *
+ * Date: 06/06/2021
+ *
+ * Author: RM
+ *
+ * Description: GUI for the Profile page. A user's details will be displayed here. Created using SceneBuilder.
+ *              Controlled by ProfileController.java.
+ *
+ * References:
+ *
+ ******************************************************************************************************************/
+ -->
+
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>

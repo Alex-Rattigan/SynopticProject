@@ -1,3 +1,23 @@
+/*******************************************************************************************************************
+ * File: FisherViewController.java
+ *
+ * Date: 08/06/2021
+ *
+ * Author: RM
+ *
+ * Description: This class is for controlling the GUI users of type Fisher see when they click the 'View Jobs'
+ *              button from the toolbar in the MyFishingPal application. It contains a number of tables which update
+ *              with specific information from the database or local CSVs.
+ *
+ * References: [1] http://tutorials.jenkov.com/javafx/tableview.html
+ *             [2] https://stackoverflow.com/questions/43031602/how-to-set-a-method-to-a-javafx-alert-button
+ *             [3] https://stackoverflow.com/questions/32176782/how-can-i-clear-the-all-contents-of-the-cell-data-in-every-row-in-my-tableview-i/52770465
+ *             [4] Change scene code from Richey Blant & Ruby Moore's Software Engineering Coursework, provided by
+ *  *             Richey Blant
+ *
+ ******************************************************************************************************************/
+
+
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,10 +33,6 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.LinkedList;
 import java.util.Optional;
-
-// References: http://tutorials.jenkov.com/javafx/tableview.html
-//             https://stackoverflow.com/questions/43031602/how-to-set-a-method-to-a-javafx-alert-button
-//             https://stackoverflow.com/questions/32176782/how-can-i-clear-the-all-contents-of-the-cell-data-in-every-row-in-my-tableview-i/52770465
 
 public class FisherViewController
 {
@@ -53,6 +69,7 @@ public class FisherViewController
     @FXML
     private TableColumn<Job, String> managedPastTbl;
 
+    // get current user logged in
     Fisher currentUser = (Fisher) MyFishingPal.currentUser;
 
     LinkedList<Job> jobs = new LinkedList<>();
@@ -66,8 +83,10 @@ public class FisherViewController
 
     public void initialize()
     {
+        // initialise job lists
         createJobLists();
 
+        // add active jobs to table
         jobIdActiveTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypeActiveTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
         amountActiveTbl.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
@@ -77,10 +96,12 @@ public class FisherViewController
 
         activeJobsTable.getItems().addAll(activeJobs);
 
+        // set selection model to single row at a time
         TableView.TableViewSelectionModel<Job> activeJobsSelectionModel = activeJobsTable.getSelectionModel();
         activeJobsSelectionModel.setSelectionMode(SelectionMode.SINGLE);
         activeSelectedRows = activeJobsSelectionModel.getSelectedItems();
 
+        // enable buttons upon row selection
         activeSelectedRows.addListener(new ListChangeListener<Job>() {
             @Override
             public void onChanged(Change<? extends Job> change) {
@@ -90,7 +111,7 @@ public class FisherViewController
             }
         });
 
-
+        // add completed jobs to table
         jobIdPastTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypePastTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
         amountPastTbl.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
@@ -100,10 +121,12 @@ public class FisherViewController
 
         pastJobsTable.getItems().addAll(pastJobs);
 
+        // set selection model to single row at a time
         TableView.TableViewSelectionModel<Job> pastJobsSelectionModel = pastJobsTable.getSelectionModel();
         pastJobsSelectionModel.setSelectionMode(SelectionMode.SINGLE);
         pastSelectedRows = pastJobsSelectionModel.getSelectedItems();
 
+        // enable buttons upon row selection
         pastSelectedRows.addListener(new ListChangeListener<Job>() {
             @Override
             public void onChanged(Change<? extends Job> change) {
@@ -113,16 +136,19 @@ public class FisherViewController
 
     }
 
+    // used to create lists of different types of jobs
     public void createJobLists()
     {
-        jobs = CSVController.selectJobsByFisher(currentUser.getID());
+        jobs = CSVController.selectJobsByFisher(currentUser.getID()); // get all jobs for fisher
 
+        // refresh lists
         if(activeJobs.size() != 0 || pastJobs.size() != 0)
         {
             activeJobs = new LinkedList<>();
             pastJobs = new LinkedList<>();
         }
 
+        // add jobs to correct lists
         for (Job job : jobs)
         {
             if (!job.isCompleted())
@@ -138,6 +164,7 @@ public class FisherViewController
 
     public void viewActiveJobDetails() throws IOException
     {
+        // pass job to JobDetailsController
         JobDetailsController.setJobDetails(activeSelectedRows.get(0));
 
         // Open Job Details page
@@ -154,6 +181,7 @@ public class FisherViewController
 
     public void viewPastJobDetails() throws IOException
     {
+        // pass job to JobDetailsController
         JobDetailsController.setJobDetails(pastSelectedRows.get(0));
 
         // Open Job Details page
@@ -172,6 +200,7 @@ public class FisherViewController
     {
         Job job = activeSelectedRows.get(0);
 
+        // show confirmation alert
         alert.setTitle("Mark Job as Completed");
         alert.setHeaderText("Are you sure you want to mark this job completed?");
         Optional<ButtonType> result = alert.showAndWait();
@@ -183,6 +212,8 @@ public class FisherViewController
         else if(result.get() == ButtonType.OK)
         {
             CSVController.updateCompleted(job.getId(), true);
+
+            // refresh tables
             activeJobsTable.getItems().clear();
             pastJobsTable.getItems().clear();
             createJobLists();
@@ -191,6 +222,7 @@ public class FisherViewController
             activeJobsTable.refresh();
             pastJobsTable.refresh();
 
+            // re-disable buttons
             viewDetailsButton.setDisable(true);
             viewDetailsButton1.setDisable(true);
             completeButton.setDisable(true);
@@ -205,6 +237,7 @@ public class FisherViewController
     {
         Job job = activeSelectedRows.get(0);
 
+        // show confirmation alert
         alert.setTitle("Abandon Job");
         alert.setHeaderText("Are you sure you want to abandon this job?");
         Optional<ButtonType> result = alert.showAndWait();
@@ -216,6 +249,8 @@ public class FisherViewController
         else if(result.get() == ButtonType.OK)
         {
             CSVController.updateFisherId(job.getId(), null);
+
+            // refresh tables
             activeJobsTable.getItems().clear();
             pastJobsTable.getItems().clear();
             createJobLists();
@@ -234,6 +269,7 @@ public class FisherViewController
         }
     }
 
+    // tool bar
     public void changeScene(ActionEvent event) throws IOException {
         Stage stage = null;
         Parent nextScene = null;

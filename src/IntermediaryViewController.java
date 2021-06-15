@@ -1,3 +1,23 @@
+/*******************************************************************************************************************
+ * File: IntermediaryViewController.java
+ *
+ * Date: 09/06/2021
+ *
+ * Author: RM
+ *
+ * Description: This class is for controlling the GUI users of type Intermediary see when they click the 'View Jobs'
+ *              button from the toolbar in the MyFishingPal application. It contains a number of tables which update
+ *              with specific information from the database or local CSVs.
+ *
+ * References: [1] http://tutorials.jenkov.com/javafx/tableview.html
+ *             [2] https://stackoverflow.com/questions/43031602/how-to-set-a-method-to-a-javafx-alert-button
+ *             [3] https://stackoverflow.com/questions/32176782/how-can-i-clear-the-all-contents-of-the-cell-data-in-every-row-in-my-tableview-i/52770465
+ *             [4] Change scene code from Richey Blant & Ruby Moore's Software Engineering Coursework, provided by
+ *  *             Richey Blant
+ *
+ ******************************************************************************************************************/
+
+
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,7 +30,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.LinkedList;
 import java.util.Optional;
 
@@ -64,8 +83,10 @@ public class IntermediaryViewController
     @FXML
     private TableColumn<Job, String> fisherPastTbl;
 
+    // Get user currently logged in
     Intermediary currentUser = (Intermediary) MyFishingPal.currentUser;
 
+    // Lists of all job types
     LinkedList<Job> jobs = new LinkedList<>();
     LinkedList<Job> adJobs = new LinkedList<>();
     LinkedList<Job> acceptedJobs = new LinkedList<>();
@@ -79,8 +100,10 @@ public class IntermediaryViewController
 
     public void initialize()
     {
+        // initialise the job lists of different types
         createJobLists();
 
+        // put advertised jobs into their respective table
         jobIdAdTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypeAdTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
         amountAdTbl.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
@@ -89,10 +112,12 @@ public class IntermediaryViewController
 
         advertisedJobsTable.getItems().addAll(adJobs);
 
+        // set selection model so a single row can be selected at a time
         TableView.TableViewSelectionModel<Job> adJobsSelectionModel = advertisedJobsTable.getSelectionModel();
         adJobsSelectionModel.setSelectionMode(SelectionMode.SINGLE);
         adSelectedRows = adJobsSelectionModel.getSelectedItems();
 
+        // enable the buttons on the page once a row has been selected
         adSelectedRows.addListener(new ListChangeListener<Job>() {
             @Override
             public void onChanged(Change<? extends Job> change) {
@@ -102,6 +127,7 @@ public class IntermediaryViewController
             }
         });
 
+        // put accepted jobs into their table
         jobIdAcceptedTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypeAcceptedTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
         amountAcceptedTbl.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
@@ -111,10 +137,12 @@ public class IntermediaryViewController
 
         acceptedJobsTable.getItems().addAll(acceptedJobs);
 
+        // set selection model so a single row can be selected at a time
         TableView.TableViewSelectionModel<Job> acceptedJobsSelectionModel = acceptedJobsTable.getSelectionModel();
         acceptedJobsSelectionModel.setSelectionMode(SelectionMode.SINGLE);
         acceptedSelectedRows = acceptedJobsSelectionModel.getSelectedItems();
 
+        // enable buttons on row selection
         acceptedSelectedRows.addListener(new ListChangeListener<Job>() {
             @Override
             public void onChanged(Change<? extends Job> change) {
@@ -123,6 +151,7 @@ public class IntermediaryViewController
             }
         });
 
+        // put completed jobs in table
         jobIdPastTbl.setCellValueFactory(new PropertyValueFactory<>("id"));
         fishTypePastTbl.setCellValueFactory(new PropertyValueFactory<>("fishType"));
         amountPastTbl.setCellValueFactory(new PropertyValueFactory<>("amountKg"));
@@ -132,10 +161,12 @@ public class IntermediaryViewController
 
         pastJobsTable.getItems().addAll(pastJobs);
 
+        // set selection model so a single row can be selected at a time
         TableView.TableViewSelectionModel<Job> pastJobsSelectionModel = pastJobsTable.getSelectionModel();
         pastJobsSelectionModel.setSelectionMode(SelectionMode.SINGLE);
         pastSelectedRows = pastJobsSelectionModel.getSelectedItems();
 
+        // enable button on row selection
         pastSelectedRows.addListener(new ListChangeListener<Job>() {
             @Override
             public void onChanged(Change<? extends Job> change) {
@@ -145,8 +176,8 @@ public class IntermediaryViewController
 
     }
 
-    public void createNewJob() throws IOException{
-        // Open Create Job page
+    // Open create job page
+    public void createNewJob() throws IOException {
         Stage stage = null;
         Parent nextScene = null;
         stage = (Stage) createJobButton.getScene().getWindow();
@@ -158,10 +189,12 @@ public class IntermediaryViewController
         stage.show();
     }
 
+    // Initialise job lists
     public void createJobLists()
     {
-        jobs = CSVController.selectJobsByIntermediary(currentUser.getID());
+        jobs = CSVController.selectJobsByIntermediary(currentUser.getID()); // get all jobs from current user
 
+        // refresh lists
         if(adJobs.size() != 0 || pastJobs.size() != 0 || acceptedJobs.size() != 0)
         {
             adJobs = new LinkedList<>();
@@ -171,17 +204,17 @@ public class IntermediaryViewController
 
         for (Job job : jobs)
         {
-            if (!job.isCompleted() && CSVController.selectJobReturnFisher(job.getId()) != null)
+            if (!job.isCompleted() && CSVController.selectJobReturnFisher(job.getId()) != null) // check if a job is accepted
             {
                 job.setFisherName(CSVController.selectJobReturnFisher(job.getId()).getFname() + " " + CSVController.selectJobReturnFisher(job.getId()).getSname());
                 acceptedJobs.add(job);
             }
-            else if(job.isCompleted())
+            else if(job.isCompleted()) // completed jobs
             {
                 job.setFisherName(CSVController.selectJobReturnFisher(job.getId()).getFname() + " " + CSVController.selectJobReturnFisher(job.getId()).getSname());
                 pastJobs.add(job);
             }
-            else
+            else // job isn't completed or accepted, so add to advertised jobs
             {
                 LinkedList<Job> temp = CSVController.selectJobsWithoutFisher();
 
@@ -196,10 +229,12 @@ public class IntermediaryViewController
         }
     }
 
+    // view details of a job on the advertised page
     public void viewAdJobDetails() throws IOException
     {
+        // pass job details to JobDetailsIntermediary Controller
         JobDetailsIntermediaryController.setJobDetails(adSelectedRows.get(0));
-        JobDetailsIntermediaryController.setIsFromButton(false);
+        JobDetailsIntermediaryController.setIsFromModifyButton(false);
 
         // Open Job Details page
         Stage stage = null;
@@ -215,9 +250,9 @@ public class IntermediaryViewController
 
     public void modifyJobDetails() throws IOException
     {
+        // pass job details to JobDetailsIntermediary Controller
         JobDetailsIntermediaryController.setJobDetails(adSelectedRows.get(0));
-
-        JobDetailsIntermediaryController.setIsFromButton(true);
+        JobDetailsIntermediaryController.setIsFromModifyButton(true);
 
         // Open Job Details page
         Stage stage = null;
@@ -233,6 +268,7 @@ public class IntermediaryViewController
 
     public void removeJob() throws IOException
     {
+        // show confirmation pop-up
         alert.setTitle("Remove Job");
         alert.setHeaderText("Are you sure you want to remove this job?");
         Optional<ButtonType> result = alert.showAndWait();
@@ -245,11 +281,13 @@ public class IntermediaryViewController
         {
             CSVController.deleteJob(adSelectedRows.get(0).getId());
 
+            // refresh tables
             advertisedJobsTable.getItems().clear();
             createJobLists();
             advertisedJobsTable.getItems().addAll(adJobs);
             advertisedJobsTable.refresh();
 
+            // re-disable buttons
             viewDetailsAdButton.setDisable(true);
             removeButton.setDisable(true);
             modifyDetailsButton.setDisable(true);
@@ -262,8 +300,9 @@ public class IntermediaryViewController
 
     public void viewAcceptedJobDetails() throws IOException
     {
+        // pass job details to JobDetailsIntermediary Controller
         JobDetailsIntermediaryController.setJobDetails(acceptedSelectedRows.get(0));
-        JobDetailsIntermediaryController.setIsFromButton(false);
+        JobDetailsIntermediaryController.setIsFromModifyButton(false);
 
         // Open Job Details page
         Stage stage = null;
@@ -279,8 +318,9 @@ public class IntermediaryViewController
 
     public void viewPastJobDetails() throws IOException
     {
+        // pass job details to JobDetailsIntermediary Controller
         JobDetailsIntermediaryController.setJobDetails(pastSelectedRows.get(0));
-        JobDetailsIntermediaryController.setIsFromButton(false);
+        JobDetailsIntermediaryController.setIsFromModifyButton(false);
 
         // Open Job Details page
         Stage stage = null;
@@ -298,6 +338,7 @@ public class IntermediaryViewController
     {
         Job job = acceptedSelectedRows.get(0);
 
+        // show confirmation pop-up
         alert.setTitle("Mark Job as Completed");
         alert.setHeaderText("Are you sure you want to mark this job completed?");
         Optional<ButtonType> result = alert.showAndWait();
@@ -309,6 +350,8 @@ public class IntermediaryViewController
         else if(result.get() == ButtonType.OK)
         {
             CSVController.updateCompleted(job.getId(), true);
+
+            // refresh tables to show complete item
             acceptedJobsTable.getItems().clear();
             pastJobsTable.getItems().clear();
             createJobLists();
@@ -317,6 +360,7 @@ public class IntermediaryViewController
             acceptedJobsTable.refresh();
             pastJobsTable.refresh();
 
+            // re-disable buttons
             viewDetailsAccButton.setDisable(true);
             completeButton.setDisable(true);
         }
@@ -326,7 +370,7 @@ public class IntermediaryViewController
         }
     }
 
-
+    // tool bar
     public void changeScene(ActionEvent event) throws IOException {
         Stage stage = null;
         Parent nextScene = null;

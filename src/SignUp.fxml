@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+/*******************************************************************************************************************
+ * File: SignUp.fxml
+ *
+ * Date: 04/06/2021
+ *
+ * Author: RM
+ *
+ * Description: GUI for the Sign-Up page. Created using SceneBuilder. Controlled by SignUpController.java.
+ *
+ * References:
+ *
+ ******************************************************************************************************************/
+ -->
+
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>

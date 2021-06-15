@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+/*******************************************************************************************************************
+ * File: FisherView.fxml
+ *
+ * Date: 06/06/2021
+ *
+ * Author: RM
+ *
+ * Description: GUI for a Fisher user to see their active and completed jobs. Created using SceneBuilder.
+ *              Controlled by FisherViewController.java.
+ *
+ * References:
+ *
+ ******************************************************************************************************************/
+ -->
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Tab?>

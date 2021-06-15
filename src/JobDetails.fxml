@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+/*******************************************************************************************************************
+ * File: JobDetails.fxml
+ *
+ * Date: 06/06/2021
+ *
+ * Author: RM
+ *
+ * Description: GUI for the View Job Details page. A job's details, such as pay rate and who it is managed by is
+ *              displayed here. Created using SceneBuilder. Controlled by JobDetailsController.java.
+ *
+ * References:
+ *
+ ******************************************************************************************************************/
+ -->
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>

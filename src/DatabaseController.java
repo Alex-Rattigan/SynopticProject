@@ -1,10 +1,22 @@
+/*******************************************************************************************************************
+ * File: DatabaseController.java
+ *
+ * Date: 05/06/2021
+ *
+ * Author: RM
+ *
+ * Description: This class is used to connect and interact with a PGSQL database over the internet. All data used in
+ *              the MyFishingPal application is read and manipulated through this class.
+ *
+ * References: [1] https://www.tutorialspoint.com/postgresql/postgresql_java.htm
+ *
+ ******************************************************************************************************************/
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.*;
 import java.util.LinkedList;
 
-// References: https://www.tutorialspoint.com/postgresql/postgresql_java.htm
 public class DatabaseController
 {
     private static Connection c = null;
@@ -92,6 +104,7 @@ public class DatabaseController
 
             ResultSet result = select.executeQuery("SELECT * FROM Fishers WHERE username = '" + username + "';");
 
+            // print result for debugging
             while(result.next())
             {
                 int fisher_id = result.getInt("fisher_id");
