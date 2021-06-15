@@ -1,4 +1,22 @@
-import javafx.collections.ObservableList;
+/*******************************************************************************************************************
+ * File: JobDetailsController.java
+ *
+ * Date: 08/06/2021
+ *
+ * Author: RM
+ *
+ * Description: This class is for controlling the JobDetails.fxml page. This controller is used when a user of type
+ *              Fisher is viewing the details of a job.
+ *
+ *              From here, a Fisher can view or abandon a job, and also mark it as complete.
+ *
+ * References: [1] https://stackoverflow.com/questions/43031602/how-to-set-a-method-to-a-javafx-alert-button
+ *             [2] Change scene code from Richey Blant & Ruby Moore's Software Engineering Coursework, provided by
+ *             Richey Blant
+ *
+ ******************************************************************************************************************/
+
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +40,7 @@ public class JobDetailsController
 
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
+    // used to pass job from one class to here
     public static void setJobDetails(Job job)
     {
        JobDetailsController.currentJob = job;
@@ -36,6 +55,7 @@ public class JobDetailsController
         managedByText.setText(currentJob.getIntermediaryName());
         detailsText.setText(currentJob.getDescription());
 
+        // disable buttons if job is completed
         if(currentJob.isCompleted())
         {
             abandonJobButton.setDisable(true);
@@ -45,6 +65,7 @@ public class JobDetailsController
 
     public void markJobComplete()
     {
+        // show confirmation alert
         alert.setTitle("Mark Job as Completed");
         alert.setHeaderText("Are you sure you want to mark this job completed?");
         Optional<ButtonType> result = alert.showAndWait();
@@ -67,6 +88,7 @@ public class JobDetailsController
 
     public void abandonJob()
     {
+        // show confirmation alert
         alert.setTitle("Abandon Job");
         alert.setHeaderText("Are you sure you want to abandon this job?");
         Optional<ButtonType> result = alert.showAndWait();
@@ -87,6 +109,7 @@ public class JobDetailsController
         }
     }
 
+    // return to original view
     public void changeScene() throws IOException
     {
         Stage stage = null;

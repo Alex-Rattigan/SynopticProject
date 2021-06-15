@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+/*******************************************************************************************************************
+ * File: JobDetailsIntermediary.fxml
+ *
+ * Date: 06/06/2021
+ *
+ * Author: RM
+ *
+ * Description: GUI for the View Job Details page for an Intermediary User. A job's details, such as pay rate and who it is accepted by is
+ *              displayed here. Created using SceneBuilder. Controlled by JobDetailsIntermediaryController.java.
+ *
+ * References:
+ *
+ ******************************************************************************************************************/
+ -->
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
