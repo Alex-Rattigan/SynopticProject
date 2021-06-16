@@ -118,7 +118,7 @@ public class Job
         this.formattedDueDate = format.format(this.dateDue);
 
         this.intermediaryName = CSVController.selectIntermediaryRecord(intermediaryId).getFname() + " " + CSVController.selectIntermediaryRecord(intermediaryId).getSname();
-        this.fisherName = CSVController.selectFisherRecord(fisherId).getFname() + " " + CSVController.selectIntermediaryRecord(fisherId).getSname();
+        this.fisherName = CSVController.selectFisherRecord(fisherId).getFname() + " " + CSVController.selectFisherRecord(fisherId).getSname();
 
     }
 

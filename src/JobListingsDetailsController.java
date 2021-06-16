@@ -69,9 +69,6 @@ public class JobListingsDetailsController
         //checks to make sure the user is a fisher
         if(MyFishingPal.currentUser instanceof Fisher){
 
-            //sets the currently logged in user as the fisher for the job that is selected
-            currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
-
             //Check if the selected job is still available
             LinkedList<Job> availableJobsLive = DatabaseController.selectJobsWithoutFisher();
             boolean currentJobLive = false;
@@ -90,38 +87,61 @@ public class JobListingsDetailsController
             //If job is available, proceed as normal:
             if (currentJobLive) {
 
-                //sets the currently logged in user as the fisher for the job that is selected
-                currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
-
                 //this puts up a warning to ask if the user is sure about accepting the job
                 alert.setTitle("Accept Job");
                 alert.setHeaderText("Are you sure you want to accept this job?");
                 Optional<ButtonType> result = alert.showAndWait();
 
-                //Email the Fisher the details of the job and the Intermediary that offered it
-                Intermediary intermediary = CSVController.selectIntermediaryRecord(currentJob.getIntermediaryId());
-                assert intermediary != null;
-                String intermediaryPhone = intermediary.getMobileNo();
-                String message =    "Job accepted through MyFishingPal:\n" +
-                        "Intermediary Name: " + currentJob.getIntermediaryName() + "\n" +
-                        "Intermediary Contact Number: " + intermediaryPhone + "\n" +
-                        "Fish Type: " + currentJob.getFishType() + "\n" +
-                        "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
-                        "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
-                        "Due Date: " + currentJob.getDateDue() + "\n" +
-                        "Description: " + currentJob.getDescription();
-                new Email(((Fisher) MyFishingPal.currentUser).getMobileNo(), "You Have Accepted Job #" + currentJob.getId() + " Through MyFishingPal", message);
+                if(!result.isPresent())
+                {
+                    // do nothing
+                }
+                else if(result.get() == ButtonType.OK)
+                {
 
-                //Email the Intermediary the details of the job and the Fisher that accepted
-                message =   "Job accepted through MyFishingPal:\n" +
-                        "Fisher Name: " + ((Fisher) MyFishingPal.currentUser).getFullName() + "\n" +
-                        "Fisher Contact Number: " + ((Fisher) MyFishingPal.currentUser).getMobileNo() + "\n" +
-                        "Fish Type: " + currentJob.getFishType() + "\n" +
-                        "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
-                        "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
-                        "Due Date: " + currentJob.getDateDue() + "\n" +
-                        "Description: " + currentJob.getDescription();
-                new Email(intermediary.getMobileNo(), "Your Job #" + currentJob.getId() + " Has Been Accepted Through MyFishingPal", message);
+                    //Assign the job to the fisher in the database
+                    CSVController.updateFisherId(currentJob.getId(), ((Fisher) MyFishingPal.currentUser).getID());
+
+                    //Email the Fisher the details of the job and the Intermediary that offered it
+                    Intermediary intermediary = CSVController.selectIntermediaryRecord(currentJob.getIntermediaryId());
+                    assert intermediary != null;
+                    String intermediaryPhone = intermediary.getMobileNo();
+                    String message =    "Job accepted through MyFishingPal:\n" +
+                            "Intermediary Name: " + currentJob.getIntermediaryName() + "\n" +
+                            "Intermediary Contact Number: " + intermediaryPhone + "\n" +
+                            "Fish Type: " + currentJob.getFishType() + "\n" +
+                            "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
+                            "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
+                            "Due Date: " + currentJob.getDateDue() + "\n" +
+                            "Description: " + currentJob.getDescription();
+                    new Email(((Fisher) MyFishingPal.currentUser).getMobileNo(), "You Have Accepted Job #" + currentJob.getId() + " Through MyFishingPal", message);
+
+                    //Email the Intermediary the details of the job and the Fisher that accepted
+                    message =   "Job accepted through MyFishingPal:\n" +
+                            "Fisher Name: " + ((Fisher) MyFishingPal.currentUser).getFullName() + "\n" +
+                            "Fisher Contact Number: " + ((Fisher) MyFishingPal.currentUser).getMobileNo() + "\n" +
+                            "Fish Type: " + currentJob.getFishType() + "\n" +
+                            "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
+                            "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
+                            "Due Date: " + currentJob.getDateDue() + "\n" +
+                            "Description: " + currentJob.getDescription();
+                    new Email(intermediary.getMobileNo(), "Your Job #" + currentJob.getId() + " Has Been Accepted Through MyFishingPal", message);
+                }
+                else
+                {
+                    // do nothing
+                }
+
+                //changes the scene back to the job listing page
+                Stage stage = null;
+                Parent nextScene = null;
+                stage = (Stage) closeButton.getScene().getWindow();
+                nextScene = FXMLLoader.load(getClass().getResource("FisherView.fxml"));
+                assert nextScene != null;
+                Scene scene = new Scene(nextScene);
+                stage.setScene(scene);
+                stage.setTitle("MyFishingPal");
+                stage.show();
 
             }
             //If selected job is not available, show an error
@@ -130,6 +150,17 @@ public class JobListingsDetailsController
                 alert.setTitle("Job Already Taken");
                 alert.setHeaderText("Someone else has already taken this job. Please try another.");
                 Optional<ButtonType> result = alert.showAndWait();
+
+                //changes the scene back to the job listing page
+                Stage stage = null;
+                Parent nextScene = null;
+                stage = (Stage) closeButton.getScene().getWindow();
+                nextScene = FXMLLoader.load(getClass().getResource("JobListings.fxml"));
+                assert nextScene != null;
+                Scene scene = new Scene(nextScene);
+                stage.setScene(scene);
+                stage.setTitle("MyFishingPal");
+                stage.show();
 
             }
         }
