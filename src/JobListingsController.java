@@ -147,9 +147,6 @@ public class JobListingsController
             //If job is available, proceed as normal
             if (currentJobLive) {
 
-                //sets the currently logged in user as the fisher for the job that is selected
-                //currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
-
                 //this puts up a warning to ask if the user is sure about accepting the job
                 alert.setTitle("Accept Job");
                 alert.setHeaderText("Are you sure you want to accept this job?");

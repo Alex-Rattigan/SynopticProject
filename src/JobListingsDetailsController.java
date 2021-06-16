@@ -69,9 +69,6 @@ public class JobListingsDetailsController
         //checks to make sure the user is a fisher
         if(MyFishingPal.currentUser instanceof Fisher){
 
-            //sets the currently logged in user as the fisher for the job that is selected
-            //currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
-
             //Check if the selected job is still available
             LinkedList<Job> availableJobsLive = DatabaseController.selectJobsWithoutFisher();
             boolean currentJobLive = false;
@@ -89,9 +86,6 @@ public class JobListingsDetailsController
 
             //If job is available, proceed as normal:
             if (currentJobLive) {
-
-                //sets the currently logged in user as the fisher for the job that is selected
-                //currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
 
                 //this puts up a warning to ask if the user is sure about accepting the job
                 alert.setTitle("Accept Job");
