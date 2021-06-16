@@ -30,6 +30,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 
@@ -54,64 +55,106 @@ public class SignUpController {
     //Creates the alert to be used
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
+    //Creates an info popup to be used
+    Alert info = new Alert(Alert.AlertType.CONFIRMATION);
+
     //SignUp method that is executed when user presses the submit button
     public void signUp() throws Exception {
         try {
-            //variable definition from the TextFields
-            String forename = forenameText.getText();
-            String username = usernameText.getText();
-            String surname = surnameText.getText();
-            String password = passwordText.getText();
-            String mobileNo = mobileNoText.getText();
 
-            //Checks the RadioButtons to see which is selected
-            if (intermediaryButton.isSelected()) {
-                //Executes the checkDetails method to check that all details are valid
-                if(checkDetails()) {
-                    //CSVController method to insert a new Intermediary
-                    CSVController.insertIntermediaryRecord(username, password, forename, surname, mobileNo);
-                    //Sets the currentUser to the user that has just been created
-                    MyFishingPal.currentUser = CSVController.checkIntermediaryExists(username);
+            info.setTitle("Terms of Service");
+            info.setHeaderText("How your data is stored");
+            info.setContentText("Your data will be held both locally and in a database for as long as you have an " +
+                    "account. It will never be sold or given to any third party. Only you and the system admin will " +
+                    "be able to see your data. If you delete your account, your data will be removed from the " +
+                    "database.");
+            Optional<ButtonType> result = info.showAndWait();
 
-                    //Changes to the next scene
-                    Stage stage = null;
-                    Parent nextScene = null;
-                    stage = (Stage) completeSignUpButton.getScene().getWindow();
-                    nextScene = FXMLLoader.load(getClass().getResource("FishingInfo.fxml"));
-                    assert nextScene != null;
-                    Scene scene = new Scene(nextScene);
-                    stage.setScene(scene);
-                    stage.setTitle("MyFishingPal");
-                    stage.show();
-                }
-                //checks RadioButton to see if Fisher is selected
-            } else if (fisherButton.isSelected())
+            if(!result.isPresent())
             {
-                //Executes the checkDetails method to check that all details are valid
-                if(checkDetails()) {
-                    //CSVController method to insert a new Fisher
-                    CSVController.insertFisherRecord(username, password, forename, surname, mobileNo);
-                    //Sets the currentUser to the user that has just been created
-                    MyFishingPal.currentUser = CSVController.checkFisherExists(username);
-
-                    //Changes to the next scene, got this code from Richard Blant's Software Engineering Coursework
-                    Stage stage = null;
-                    Parent nextScene = null;
-                    stage = (Stage) completeSignUpButton.getScene().getWindow();
-                    nextScene = FXMLLoader.load(getClass().getResource("FishingInfo.fxml"));
-                    assert nextScene != null;
-                    Scene scene = new Scene(nextScene);
-                    stage.setScene(scene);
-                    stage.setTitle("MyFishingPal");
-                    stage.show();
-                }
-                // This else is if the user hasn't clicked either RadioButton
-            } else{
-                //Sets an Alert to the screen to describe what the error is
-                alert.setTitle("Please check either Intermediary or Fisher");
-                alert.setHeaderText("Please select an option");
-                alert.showAndWait();
+                Stage stage = null;
+                Parent nextScene = null;
+                stage = (Stage) backToLoginButton.getScene().getWindow();
+                nextScene = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                assert nextScene != null;
+                Scene scene = new Scene(nextScene);
+                stage.setScene(scene);
+                stage.setTitle("MyFishingPal");
+                stage.show();
             }
+            else if(result.get() == ButtonType.OK)
+            {
+
+                //variable definition from the TextFields
+                String forename = forenameText.getText();
+                String username = usernameText.getText();
+                String surname = surnameText.getText();
+                String password = passwordText.getText();
+                String mobileNo = mobileNoText.getText();
+
+                //Checks the RadioButtons to see which is selected
+                if (intermediaryButton.isSelected()) {
+                    //Executes the checkDetails method to check that all details are valid
+                    if(checkDetails()) {
+                        //CSVController method to insert a new Intermediary
+                        CSVController.insertIntermediaryRecord(username, password, forename, surname, mobileNo);
+                        //Sets the currentUser to the user that has just been created
+                        MyFishingPal.currentUser = CSVController.checkIntermediaryExists(username);
+
+                        //Changes to the next scene
+                        Stage stage = null;
+                        Parent nextScene = null;
+                        stage = (Stage) completeSignUpButton.getScene().getWindow();
+                        nextScene = FXMLLoader.load(getClass().getResource("FishingInfo.fxml"));
+                        assert nextScene != null;
+                        Scene scene = new Scene(nextScene);
+                        stage.setScene(scene);
+                        stage.setTitle("MyFishingPal");
+                        stage.show();
+                    }
+                    //checks RadioButton to see if Fisher is selected
+                } else if (fisherButton.isSelected())
+                {
+                    //Executes the checkDetails method to check that all details are valid
+                    if(checkDetails()) {
+                        //CSVController method to insert a new Fisher
+                        CSVController.insertFisherRecord(username, password, forename, surname, mobileNo);
+                        //Sets the currentUser to the user that has just been created
+                        MyFishingPal.currentUser = CSVController.checkFisherExists(username);
+
+                        //Changes to the next scene, got this code from Richard Blant's Software Engineering Coursework
+                        Stage stage = null;
+                        Parent nextScene = null;
+                        stage = (Stage) completeSignUpButton.getScene().getWindow();
+                        nextScene = FXMLLoader.load(getClass().getResource("FishingInfo.fxml"));
+                        assert nextScene != null;
+                        Scene scene = new Scene(nextScene);
+                        stage.setScene(scene);
+                        stage.setTitle("MyFishingPal");
+                        stage.show();
+                    }
+                    // This else is if the user hasn't clicked either RadioButton
+                } else{
+                    //Sets an Alert to the screen to describe what the error is
+                    alert.setTitle("Please check either Intermediary or Fisher");
+                    alert.setHeaderText("Please select an option");
+                    alert.showAndWait();
+                }
+            }
+            else
+            {
+                Stage stage = null;
+                Parent nextScene = null;
+                stage = (Stage) backToLoginButton.getScene().getWindow();
+                nextScene = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                assert nextScene != null;
+                Scene scene = new Scene(nextScene);
+                stage.setScene(scene);
+                stage.setTitle("MyFishingPal");
+                stage.show();
+            }
+
+
 
             //This will catch the CSVController method to see if any of the information is invalid with the constraints
         }catch (Exception e){
