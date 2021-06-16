@@ -60,7 +60,7 @@ public class CreateJobController
     public void createJob() throws IOException
     {
         //checks if any of the fields are empty
-        if (fishType.getText().equals("") || amountKg.getText().equals("") || priceKg.getText().equals("") || dateToComplete.getValue() == null || jobDetails.getText().equals(""))
+        if (fishType.getText().equals("") || amountKg.getText().equals("") || priceKg.getText().equals("") || dateToComplete.getValue() == null)
         {
             alert.setTitle("Fields empty");
             alert.setHeaderText("Atleast one of the fields are empty, please make sure they are all filled in");
