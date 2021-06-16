@@ -148,37 +148,12 @@ public class JobListingsController
             if (currentJobLive) {
 
                 //sets the currently logged in user as the fisher for the job that is selected
-                currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
+                //currentJob.setFisherName(((Fisher) MyFishingPal.currentUser).getUsername());
 
                 //this puts up a warning to ask if the user is sure about accepting the job
                 alert.setTitle("Accept Job");
                 alert.setHeaderText("Are you sure you want to accept this job?");
                 Optional<ButtonType> result = alert.showAndWait();
-
-                //Email the Fisher the details of the job and the Intermediary that offered it
-                Intermediary intermediary = CSVController.selectIntermediaryRecord(currentJob.getIntermediaryId());
-                assert intermediary != null;
-                String intermediaryPhone = intermediary.getMobileNo();
-                String message =    "Job accepted through MyFishingPal:\n" +
-                        "Intermediary Name: " + currentJob.getIntermediaryName() + "\n" +
-                        "Intermediary Contact Number: " + intermediaryPhone + "\n" +
-                        "Fish Type: " + currentJob.getFishType() + "\n" +
-                        "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
-                        "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
-                        "Due Date: " + currentJob.getDateDue() + "\n" +
-                        "Description: " + currentJob.getDescription();
-                new Email(((Fisher) MyFishingPal.currentUser).getMobileNo(), "You Have Accepted Job #" + currentJob.getId() + " Through MyFishingPal", message);
-
-                //Email the Intermediary the details of the job and the Fisher that accepted
-                message =   "Job accepted through MyFishingPal:\n" +
-                        "Fisher Name: " + ((Fisher) MyFishingPal.currentUser).getFullName() + "\n" +
-                        "Fisher Contact Number: " + ((Fisher) MyFishingPal.currentUser).getMobileNo() + "\n" +
-                        "Fish Type: " + currentJob.getFishType() + "\n" +
-                        "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
-                        "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
-                        "Due Date: " + currentJob.getDateDue() + "\n" +
-                        "Description: " + currentJob.getDescription();
-                new Email(intermediary.getMobileNo(), "Your Job #" + currentJob.getId() + " Has Been Accepted Through MyFishingPal", message);
 
                 if(!result.isPresent())
                 {
@@ -186,7 +161,34 @@ public class JobListingsController
                 }
                 else if(result.get() == ButtonType.OK)
                 {
+                    //Email the Fisher the details of the job and the Intermediary that offered it
+                    Intermediary intermediary = CSVController.selectIntermediaryRecord(currentJob.getIntermediaryId());
+                    assert intermediary != null;
+                    String intermediaryPhone = intermediary.getMobileNo();
+                    String message =    "Job accepted through MyFishingPal:\n" +
+                            "Intermediary Name: " + currentJob.getIntermediaryName() + "\n" +
+                            "Intermediary Contact Number: " + intermediaryPhone + "\n" +
+                            "Fish Type: " + currentJob.getFishType() + "\n" +
+                            "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
+                            "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
+                            "Due Date: " + currentJob.getDateDue() + "\n" +
+                            "Description: " + currentJob.getDescription();
+                    new Email(((Fisher) MyFishingPal.currentUser).getMobileNo(), "You Have Accepted Job #" + currentJob.getId() + " Through MyFishingPal", message);
+
+                    //Email the Intermediary the details of the job and the Fisher that accepted
+                    message =   "Job accepted through MyFishingPal:\n" +
+                            "Fisher Name: " + ((Fisher) MyFishingPal.currentUser).getFullName() + "\n" +
+                            "Fisher Contact Number: " + ((Fisher) MyFishingPal.currentUser).getMobileNo() + "\n" +
+                            "Fish Type: " + currentJob.getFishType() + "\n" +
+                            "Amount Required: " + currentJob.getAmountKg() + "Kg\n" +
+                            "Pay Rate: " + currentJob.getPayPerKg() + "Sol/Kg\n" +
+                            "Due Date: " + currentJob.getDateDue() + "\n" +
+                            "Description: " + currentJob.getDescription();
+                    new Email(intermediary.getMobileNo(), "Your Job #" + currentJob.getId() + " Has Been Accepted Through MyFishingPal", message);
+
                     //update the fisher id for a job to the current user
+                    System.out.println(currentJob.getId() + "");
+                    System.out.println((((Fisher) MyFishingPal.currentUser).getID()) + "");
                     CSVController.updateFisherId(currentJob.getId(), (((Fisher) MyFishingPal.currentUser).getID()));
 
                     //this clears the table, fills the table again
